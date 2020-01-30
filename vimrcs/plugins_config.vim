@@ -1,11 +1,8 @@
 "depends:
-"gtags, ctags, ag, fzf
-"clang
-"clang-format, autopep8,
-"js-beautify, css-beautify, html-beautify,
-"gofmt, fixjson, shfmt
+"python, gtags, ctags, fzf, ag
 "pip install pygments
-"pip3 install pygments
+"clang, clang-format
+"rust
 
 "a: append
 "b: words backward
@@ -497,6 +494,23 @@ let g:echodoc_enable_at_startup = 1
 
 "<leader>q在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
 "nnoremap <silent> <leader>q :Lines<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Ack searching and cope displaying
+""    requires ack.vim - it's much better than vimgrep/grep
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Use the the_silver_searcher if possible (much faster than Ack)
+"if executable('ag')
+"    let g:ackprg = 'ag --vimgrep --smart-case'
+"endif
+"
+"" When you press gv you Ack after the selected text
+"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+"
+"" Open Ack and put the cursor in the right position
+"cnoreabbrev Ack Ack!
+"nnoremap <leader>aa :Ack!<Space><C-R><C-W><cr>
+"nnoremap <leader>af :Ack!<Space>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
