@@ -16,13 +16,13 @@
 "j: down
 "k: up
 "l: right
-"m: mark, bookmark
+"m: mark, bookmarks ===========================================>>>
 "n: repeat /
 "o: begin a new line
 "p: put text
 "q: record
 "r: {char} replace
-"s: easymotion s{char}{char}
+"s: easymotion s{char}{char} ===========================================>>>
 "t: {char} till
 "u: undo
 "v: visual
@@ -76,29 +76,29 @@
 "CTRL-\:
 
 
-"<leader>a: Ack[aa, af]
-"<leader>b: buffer[bd, ba, bn, bp], buffexplore[be, bv, bs]
-"<leader>c: quickfix[co, cc, cn, cp], cwd[cd]
-"<leader>d: GitGutter[d],
-"<leader>e: [ee], easymotion[ef, ew, el]
-"<leader>f: leaderf[ff, fb, fd, ft, fl]
+"<leader>a:
+"<leader>b: buffer[bd, ba, bn, bp]
+"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca]
+"<leader>d:
+"<leader>e: [ee], easymotion[ec, es, ew, el]
+"<leader>f: leaderf[ff, fr, fb, fd, ft, fl]
 "<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, ga]
 "<leader>h:
-"<leader>i: indentguides[i]
-"<leader>j: ycm[j]
-"<leader>k: ctrlsf[kk,kf, kF, kn, kp, ko, ks, kc, kt]
+"<leader>i:
+"<leader>j:
+"<leader>k:
 "<leader>l: ALE[ll, ld]
-"<leader>m: leaderf[m]
-"<leader>n: quickfix[n], NERDTree[nn, nb, nf]
-"<leader>o: leaderf[o]
-"<leader>p: quickfix[p], [pp]
+"<leader>m:
+"<leader>n: NERDTree[nn, nb, nf]
+"<leader>o:
+"<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickly open a buffer
 "<leader>r: visualreplace[r]
 "<leader>s: spell[ss, sn, sp, sa, s?]
-"<leader>t: tab[tn, to, tc, tm, tt, tp, tl, te]
+"<leader>t: tab[tn, to, tc, tm, tt, tl, te]
 "<leader>u:
 "<leader>v:
-"<leader>w: [ww] [wd] [wc] [wo] [ws] [wv] [wq]
+"<leader>w: [ww] [wd] [wc] [wo] [ws] [wv]
 "<leader>x: quickly open a markdown buffer
 "<leader>y:
 "<leader>z:
@@ -107,16 +107,20 @@
 " => LeaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:Lf_ShortcutF = '<leader>ff'
-
-noremap <leader>ff :Leaderf file<cr>
-
-noremap <leader>fr :Leaderf mru<cr>
 let g:Lf_MruFileExclude = ['*.so']
 
+noremap <leader>ff :Leaderf file<cr>
+noremap <leader>fr :Leaderf mru<cr>
 noremap <leader>fb :Leaderf buffer<cr>
-noremap <leader>fd :Leaderf funcion<cr>
+
 noremap <leader>ft :Leaderf tag<cr>
 noremap <leader>fl :Leaderf line<cr>
+noremap <leader>fc :Leaderf colorscheme<cr>
+
+noremap <leader>fd :Leaderf funcion<cr>
+
+noremap <leader>bb :Leaderf buffer<cr>
+noremap <leader>bt :Leaderf bufTag<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
@@ -227,23 +231,15 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Git gutter (Git diff)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:gitgutter_enabled=0
-"nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <leader>fc{char} to move to {char}
-map  <leader>ef <Plug>(easymotion-bd-f)
-nmap <leader>ef <Plug>(easymotion-overwin-f)
+" <leader>ec{char} to move to {char}
+map  <leader>ec <Plug>(easymotion-bd-f)
+nmap <leader>ec <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
-nmap ss <Plug>(easymotion-overwin-f2)
+nmap <leader>ef <Plug>(easymotion-overwin-f2)
 
 " Move to line
 map <leader>el <Plug>(easymotion-bd-jk)

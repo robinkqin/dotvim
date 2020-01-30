@@ -105,23 +105,12 @@ iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>cn
-"
-" To go to the previous search results do:
-"   <leader>cp
-"
-map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>co :botright cope<cr>
-map <leader>cc :botright ccl<cr>
+map <leader>co :botright copen<cr>
+map <leader>cc :botright cclose<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
-"map <leader>n :cn<cr>
-"map <leader>p :cp<cr>
+
+map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " Make sure that enter is never overriden in the quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
