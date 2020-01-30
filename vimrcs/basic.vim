@@ -51,7 +51,6 @@ nmap <leader>qq :qa<cr>
 nmap <leader>wd :pwd<cr>
 
 nmap <leader>wc <c-w>c
-nmap <leader>wq <c-w>q
 nmap <leader>wo <c-w>o
 nmap <leader>ws <c-w>s
 nmap <leader>wv <c-w>v

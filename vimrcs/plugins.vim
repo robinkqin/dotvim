@@ -1,7 +1,7 @@
-
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
+
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -16,19 +16,19 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " On-demand loading
-"Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdcommenter'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-"Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
-"Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
-"Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
-"Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-sensible'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 
 " Plug 'MattesGroeger/vim-bookmarks'
 
@@ -42,18 +42,18 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
 
-"Plug 'vim-syntastic/syntastic'
-"Plug 'dense-analysis/ale'
+" Plug 'vim-syntastic/syntastic'
+" Plug 'dense-analysis/ale'
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-"Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
 
 " Initialize plugin system
-call plug#end()
 
+call plug#end()
