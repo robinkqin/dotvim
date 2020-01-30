@@ -21,25 +21,36 @@ Plug 'preservim/nerdcommenter'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-easy-align'
 
 Plug 'terryma/vim-multiple-cursors'
-
-Plug 'junegunn/vim-easy-align'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 
+Plug 'Shougo/echodoc.vim'
+
+" Plug 'majutsushi/tagbar'
+
+" Plug 'mhinz/vim-signify'
 " Plug 'MattesGroeger/vim-bookmarks'
+" Plug 'https://github.com/inkarkat/vim-mark.git'
+" Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
-" Plug 'Shougo/echodoc.vim'
+" complete checker format gtags/cscope shell
 
 " Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'Chiel92/vim-autoformat'
 
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
 
 " Plug 'vim-syntastic/syntastic'
@@ -49,7 +60,7 @@ Plug 'tpope/vim-surround'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'

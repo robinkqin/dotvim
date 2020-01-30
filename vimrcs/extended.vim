@@ -36,7 +36,7 @@ set guioptions-=L
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>ee :e! ~/.vim/vimrcs/plugins_config.vim<cr>
-autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plugins_config.vim
+"autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plugins_config.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
