@@ -142,6 +142,8 @@ noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
 noremap <leader>fs :Leaderf rg -e<Space>
 noremap <leader>fw :Leaderf rg -w --cword<cr>
+noremap <leader>fj :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fk :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
@@ -150,7 +152,7 @@ noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 noremap <leader>fc :Leaderf colorscheme<cr>
 
-" e i j k l q u v x y z
+" e i l q u v x y z
 noremap <leader>fhc :Leaderf cmdHistory<cr>
 noremap <leader>fhs :Leaderf searchHistory<cr>
 noremap <leader>fhh :Leaderf self<cr>
@@ -175,11 +177,8 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 "let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 "let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-"noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
-"noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 "" search visually selected text literally
 "xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-"noremap go :<C-U>Leaderf! rg --recall<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => airline/airline-themes
