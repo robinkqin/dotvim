@@ -137,26 +137,27 @@ let g:Lf_MruFileExclude = ['*.so']
 noremap <leader>ff :Leaderf file<cr>
 noremap <leader>fm :Leaderf mru<cr>
 noremap <leader>fb :Leaderf buffer<cr>
-"noremap <leader>bb :Leaderf buffer<cr>
 
 noremap <leader>fs :Leaderf rg -e<Space>
-noremap <leader>fw :Leaderf rg --cword<cr>
+noremap <leader>fw :Leaderf rg -w --cword<cr>
 
-noremap <leader>fr :Leaderf --recall<cr>
-
-noremap <leader>ft :Leaderf tag<cr>
-"noremap <leader>bt :Leaderf bufTag<cr>
+noremap <leader>ft :Leaderf bufTag<cr>
 
 "noremap <leader>fm :LeaderfFunction<cr>
 
 noremap <leader>fc :Leaderf colorscheme<cr>
 
+" e i j k l q u v x y z
 noremap <leader>fhc :Leaderf cmdHistory<cr>
 noremap <leader>fhs :Leaderf searchHistory<cr>
+noremap <leader>fhh :Leaderf self<cr>
 
-"noremap <leader>fn :Leaderf --nect<cr>
-"noremap <leader>fp :Leaderf --previous<cr>
-
+noremap <leader>fg :Leaderf gtags --update<cr>
+noremap <leader>fr :Leaderf gtags -r --cword --auto-jump<cr>
+noremap <leader>fd :Leaderf gtags -d --cword --auto-jump<cr>
+noremap <leader>fo :Leaderf --recall<cr>
+noremap <leader>fn :Leaderf --nect<cr>
+noremap <leader>fp :Leaderf --previous<cr>
 
 "" don't show the help in normal mode
 "let g:Lf_HideHelp = 1
