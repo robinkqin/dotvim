@@ -137,22 +137,22 @@ let g:Lf_MruFileExclude = ['*.so']
 let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ShortcutB = "<leader>bb"
 
+"e i j k q u v x y z
+
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
-noremap <leader>fs :Leaderf rg -e<Space>
-noremap <leader>fw :Leaderf rg -w --cword<cr>
-noremap <leader>fj :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fk :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fs :Leaderf! rg -e<Space>
+noremap <leader>fw :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf! bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf! line %s", "")<CR><CR>
 
-"noremap <leader>fm :LeaderfFunction<cr>
+noremap <leader>fj :Leaderf! function<cr>
 
-noremap <leader>fc :Leaderf colorscheme<cr>
+noremap <leader>fc :Leaderf! colorscheme<cr>
 
-" e i l q u v x y z
 noremap <leader>fhc :Leaderf cmdHistory<cr>
 noremap <leader>fhs :Leaderf searchHistory<cr>
 noremap <leader>fhh :Leaderf self<cr>
