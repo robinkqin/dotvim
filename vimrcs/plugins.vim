@@ -14,6 +14,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'altercation/solarized'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -36,7 +37,9 @@ Plug 'Shougo/echodoc.vim'
 " Plug 'majutsushi/tagbar'
 
 " Plug 'mhinz/vim-signify'
+
 " Plug 'MattesGroeger/vim-bookmarks'
+
 " Plug 'https://github.com/inkarkat/vim-mark.git'
 " Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
@@ -53,8 +56,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
 
-" Plug 'vim-syntastic/syntastic'
 " Plug 'dense-analysis/ale'
+" Plug 'vim-syntastic/syntastic'
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }

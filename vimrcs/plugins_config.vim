@@ -77,11 +77,11 @@
 
 
 "<leader>a:
-"<leader>b: buffer[bd, ba, bn, bp]
-"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca]
-"<leader>d:
-"<leader>e: [ee], easymotion[ec, es, ew, el]
-"<leader>f: leaderf[ff, fr, fb, fd, ft, fl]
+"<leader>b: buffer[bd, ba, bn, bp], leaderf[bb, bt]
+"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca], NERDCommenter[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
+"<leader>d: surround[ds]
+"<leader>e: [ee], easymotion[ec, ef, ew, el]
+"<leader>f: leaderf[ff, fr, fb, fd, ft, fl, fc]
 "<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, ga]
 "<leader>h:
 "<leader>i:
@@ -123,6 +123,10 @@ noremap <leader>bb :Leaderf buffer<cr>
 noremap <leader>bt :Leaderf bufTag<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => airline/airline-themes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
@@ -133,6 +137,31 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => nerdcommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => easy motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <leader>ec{char} to move to {char}
+map  <leader>ec <Plug>(easymotion-bd-f)
+nmap <leader>ec <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap <leader>ef <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <leader>el <Plug>(easymotion-bd-jk)
+nmap <leader>el <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <leader>ew <Plug>(easymotion-bd-w)
+nmap <leader>ew <Plug>(easymotion-overwin-w)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => easy-align
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
@@ -149,6 +178,9 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround.vim config
@@ -156,6 +188,145 @@ let g:multi_cursor_quit_key            = '<Esc>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => echodoc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" To use echodoc, you must increase 'cmdheight' value.
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" =>tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nmap <F8> :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => bookmarks
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nmap mm <Plug>BookmarkToggle
+"nmap mn <Plug>BookmarkNext
+"nmap mp <Plug>BookmarkPrev
+"nmap mf <Plug>BookmarkShowAll
+"nmap md <Plug>BookmarkClear
+"nmap me <Plug>BookmarkClearAll
+"nmap mg <Plug>BookmarkMoveToLine
+""nmap ma <Plug>BookmarkAnnotate
+"
+"highlight BookmarkSign ctermbg=NONE ctermfg=160
+"highlight BookmarkLine ctermbg=194 ctermfg=NONE
+"let g:bookmark_sign = '♥'
+""let g:bookmark_highlight_lines = 1
+"
+"let g:bookmark_no_default_key_mappings = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => mark.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nmap <unique> mt <Plug>MarkToggle
+"nmap <unique> ms <Plug>MarkSet
+"xmap <unique> ms <Plug>MarkSet
+"nmap <unique> mr <Plug>MarkRegex
+"xmap <unique> mr <Plug>MarkRegex
+"nmap <unique> mc <Plug>MarkClear
+"nmap <unique> mx <Plug>MarkAllClear
+"
+"let g:mwDefaultHighlightingPalette = 'maximum'
+
+"""""""""""""""""""""""""""""""
+"" => snipMate (beside <TAB> support <CTRL-j>)
+"""""""""""""""""""""""""""""""
+"ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
+"snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""let g:python3_host_prog=/path/to/python/executable/
+""let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
+noremap <F3> :Autoformat<CR>
+au BufWrite * :Autoformat
+
+"disable vim's indent file, retabbing and removing trailing whitespace
+"let g:autoformat_autoindent = 0
+"let g:autoformat_retab = 0
+"let g:autoformat_remove_trailing_spaces = 0
+
+"autocmd FileType vim,tex let b:autoformat_autoindent=0
+
+"let g:formatdef_my_cpp = '"astyle --style=google"'
+"let g:formatters_cpp = ['my_cpp']
+
+"let g:autoformat_verbosemode=1
+
+"manually autoindent, retab or remove trailing whitespace
+"gg=G
+":retab
+":RemoveTrailingSpaces
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => gutentags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"" request: pip install pygments
+"let $GTAGSLABEL = 'native-pygments'
+"let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+"
+"" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+"
+"" 所生成的数据文件的名称
+"let g:gutentags_ctags_tagfile = 'tags'
+"
+"" 同时开启 ctags 和 gtags 支持：
+"let g:gutentags_modules = []
+"if executable('ctags')
+"    let g:gutentags_modules += ['ctags']
+"endif
+"if executable('gtags-cscope') && executable('gtags')
+"    let g:gutentags_modules += ['gtags_cscope']
+"endif
+"
+"" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+"let g:gutentags_cache_dir = expand('~/.cache/tags')
+"
+"" 配置 ctags 的参数
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"
+"" 如果使用 universal ctags 需要增加下面一行
+"let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+"
+"" for debug
+"let g:gutentags_define_advanced_commands = 1
+"
+"" 禁用 gutentags 自动加载 gtags 数据库的行为
+""let g:gutentags_auto_add_gtags_cscope = 0
+"
+"let g:gutentags_plus_nomap = 1
+"noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
+"noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+"noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
+"noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
+"noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
+"noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+"noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+"noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
+"noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" =>indent-guides
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" 随 vim 自启动
+"let g:indent_guides_enable_on_vim_startup=1
+"" 从第二层开始可视化显示缩进
+"let g:indent_guides_start_level=2
+"" 色块宽度
+"let g:indent_guides_guide_size=1
+"" 快捷键 i 开/关缩进可视化
+":nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Ale (syntax checker and linter)
@@ -231,24 +402,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => easy motion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <leader>ec{char} to move to {char}
-map  <leader>ec <Plug>(easymotion-bd-f)
-nmap <leader>ec <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap <leader>ef <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <leader>el <Plug>(easymotion-bd-jk)
-nmap <leader>el <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <leader>ew <Plug>(easymotion-bd-w)
-nmap <leader>ew <Plug>(easymotion-overwin-w)
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>YCM
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,147 +442,6 @@ nmap <leader>ew <Plug>(easymotion-overwin-w)
 "            \ }
 "
 "let g:ycm_global_ycm_extra_conf = '~/.vim_runtime/my_plugins/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" =>tagbar
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nmap <F8> :TagbarToggle<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" =>indent-guides
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" 随 vim 自启动
-"let g:indent_guides_enable_on_vim_startup=1
-"" 从第二层开始可视化显示缩进
-"let g:indent_guides_start_level=2
-"" 色块宽度
-"let g:indent_guides_guide_size=1
-"" 快捷键 i 开/关缩进可视化
-":nmap <silent> <leader>i <Plug>IndentGuidesToggle
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" =>gutentags
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"" request: pip install pygments
-"let $GTAGSLABEL = 'native-pygments'
-"let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-"
-"" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
-"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-"
-"" 所生成的数据文件的名称
-"let g:gutentags_ctags_tagfile = 'tags'
-"
-"" 同时开启 ctags 和 gtags 支持：
-"let g:gutentags_modules = []
-"if executable('ctags')
-"    let g:gutentags_modules += ['ctags']
-"endif
-"if executable('gtags-cscope') && executable('gtags')
-"    let g:gutentags_modules += ['gtags_cscope']
-"endif
-"
-"" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"let g:gutentags_cache_dir = expand('~/.cache/tags')
-"
-"" 配置 ctags 的参数
-"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
-"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-"
-"" 如果使用 universal ctags 需要增加下面一行
-"let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-"
-"" for debug
-"let g:gutentags_define_advanced_commands = 1
-"
-"" 禁用 gutentags 自动加载 gtags 数据库的行为
-""let g:gutentags_auto_add_gtags_cscope = 0
-"
-"let g:gutentags_plus_nomap = 1
-"noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
-"noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
-"noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
-"noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
-"noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
-"noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-"noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-"noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
-"noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => bookmarks
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap mm <Plug>BookmarkToggle
-nmap mn <Plug>BookmarkNext
-nmap mp <Plug>BookmarkPrev
-nmap mf <Plug>BookmarkShowAll
-nmap md <Plug>BookmarkClear
-nmap me <Plug>BookmarkClearAll
-nmap mg <Plug>BookmarkMoveToLine
-"nmap ma <Plug>BookmarkAnnotate
-
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_sign = '♥'
-"let g:bookmark_highlight_lines = 1
-
-let g:bookmark_no_default_key_mappings = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => mark.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <unique> mt <Plug>MarkToggle
-nmap <unique> ms <Plug>MarkSet
-xmap <unique> ms <Plug>MarkSet
-nmap <unique> mr <Plug>MarkRegex
-xmap <unique> mr <Plug>MarkRegex
-nmap <unique> mc <Plug>MarkClear
-nmap <unique> mx <Plug>MarkAllClear
-
-let g:mwDefaultHighlightingPalette = 'maximum'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => autoformat
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""let g:python3_host_prog=/path/to/python/executable/
-""let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
-noremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat
-
-"disable vim's indent file, retabbing and removing trailing whitespace
-"let g:autoformat_autoindent = 0
-"let g:autoformat_retab = 0
-"let g:autoformat_remove_trailing_spaces = 0
-
-"autocmd FileType vim,tex let b:autoformat_autoindent=0
-
-"let g:formatdef_my_cpp = '"astyle --style=google"'
-"let g:formatters_cpp = ['my_cpp']
-
-"let g:autoformat_verbosemode=1
-
-"manually autoindent, retab or remove trailing whitespace
-"gg=G
-":retab
-":RemoveTrailingSpaces
-
-"""""""""""""""""""""""""""""""
-"" => snipMate (beside <TAB> support <CTRL-j>)
-"""""""""""""""""""""""""""""""
-"ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
-"snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => echodoc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" To use echodoc, you must increase 'cmdheight' value.
-set cmdheight=2
-let g:echodoc_enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => ctrlsf
