@@ -14,6 +14,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -29,9 +30,8 @@ Plug 'mhinz/vim-signify'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 
 " Plug 'majutsushi/tagbar'
 
