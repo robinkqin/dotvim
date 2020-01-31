@@ -77,12 +77,12 @@
 
 
 "<leader>a:
-"<leader>b: buffer[bd, ba, bn, bp], leaderf[bb, bt]
+"<leader>b: buffer[bd, ba, bn, bp], leaderf[bb]
 "<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca], NERDCommenter[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
 "<leader>d: surround[ds]
 "<leader>e: [ee], easymotion[ec, ef, ew, el]
-"<leader>f: leaderf[ff, fr, fb, fd, ft, fl, fc]
-"<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, ga]
+"<leader>f: leaderf[ff, fm, fb, fs, fw, ft, fl, fc, fhc, fhs, fhh, fg, fr, fd, fo, fn, fp]
+"<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, gi, ga]
 "<leader>h:
 "<leader>i:
 "<leader>j:
@@ -156,6 +156,7 @@ noremap <leader>fhs :Leaderf searchHistory<cr>
 noremap <leader>fhh :Leaderf self<cr>
 
 " should use `Leaderf gtags --update` first
+" --gtagslibpath
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_Gtagslabel = 'native-pygments'
 noremap <leader>fg :<C-U><C-R>=printf("Leaderf! gtags --update %s", "")<CR><CR>
@@ -323,56 +324,84 @@ au BufWrite * :Autoformat
 ":retab
 ":RemoveTrailingSpaces
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => gutentags
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"" request: pip install pygments
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => gutentags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"request: pip install pygments, gtags, ctags, cscope
+"let $GTAGSLABEL='native'
 "let $GTAGSLABEL = 'native-pygments'
 "let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-"
-"" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
-"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-"
-"" 所生成的数据文件的名称
-"let g:gutentags_ctags_tagfile = 'tags'
-"
-"" 同时开启 ctags 和 gtags 支持：
-"let g:gutentags_modules = []
-"if executable('ctags')
-"    let g:gutentags_modules += ['ctags']
-"endif
-"if executable('gtags-cscope') && executable('gtags')
-"    let g:gutentags_modules += ['gtags_cscope']
-"endif
-"
-"" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"let g:gutentags_cache_dir = expand('~/.cache/tags')
-"
-"" 配置 ctags 的参数
-"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
-"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-"
-"" 如果使用 universal ctags 需要增加下面一行
-"let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-"
-"" for debug
-"let g:gutentags_define_advanced_commands = 1
-"
-"" 禁用 gutentags 自动加载 gtags 数据库的行为
-""let g:gutentags_auto_add_gtags_cscope = 0
-"
+
+" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+if executable('ctags')
+    let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
+endif
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 如果使用 universal ctags 需要增加下面一行
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+" gutentags 自动加载 gtags 数据库
+let g:gutentags_auto_add_gtags_cscope = 1
+
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+
+" keymap     desc
+"<leader>cs  Find symbol (reference) under cursor
+"<leader>cg  Find symbol definition under cursor
+"<leader>cd  Functions called by this function
+"<leader>cc  Functions calling this function
+"<leader>ct  Find text string under cursor
+"<leader>ce  Find egrep pattern under cursor
+"<leader>cf  Find file name under cursor
+"<leader>ci  Find files #including the file name under cursor
+"<leader>ca  Find places where current symbol is assigned
+
+nmap <leader>gs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gt :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <leader>ga :cs find a <C-R>=expand("<cword>")<CR><CR>
+
+"" disable the default keymaps
 "let g:gutentags_plus_nomap = 1
 "noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
 "noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+"noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
 "noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
 "noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
 "noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
 "noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
 "noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-"noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
 "noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+
+" for debug
+"let g:gutentags_define_advanced_commands = 1
+":GutentagsToggleTrace
+":GutentagsUpdate
+":messages
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>indent-guides
