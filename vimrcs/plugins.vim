@@ -14,7 +14,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'altercation/solarized'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -26,17 +25,15 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'mhinz/vim-signify'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 
-Plug 'Shougo/echodoc.vim'
-
 " Plug 'majutsushi/tagbar'
-
-" Plug 'mhinz/vim-signify'
 
 " Plug 'MattesGroeger/vim-bookmarks'
 
@@ -51,17 +48,18 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'ludovicchabant/vim-gutentags'
-" Plug 'skywind3000/gutentags_plus'
+Plug 'skywind3000/gutentags_plus'
 
-" Plug 'dense-analysis/ale'
-" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
+Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/deoplete.nvim'
 
 Plug 'rust-lang/rust.vim'
 
