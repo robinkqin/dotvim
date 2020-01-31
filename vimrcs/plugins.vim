@@ -10,7 +10,11 @@ call plug#begin('~/.vim/plugged')
 " Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+if has("win16") || has("win32")
+    Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
+else
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+endif
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

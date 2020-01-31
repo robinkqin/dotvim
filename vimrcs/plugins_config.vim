@@ -108,8 +108,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
 
-let g:Lf_PreviewInPopup = 1
-let g:Lf_WindowPosition = 'popup'
+if has("mac") || has("macunix")
+else
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_WindowPosition = 'popup'
+endif
 
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg', '.vs'],
