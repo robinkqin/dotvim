@@ -106,21 +106,86 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:Lf_ShortcutF = '<leader>ff'
+let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
+
+let g:Lf_PreviewInPopup = 1
+let g:Lf_WindowPosition = 'popup'
+
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg', '.vs'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.d','*.so','*.py[co]']
+            \}
+
 let g:Lf_MruFileExclude = ['*.so']
 
+" let g:Lf_Ctags = "/usr/local/universal-ctags/ctags"
+" let g:Lf_CtagsFuncOpts = {
+"            \ 'c': '--c-kinds=fp',
+"            \ 'rust': '--rust-kinds=f',
+"            \ }
+
+" let g:Lf_RgConfig = [
+"     \ "--max-columns=150",
+"     \ "--type-add web:*.{html,css,js}*",
+"     \ "--glob=!git/*",
+"     \ "--hidden"
+" \ ]
+
 noremap <leader>ff :Leaderf file<cr>
-noremap <leader>fr :Leaderf mru<cr>
+noremap <leader>fm :Leaderf mru<cr>
 noremap <leader>fb :Leaderf buffer<cr>
+"noremap <leader>bb :Leaderf buffer<cr>
+
+noremap <leader>fs :Leaderf rg -e<Space>
+noremap <leader>fw :Leaderf rg --cword<cr>
+
+noremap <leader>fr :Leaderf --recall<cr>
 
 noremap <leader>ft :Leaderf tag<cr>
-noremap <leader>fl :Leaderf line<cr>
+"noremap <leader>bt :Leaderf bufTag<cr>
+
+"noremap <leader>fm :LeaderfFunction<cr>
+
 noremap <leader>fc :Leaderf colorscheme<cr>
 
-noremap <leader>fd :Leaderf funcion<cr>
+noremap <leader>fhc :Leaderf cmdHistory<cr>
+noremap <leader>fhs :Leaderf searchHistory<cr>
 
-noremap <leader>bb :Leaderf buffer<cr>
-noremap <leader>bt :Leaderf bufTag<cr>
+"noremap <leader>fn :Leaderf --nect<cr>
+"noremap <leader>fp :Leaderf --previous<cr>
+
+
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => airline/airline-themes
