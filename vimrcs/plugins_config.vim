@@ -113,11 +113,8 @@ colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
 
-"if has("mac") || has("macunix")
-"else
 let g:Lf_PreviewInPopup = 1
 let g:Lf_WindowPosition = 'popup'
-"endif
 
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg', '.vs'],
@@ -143,6 +140,8 @@ let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ShortcutB = "<leader>bb"
 
 "e i j k q u v x y z
+
+" TODO: rm <leader>: ff/fm/fb..., easymotion use 't': tt, tf, tw, tl, tj t. tp tn ?
 
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -193,12 +192,12 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 " => nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize = 35
 map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
+"map <leader>nb :NERDTreeFromBookmark<Space>
+"map <leader>nf :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
