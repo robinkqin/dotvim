@@ -9,7 +9,7 @@
 "c: {motion} delete text and insert
 "d: {motion} delete
 "e: forward
-"f: {char} find char
+"f: {char} find char ===========================================>>>
 "g: g
 "h: left
 "i: insert
@@ -23,7 +23,7 @@
 "q: record
 "r: {char} replace
 "s: delete char and start insert
-"t: {char} till
+"t: {char} till ===========================================>>>
 "u: undo
 "v: visual
 "w: word forward
@@ -113,11 +113,11 @@ colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
 
-if has("mac") || has("macunix")
-else
-    let g:Lf_PreviewInPopup = 1
-    let g:Lf_WindowPosition = 'popup'
-endif
+"if has("mac") || has("macunix")
+"else
+let g:Lf_PreviewInPopup = 1
+let g:Lf_WindowPosition = 'popup'
+"endif
 
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg', '.vs'],
