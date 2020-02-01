@@ -207,20 +207,33 @@ map <leader>nf :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <leader>ec{char} to move to {char}
-map  <leader>ef <Plug>(easymotion-bd-f)
-nmap <leader>ef <Plug>(easymotion-overwin-f)
+let g:EasyMotion_smartcase = 1
+
+map f <Plug>(easymotion-prefix)
+
+" ff{char} to move to {char}
+map  ff <Plug>(easymotion-bd-f)
+nmap ff <Plug>(easymotion-overwin-f)
+
+" fs{char}{char} to move to {cahr}{char}
+map  fs <Plug>(easymotion-bd-f2)
+nmap fs <Plug>(easymotion-overwin-f2)
 
 " Move to word
-map  <leader>ew <Plug>(easymotion-bd-w)
-nmap <leader>ew <Plug>(easymotion-overwin-w)
-
-" s{char}{char} to move to {char}{char}
-nmap <leader>es <Plug>(easymotion-overwin-f2)
+map  fw <Plug>(easymotion-bd-w)
+nmap fw <Plug>(easymotion-overwin-w)
 
 " Move to line
-map <leader>el <Plug>(easymotion-bd-jk)
-nmap <leader>el <Plug>(easymotion-overwin-line)
+map  fj <Plug>(easymotion-bd-jk)
+nmap fj <Plug>(easymotion-overwin-line)
+map  fl <Plug>(easymotion-lineanywhere)
+
+map  f. <Plug>(easymotion-repeat)
+map  fn <Plug>(easymotion-next)
+map  fp <Plug>(easymotion-prev)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
