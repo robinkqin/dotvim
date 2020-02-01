@@ -18,8 +18,7 @@ endif
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'altercation/solarized'
+Plug 'vim-scripts/peaksea'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -56,6 +55,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
+" Plug 'skywind3000/asyncrun.vim'
 
 Plug 'dense-analysis/ale'
 

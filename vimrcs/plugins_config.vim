@@ -22,7 +22,7 @@
 "p: put text
 "q: record
 "r: {char} replace
-"s: easymotion s{char}{char} ===========================================>>>
+"s: delete char and start insert
 "t: {char} till
 "u: undo
 "v: visual
@@ -76,6 +76,7 @@
 "CTRL-\:
 
 
+"<leader><leader>: easymotion[s, f/F, t/T, w/W, b/B, e/E, j, k]
 "<leader>a:
 "<leader>b: buffer[bd, ba, bn, bp], leaderf[bb]
 "<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca], NERDCommenter[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
@@ -102,6 +103,10 @@
 "<leader>x: quickly open a markdown buffer
 "<leader>y:
 "<leader>z:
+
+" Colorscheme
+set background=dark
+colorscheme peaksea
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
@@ -203,19 +208,19 @@ map <leader>nf :NERDTreeFind<cr>
 " => easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " <leader>ec{char} to move to {char}
-map  <leader>ec <Plug>(easymotion-bd-f)
-nmap <leader>ec <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap <leader>ef <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <leader>el <Plug>(easymotion-bd-jk)
-nmap <leader>el <Plug>(easymotion-overwin-line)
+map  <leader>ef <Plug>(easymotion-bd-f)
+nmap <leader>ef <Plug>(easymotion-overwin-f)
 
 " Move to word
 map  <leader>ew <Plug>(easymotion-bd-w)
 nmap <leader>ew <Plug>(easymotion-overwin-w)
+
+" s{char}{char} to move to {char}{char}
+nmap <leader>es <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <leader>el <Plug>(easymotion-bd-jk)
+nmap <leader>el <Plug>(easymotion-overwin-line)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
