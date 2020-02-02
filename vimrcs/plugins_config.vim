@@ -106,7 +106,8 @@
 
 " Colorscheme
 set background=dark
-colorscheme peaksea
+"colorscheme peaksea
+colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
