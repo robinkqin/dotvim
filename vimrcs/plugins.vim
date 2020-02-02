@@ -24,6 +24,7 @@ Plug 'morhetz/gruvbox'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
