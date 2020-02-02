@@ -147,16 +147,16 @@ let g:Lf_ShortcutB = "<leader>bb"
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
-noremap <leader>fs :Leaderf! rg -e<Space>
-noremap <leader>fw :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fs :Leaderf rg -e<Space>
+noremap <leader>fw :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fa :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf! bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf! line %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-noremap <leader>fj :Leaderf! function<cr>
+noremap <leader>fj :Leaderf function<cr>
 
-noremap <leader>fc :Leaderf! colorscheme<cr>
+noremap <leader>fc :Leaderf colorscheme<cr>
 
 noremap <leader>fhc :Leaderf cmdHistory<cr>
 noremap <leader>fhs :Leaderf searchHistory<cr>
