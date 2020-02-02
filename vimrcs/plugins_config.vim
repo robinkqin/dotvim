@@ -96,7 +96,7 @@
 "<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickly open a buffer[qq]
 "<leader>r: visualreplace[rr]
-"<leader>s: spell[ss, sn, sp, sa, s?]
+"<leader>s: spell[ss, sn, sp, sa, s?], shell[sh, sw]
 "<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[t<Space>]
 "<leader>u:
 "<leader>v:
@@ -427,6 +427,12 @@ nmap <silent> <leader>ii <Plug>IndentGuidesToggle
 "set updatetime = 100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deol / shell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>sh :Deol<cr>
+"nnoremap <leader>sw :Deol -cwd='fnamemodify(expand('%'), ':h')'<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_sign_column_always = 1
@@ -584,8 +590,4 @@ nmap <leader>ln :ALENextWrap<CR>
 "nnoremap <leader>aa :Ack!<Space><C-R><C-W><cr>
 "nnoremap <leader>af :Ack!<Space>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" =>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
