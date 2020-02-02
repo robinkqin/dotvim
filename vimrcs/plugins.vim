@@ -40,13 +40,15 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
 Plug 'sgur/vim-textobj-parameter'
 
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Plug 'MattesGroeger/vim-bookmarks'
 
@@ -56,7 +58,7 @@ Plug 'sgur/vim-textobj-parameter'
 " complete checker format gtags/cscope shell
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
 
