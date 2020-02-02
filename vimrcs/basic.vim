@@ -70,6 +70,10 @@ nnoremap <leader>wl <c-w>l
 nnoremap <leader>wk <c-w>k
 nnoremap <leader>wj <c-w>j
 
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>qx :qa!<cr>
+nnoremap <leader>qw :wqa<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -336,10 +340,10 @@ map <leader>s? z=
 "noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+map <leader>qq :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+map <leader>xx :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>

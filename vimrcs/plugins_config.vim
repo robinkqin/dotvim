@@ -16,7 +16,7 @@
 "j: down
 "k: up
 "l: right
-"m: mark, bookmarks ===========================================>>>
+"m: mark[mm, mr, mc, mx], signature ===========================================>>>
 "n: repeat /
 "o: begin a new line
 "p: put text
@@ -78,7 +78,6 @@
 "leader><leader>w: write
 "leader><leader>t: tagbar
 
-"<leader><leader>: easymotion[s, f/F, t/T, w/W, b/B, e/E, j, k]
 "<leader>a:
 "<leader>b: buffer[bd, ba, bn, bp], leaderf[bb]
 "<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca], NERDCommenter[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
@@ -87,7 +86,7 @@
 "<leader>f: leaderf[ff, fm, fb, fs, fw, ft, fl, fc, fhc, fhs, fhh, fg, fr, fd, fo, fn, fp]
 "<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, gi, ga]
 "<leader>h:
-"<leader>i: indent-guides
+"<leader>i: indent-guides[ii]
 "<leader>j:
 "<leader>k:
 "<leader>l: ALE[ll, ld, lp, ln]
@@ -95,14 +94,14 @@
 "<leader>n: NERDTree[nn, nb, nf]
 "<leader>o:
 "<leader>p: Toggle paste mode on and off: [pp]
-"<leader>q: quickly open a buffer
-"<leader>r: visualreplace[r]
+"<leader>q: quickly open a buffer[qq]
+"<leader>r: visualreplace[rr]
 "<leader>s: spell[ss, sn, sp, sa, s?]
 "<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[t<Space>]
 "<leader>u:
 "<leader>v:
 "<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
-"<leader>x: quickly open a markdown buffer
+"<leader>x: quickly open a markdown buffer[xx]
 "<leader>y:
 "<leader>z:
 
@@ -287,37 +286,21 @@ let g:echodoc_enable_at_startup = 1
 nmap <leader><leader>t :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => bookmarks
+"" => signature
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nmap mm <Plug>BookmarkToggle
-"nmap mn <Plug>BookmarkNext
-"nmap mp <Plug>BookmarkPrev
-"nmap mf <Plug>BookmarkShowAll
-"nmap md <Plug>BookmarkClear
-"nmap me <Plug>BookmarkClearAll
-"nmap mg <Plug>BookmarkMoveToLine
-""nmap ma <Plug>BookmarkAnnotate
-"
-"highlight BookmarkSign ctermbg=NONE ctermfg=160
-"highlight BookmarkLine ctermbg=194 ctermfg=NONE
-"let g:bookmark_sign = '♥'
-""let g:bookmark_highlight_lines = 1
-"
-"let g:bookmark_no_default_key_mappings = 1
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => mark.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => mark
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "nmap <unique> mt <Plug>MarkToggle
-"nmap <unique> ms <Plug>MarkSet
-"xmap <unique> ms <Plug>MarkSet
-"nmap <unique> mr <Plug>MarkRegex
-"xmap <unique> mr <Plug>MarkRegex
-"nmap <unique> mc <Plug>MarkClear
-"nmap <unique> mx <Plug>MarkAllClear
-"
-"let g:mwDefaultHighlightingPalette = 'maximum'
+nmap <unique> mm <Plug>MarkSet
+xmap <unique> mm <Plug>MarkSet
+nmap <unique> mr <Plug>MarkRegex
+xmap <unique> mr <Plug>MarkRegex
+nmap <unique> mc <Plug>MarkClear
+nmap <unique> mx <Plug>MarkAllClear
+
+let g:mwDefaultHighlightingPalette = 'maximum'
 
 """""""""""""""""""""""""""""""
 "" => snipMate (beside <TAB> support <CTRL-j>)
@@ -435,7 +418,7 @@ nmap <leader>ga :cs find a <C-R>=expand("<cword>")<CR><CR>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-nmap <silent> <leader>i <Plug>IndentGuidesToggle
+nmap <silent> <leader>ii <Plug>IndentGuidesToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => signify

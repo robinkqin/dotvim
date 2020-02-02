@@ -22,14 +22,13 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/peaksea'
 Plug 'morhetz/gruvbox'
 
-" On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'terryma/vim-multiple-cursors'
@@ -51,12 +50,12 @@ Plug 'sgur/vim-textobj-parameter'
 
 Plug 'majutsushi/tagbar'
 
-" Plug 'MattesGroeger/vim-bookmarks'
+Plug 'kshenoy/vim-signature'
 
-" Plug 'https://github.com/inkarkat/vim-mark.git'
-" Plug 'https://github.com/inkarkat/vim-ingo-library.git'
+Plug 'https://github.com/inkarkat/vim-mark.git'
+Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
-" complete checker format gtags/cscope shell
+" checker format gtags/cscope complete shell
 
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -68,12 +67,12 @@ Plug 'vim-scripts/a.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
-
 " Plug 'skywind3000/asyncrun.vim'
 
 Plug 'dense-analysis/ale'
 
 Plug 'Shougo/echodoc.vim'
+
 " Plug 'Shougo/deoplete.nvim'
 "
 " Using a non-master branch
