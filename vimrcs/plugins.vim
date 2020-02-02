@@ -39,6 +39,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -72,6 +73,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
 
 Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/deol.nvim'
 
 " Plug 'Shougo/deoplete.nvim'
 "
