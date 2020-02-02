@@ -30,6 +30,7 @@ Plug 'preservim/nerdcommenter'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'terryma/vim-multiple-cursors'
 
@@ -58,24 +59,26 @@ Plug 'majutsushi/tagbar'
 " complete checker format gtags/cscope shell
 
 " Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vim-scripts/a.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
+
 " Plug 'skywind3000/asyncrun.vim'
 
 Plug 'dense-analysis/ale'
 
+Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/deoplete.nvim'
+"
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-
-Plug 'Shougo/echodoc.vim'
-" Plug 'Shougo/deoplete.nvim'
 
 Plug 'rust-lang/rust.vim'
 

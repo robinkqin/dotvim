@@ -75,6 +75,8 @@
 "CTRL-/:
 "CTRL-\:
 
+"leader><leader>w: write
+"leader><leader>t: tagbar
 
 "<leader><leader>: easymotion[s, f/F, t/T, w/W, b/B, e/E, j, k]
 "<leader>a:
@@ -96,10 +98,10 @@
 "<leader>q: quickly open a buffer
 "<leader>r: visualreplace[r]
 "<leader>s: spell[ss, sn, sp, sa, s?]
-"<leader>t: tab[tn, to, tc, tm, tt, tl, te]
+"<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[t<Space>]
 "<leader>u:
 "<leader>v:
-"<leader>w: [ww] [wd] [wc] [wo] [ws] [wv]
+"<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
 "<leader>x: quickly open a markdown buffer
 "<leader>y:
 "<leader>z:
@@ -282,7 +284,7 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nmap <F8> :TagbarToggle<CR>
+nmap <leader><leader>t :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => bookmarks
@@ -448,53 +450,42 @@ nmap <leader>ga :cs find a <C-R>=expand("<cword>")<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"始终开启标志列
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 
-"自定义error和warning图标
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 
-"在vim自带的状态栏中整合ale
 let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 
-"显示Linter名称,出错或警告等相关信息
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-"<leader>s触发/关闭语法检查
 nmap <leader>lt :ALEToggle<CR>
 nmap <leader>le :ALEEnable<CR>
 
 nmap <leader>ll :ALELint<CR>
-nmap <leader>lf :ALEFix<CR>
-"<leader>d查看错误或警告的详细信息
 nmap <leader>ld :ALEDetail<CR>
-"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap <leader>lf :ALEFix<CR>
+
 nmap <leader>lp :ALEPreviousWrap<CR>
 nmap <leader>ln :ALENextWrap<CR>
 
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:airline#extensions#ale#enabled = 1
+"let g:ale_completion_delay = 500
+"let g:ale_echo_delay = 20
+"let g:ale_lint_delay = 500
+"let g:airline#extensions#ale#enabled = 1
 
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
+"let g:ale_lint_on_text_changed = 'normal'
+"let g:ale_lint_on_insert_leave = 1
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-
-hi! clear SpellBad
-hi! clear SpellCap
-hi! clear SpellRare
-hi! SpellBad gui=undercurl guisp=red
-hi! SpellCap gui=undercurl guisp=blue
-hi! SpellRare gui=undercurl guisp=magenta
+"hi! clear SpellBad
+"hi! clear SpellCap
+"hi! clear SpellRare
+"hi! SpellBad gui=undercurl guisp=red
+"hi! SpellCap gui=undercurl guisp=blue
+"hi! SpellRare gui=undercurl guisp=magenta
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>YCM

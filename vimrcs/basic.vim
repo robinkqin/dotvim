@@ -46,18 +46,29 @@ au FocusGained,BufEnter * checktime
 let mapleader = "\<Space>"
 
 " Fast saving
-nmap <leader>ww :w!<cr>
-nmap <leader>wd :pwd<cr>
-
-nmap <leader>wc <c-w>c
-nmap <leader>wo <c-w>o
-nmap <leader>ws <c-w>s
-nmap <leader>wv <c-w>v
+nnoremap <leader><leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
+nnoremap <leader>wd :pwd<cr>
+
+vnoremap <leader>y "+y
+nmap <leader>p "+p
+
+nnoremap <leader>ww <c-w><c-w>
+
+nnoremap <leader>wc <c-w>c
+nnoremap <leader>ws <c-w>s
+nnoremap <leader>wv <c-w>v
+nnoremap <leader>wo <c-w>o
+nnoremap <leader>wq <c-w>q
+
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>wl <c-w>l
+nnoremap <leader>wk <c-w>k
+nnoremap <leader>wj <c-w>j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -241,7 +252,7 @@ map <leader>tt :tabnext<Space>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
@@ -322,7 +333,7 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+"noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
