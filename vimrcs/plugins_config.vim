@@ -125,6 +125,7 @@ nnoremap <silent> <leader>zt :FzfBTags<CR>
 nnoremap <silent> <leader>zT :FzfTags<CR>
 nnoremap <silent> <leader>za :FzfAg<CR>
 nnoremap <silent> <leader>zr :FzfRg<CR>
+nnoremap <silent> <leader>zm :FzfMarks<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ctrlsf
