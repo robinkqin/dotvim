@@ -7,8 +7,11 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+"" Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
+"" Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+
+Plug 'dyng/ctrlsf.vim'
 
 if has("win16") || has("win32")
     Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
@@ -68,7 +71,7 @@ Plug 'vim-scripts/a.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
-" Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 Plug 'dense-analysis/ale'
 
@@ -82,6 +85,8 @@ Plug 'Shougo/deol.nvim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'rust-lang/rust.vim'
+
+Plug 'jceb/vim-orgmode'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'

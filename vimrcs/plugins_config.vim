@@ -1,7 +1,7 @@
 "depends:
-"python, gtags, ctags, fzf, ag
+"python, gtags, ctags, fzf, rg, ag
 "pip install pygments
-"clang, clang-format
+"gcc, clang, clang-format
 "rust
 
 "a: append
@@ -88,7 +88,7 @@
 "<leader>h:
 "<leader>i: indent-guides[ii]
 "<leader>j:
-"<leader>k:
+"<leader>k: ctrlsf[kk, kf, kF, kn, kp, ko, ks, kc, kt]
 "<leader>l: ALE[ll, ld, lp, ln]
 "<leader>m:
 "<leader>n: NERDTree[nn, nb, nf]
@@ -103,12 +103,72 @@
 "<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
 "<leader>x: quickly open a markdown buffer[xx]
 "<leader>y:
-"<leader>z:
+"<leader>z: fzf[zf, zh, zo, zc, zl, zt, za, zr]
 
-" Colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-"colorscheme peaksea
 colorscheme gruvbox
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <silent> <leader>zf :FzfFiles<CR>
+nnoremap <silent> <leader>zh :FzfHistory<CR>
+nnoremap <silent> <leader>zo :FzfBuffers<CR>
+nnoremap <silent> <leader>zc :FzfColors<CR>
+nnoremap <silent> <leader>zl :FzfBLines<CR>
+nnoremap <silent> <leader>zL :FzfLines<CR>
+nnoremap <silent> <leader>zt :FzfBTags<CR>
+nnoremap <silent> <leader>zT :FzfTags<CR>
+nnoremap <silent> <leader>za :FzfAg<CR>
+nnoremap <silent> <leader>zr :FzfRg<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ctrlsf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>kk :CtrlSF<Space><C-R><C-W><cr>
+nmap     <leader>kf <Plug>CtrlSFPrompt
+vmap     <leader>kf <Plug>CtrlSFVwordExec
+vmap     <leader>kv <Plug>CtrlSFVwordPath
+nmap     <leader>kn <Plug>CtrlSFCwordPath
+nmap     <leader>kp <Plug>CtrlSFPwordPath
+nnoremap <leader>ko :CtrlSFOpen<CR>
+nnoremap <leader>kc :CtrlSFClose<CR>
+nnoremap <leader>ks :CtrlSFStop<CR>
+nnoremap <leader>kt :CtrlSFToggle<CR>
+inoremap <leader>kt <Esc>:CtrlSFToggle<CR>
+
+"let g:ctrlsf_ackprg = 'ag'
+
+let g:ctrlsf_context = '-B 3 -A 3'
+
+let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
+
+let g:ctrlsf_auto_close = {
+            \ "normal" : 0,
+            \ "compact": 0
+            \}
+
+let g:ctrlsf_auto_focus = {
+            \ "at": "done",
+            \ "duration_less_than": 1000
+            \ }
+
+let g:ctrlsf_case_sensitive = 'smart'
+
+"let g:ctrlsf_default_root = 'project+ff'
+let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
+
+"let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_regex_pattern = 0
+
+let g:ctrlsf_search_mode = 'async'
+
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_winsize = '40%'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
@@ -512,82 +572,4 @@ nmap <leader>ln :ALENextWrap<CR>
 "            \ }
 "
 "let g:ycm_global_ycm_extra_conf = '~/.vim_runtime/my_plugins/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => ctrlsf
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap <leader>kk :CtrlSF<Space><C-R><C-W><cr>
-"nmap     <leader>kf <Plug>CtrlSFPrompt
-"vmap     <leader>kf <Plug>CtrlSFVwordExec
-"vmap     <leader>kv <Plug>CtrlSFVwordPath
-"nmap     <leader>kn <Plug>CtrlSFCwordPath
-"nmap     <leader>kp <Plug>CtrlSFPwordPath
-"nnoremap <leader>ko :CtrlSFOpen<CR>
-"nnoremap <leader>kc :CtrlSFClose<CR>
-"nnoremap <leader>ks :CtrlSFStop<CR>
-"nnoremap <leader>kt :CtrlSFToggle<CR>
-"inoremap <leader>kt <Esc>:CtrlSFToggle<CR>
-"
-""let g:ctrlsf_ackprg = 'ag'
-"
-"let g:ctrlsf_context = '-B 3 -A 3'
-"
-"let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
-"
-"let g:ctrlsf_auto_close = {
-"            \ "normal" : 0,
-"            \ "compact": 0
-"            \}
-"
-"let g:ctrlsf_auto_focus = {
-"            \ "at": "done",
-"            \ "duration_less_than": 1000
-"            \ }
-"
-"let g:ctrlsf_case_sensitive = 'smart'
-"
-""let g:ctrlsf_default_root = 'project+ff'
-"let g:ctrlsf_extra_root_markers = ['.root', '.svn', '.git', '.hg', '.project']
-"
-""let g:ctrlsf_default_view_mode = 'compact'
-"let g:ctrlsf_regex_pattern = 0
-"
-"let g:ctrlsf_search_mode = 'async'
-"
-"let g:ctrlsf_position = 'bottom'
-"let g:ctrlsf_winsize = '40%'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" =>fzf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"<leader>f在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
-"nnoremap <silent> <leader>f :History<CR>
-
-"<leader>h在当前目录搜索文件
-"nnoremap <silent> <leader>h :Files<CR>
-
-"<leader>b切换Buffer中的文件
-"nnoremap <silent> <leader>o :Buffers<CR>
-
-"<leader>q在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
-"nnoremap <silent> <leader>q :Lines<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Ack searching and cope displaying
-""    requires ack.vim - it's much better than vimgrep/grep
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Use the the_silver_searcher if possible (much faster than Ack)
-"if executable('ag')
-"    let g:ackprg = 'ag --vimgrep --smart-case'
-"endif
-"
-"" When you press gv you Ack after the selected text
-"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-"
-"" Open Ack and put the cursor in the right position
-"cnoreabbrev Ack Ack!
-"nnoremap <leader>aa :Ack!<Space><C-R><C-W><cr>
-"nnoremap <leader>af :Ack!<Space>
-
 
