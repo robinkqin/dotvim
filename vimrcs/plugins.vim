@@ -7,8 +7,8 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Plugin outside ~/.vim/plugged with post-update hook
-"" Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
-"" Plug '/usr/bin/fzf'
+" Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
+" Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'dyng/ctrlsf.vim'
@@ -71,6 +71,7 @@ Plug 'vim-scripts/a.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
 " Plug 'skywind3000/gutentags_plus'
+
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'dense-analysis/ale'
@@ -79,10 +80,9 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deol.nvim'
 
 " Plug 'Shougo/deoplete.nvim'
-"
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'rust-lang/rust.vim'
 
