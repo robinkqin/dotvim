@@ -80,7 +80,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deol.nvim'
 
 " Plug 'Shougo/deoplete.nvim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
