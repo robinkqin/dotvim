@@ -431,9 +431,6 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 " gutentags 自动加载 gtags 数据库
 let g:gutentags_auto_add_gtags_cscope = 1
 
-" change focus to quickfix window after search (optional).
-let g:gutentags_plus_switch = 1
-
 " keymap     desc
 "<leader>cs  Find symbol (reference) under cursor
 "<leader>cg  Find symbol definition under cursor
@@ -445,27 +442,16 @@ let g:gutentags_plus_switch = 1
 "<leader>ci  Find files #including the file name under cursor
 "<leader>ca  Find places where current symbol is assigned
 
-nmap <leader>gs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>gg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>gt :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <leader>ga :cs find a <C-R>=expand("<cword>")<CR><CR>
-
-"" disable the default keymaps
-"let g:gutentags_plus_nomap = 1
-"noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
-"noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
-"noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
-"noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
-"noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
-"noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
-"noremap <silent> <leader>gf :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-"noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-"noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
+" gb, gl, gx, gz
+nnoremap gr :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap gd :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap gs :cs find d <C-R>=expand("<cword>")<CR><CR>
+nnoremap gc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nnoremap gt :cs find t <C-R>=expand("<cword>")<CR><CR>
+nnoremap ge :cs find e <C-R>=expand("<cword>")<CR><CR>
+nnoremap gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nnoremap gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nnoremap ga :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 " for debug
 "let g:gutentags_define_advanced_commands = 1
