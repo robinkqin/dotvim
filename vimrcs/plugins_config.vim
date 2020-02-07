@@ -106,6 +106,121 @@
 "<leader>z: fzf[zf, zh, zo, zc, zl, zt, za, zr]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => keymap
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader = "\<Space>"
+
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>qx :qa!<cr>
+nnoremap <leader>qw :wqa<cr>
+
+nnoremap <leader>fs :w!<cr>
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>wd :pwd<cr>
+
+
+" => Fast editing and reloading of vimrc configs
+map <leader>ee :e! ~/.vim/vimrcs/plugins_config.vim<cr>
+"autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plugins_config.vim
+
+
+" When you press <leader>rr you can search and replace the selected text
+vnoremap <silent> <leader>rr :call VisualSelection('replace', '')<CR>
+
+" Do :help cope if you are unsure what cope is. It's super useful!
+map <leader>co :botright copen<cr>
+map <leader>cc :botright cclose<cr>
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
+
+map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+
+
+" window
+nnoremap <leader>ww <c-w><c-w>
+
+nnoremap <leader>wc <c-w>c
+nnoremap <leader>ws <c-w>s
+nnoremap <leader>wv <c-w>v
+nnoremap <leader>wo <c-w>o
+nnoremap <leader>wq <c-w>q
+
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>wl <c-w>l
+nnoremap <leader>wk <c-w>k
+nnoremap <leader>wj <c-w>j
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<Space>
+map <leader>tt :tabnext<Space>
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+
+
+" => Spell checking
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+" Remove the Windows ^M - when the encodings gets messed up
+"noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Quickly open a buffer for scribble
+map <leader>qq :e ~/buffer<cr>
+
+" Quickly open a markdown buffer for scribble
+map <leader>xx :e ~/buffer.md<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
@@ -209,7 +324,7 @@ let g:Lf_ShortcutB = "<leader>bb"
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
-noremap <leader>fs :Leaderf rg -e<Space>
+noremap <leader>fe:Leaderf rg -e<Space>
 noremap <leader>fw :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
 noremap <leader>fa :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 

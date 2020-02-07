@@ -27,17 +27,6 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" Colorscheme
-"set background=dark
-"colorscheme peaksea
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>ee :e! ~/.vim/vimrcs/plugins_config.vim<cr>
-"autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plugins_config.vim
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
@@ -100,17 +89,6 @@ inoremap $e ""<esc>i
 " => General abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-
-" When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>rr :call VisualSelection('replace', '')<CR>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>co :botright copen<cr>
-map <leader>cc :botright cclose<cr>
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
-
-map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " Make sure that enter is never overriden in the quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
