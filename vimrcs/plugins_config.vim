@@ -9,21 +9,26 @@
 "c: {motion} delete text and insert
 "d: {motion} delete
 "e: forward
-"f: {char} find char ===========================================>>>
+"f: {char} find char
+" ===>>>===>>> leaderf[ff, fm, fb, fe, fs, fw, ft, fl, fc, fhc, fhs, fhh, fg, fr, fd, fo, fn, fp]
 "g: g
+" ===>>>===>>> gtags [gr, gd, gs, gc, gt, ge, gf, gi, ga]
 "h: left
 "i: insert
 "j: down
 "k: up
 "l: right
-"m: mark[mm, mr, mc, mx], signature ===========================================>>>
+"m:
+" ===>>>===>>>mark[mm, mr, mn, mc]
+" ===>>>===>>>signature[]
 "n: repeat /
 "o: begin a new line
 "p: put text
 "q: record
 "r: {char} replace
 "s: delete char and start insert
-"t: {char} till ===========================================>>>
+"t: {char} till
+" ===>>>===>>>
 "u: undo
 "v: visual
 "w: word forward
@@ -33,8 +38,10 @@
 "[: [
 "]: ]
 ";: repeat f/t/F/T
+" ===>>>===>>>easymotion[;;, ;f, ;w, ;g, ;j]
 "': jump to mark
 ",: repeat f/t/F/T in opposite direction
+" ===>>>===>>>
 ".: repeat last change
 "/: search
 "\:
@@ -80,24 +87,24 @@
 
 "<leader>a:
 "<leader>b: buffer[bd, ba, bn, bp], leaderf[bb]
-"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], copy all to a new buffer[ca], NERDCommenter[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
+"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], NERDComm[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
 "<leader>d: surround[ds]
-"<leader>e: [ee], easymotion[ec, ef, ew, el]
-"<leader>f: leaderf[ff, fm, fb, fs, fw, ft, fl, fc, fhc, fhs, fhh, fg, fr, fd, fo, fn, fp]
-"<leader>g: gtags[gs, gg, gd, gc, gt, ge, gf, gi, ga]
+"<leader>e: [ee]
+"<leader>f: save file[fs]
+"<leader>g:
 "<leader>h:
 "<leader>i: indent-guides[ii]
 "<leader>j:
 "<leader>k: ctrlsf[kk, kf, kF, kn, kp, ko, ks, kc, kt]
 "<leader>l: ALE[ll, ld, lp, ln]
 "<leader>m:
-"<leader>n: NERDTree[nn, nb, nf]
+"<leader>n: NERDTree[nn]
 "<leader>o:
 "<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickly open a buffer[qq]
 "<leader>r: visualreplace[rr]
 "<leader>s: spell[ss, sn, sp, sa, s?], shell[sh, sw]
-"<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[t<Space>]
+"<leader>t: tab[tn, to, tc, tm, tt, tl, te]
 "<leader>u:
 "<leader>v:
 "<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
@@ -140,8 +147,7 @@ map <leader>co :botright copen<cr>
 map <leader>cc :botright cclose<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
-
-map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+" map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 
 " window
@@ -314,53 +320,40 @@ let g:Lf_MruFileExclude = ['*.so']
 "     \ "--hidden"
 " \ ]
 
-let g:Lf_ShortcutF = "<leader>ff"
-let g:Lf_ShortcutB = "<leader>bb"
+" let g:Lf_ShortcutF = "<leader>ff"
+" let g:Lf_ShortcutB = "<leader>bb"
 
-"e i j k q u v x y z
+"a i k q u v x y z
 
-" TODO: rm <leader>: ff/fm/fb..., easymotion use 't': tt, tf, tw, tl, tj t. tp tn ?
+noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
+noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap fe :Leaderf rg -e<Space>
+noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
-noremap <leader>fe:Leaderf rg -e<Space>
-noremap <leader>fw :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fa :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap fj :Leaderf function<cr>
 
-noremap <leader>fj :Leaderf function<cr>
+noremap fc :Leaderf colorscheme<cr>
 
-noremap <leader>fc :Leaderf colorscheme<cr>
-
-noremap <leader>fhc :Leaderf cmdHistory<cr>
-noremap <leader>fhs :Leaderf searchHistory<cr>
-noremap <leader>fhh :Leaderf self<cr>
+noremap fhc :Leaderf cmdHistory<cr>
+noremap fhs :Leaderf searchHistory<cr>
+noremap fhh :Leaderf self<cr>
 
 " should use `Leaderf gtags --update` first
 " --gtagslibpath
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fg :<C-U><C-R>=printf("Leaderf! gtags --update %s", "")<CR><CR>
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-"" don't show the help in normal mode
-"let g:Lf_HideHelp = 1
-"let g:Lf_UseCache = 0
-"let g:Lf_UseVersionControlTool = 0
-"let g:Lf_IgnoreCurrentBufferName = 1
-
-"let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-"let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-
-"" search visually selected text literally
-"xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap fg :<C-U><C-R>=printf("Leaderf gtags --update %s", "")<CR><CR>
+noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fo :<C-U><C-R>=printf("Leaderf gtags --recall %s", "")<CR><CR>
+noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => airline/airline-themes
@@ -391,33 +384,26 @@ map <leader>nn :NERDTreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" map ; <Plug>(easymotion-prefix)
 let g:EasyMotion_smartcase = 1
 
-map f <Plug>(easymotion-prefix)
+" move to {char}
+map  ;; <Plug>(easymotion-bd-f)
+nmap ;; <Plug>(easymotion-overwin-f)
 
-" ff{char} to move to {char}
-map  ff <Plug>(easymotion-bd-f)
-nmap ff <Plug>(easymotion-overwin-f)
-
-" fs{char}{char} to move to {cahr}{char}
-map  fs <Plug>(easymotion-bd-f2)
-nmap fs <Plug>(easymotion-overwin-f2)
+" move to {cahr}{char}
+map  ;f <Plug>(easymotion-bd-f2)
+nmap ;f <Plug>(easymotion-overwin-f2)
 
 " Move to word
-map  fw <Plug>(easymotion-bd-w)
-nmap fw <Plug>(easymotion-overwin-w)
+map  ;w <Plug>(easymotion-bd-w)
+nmap ;w <Plug>(easymotion-overwin-w)
+
+map  ;g <Plug>(easymotion-lineanywhere)
 
 " Move to line
-map  fj <Plug>(easymotion-bd-jk)
-nmap fj <Plug>(easymotion-overwin-line)
-map  fl <Plug>(easymotion-lineanywhere)
-
-map  f. <Plug>(easymotion-repeat)
-map  fn <Plug>(easymotion-next)
-map  fp <Plug>(easymotion-prev)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+map  ;j <Plug>(easymotion-bd-jk)
+nmap ;j <Plug>(easymotion-overwin-line)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
@@ -473,8 +459,8 @@ nmap <unique> mm <Plug>MarkSet
 xmap <unique> mm <Plug>MarkSet
 nmap <unique> mr <Plug>MarkRegex
 xmap <unique> mr <Plug>MarkRegex
-nmap <unique> mc <Plug>MarkClear
-nmap <unique> mx <Plug>MarkAllClear
+nmap <unique> mn <Plug>MarkClear
+nmap <unique> mc <Plug>MarkAllClear
 
 let g:mwDefaultHighlightingPalette = 'maximum'
 
