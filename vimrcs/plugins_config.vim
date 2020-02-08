@@ -249,136 +249,6 @@ map <leader>pp :setlocal paste!<cr>
 set background=dark
 colorscheme gruvbox
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent> ;f :FzfFiles<CR>
-nnoremap <silent> ;gf :FzfGFiles<CR>
-nnoremap <silent> ;gs :FzfGFiles?<CR>
-nnoremap <silent> ;h :FzfHistory<CR>
-nnoremap <silent> ;b :FzfBuffers<CR>
-nnoremap <silent> ;c :FzfColors<CR>
-nnoremap <silent> ;a :FzfAg<CR>
-nnoremap <silent> ;r :FzfRg<CR>
-nnoremap <silent> ;l :FzfBLines<CR>
-nnoremap <silent> ;L :FzfLines<CR>
-nnoremap <silent> ;t :FzfBTags<CR>
-nnoremap <silent> ;T :FzfTags<CR>
-nnoremap <silent> ;mm :FzfMarks<CR>
-nnoremap <silent> ;mp :FzfMap<CR>
-nnoremap <silent> ;w :FzfWindows<CR>
-nnoremap <silent> ;s :FzfSnippets<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ctrlsf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
-nmap     ,f <Plug>CtrlSFPrompt
-vmap     ,f <Plug>CtrlSFVwordExec
-vmap     ,v <Plug>CtrlSFVwordPath
-nmap     ,n <Plug>CtrlSFCwordPath
-nmap     ,p <Plug>CtrlSFPwordPath
-nnoremap ,o :CtrlSFOpen<CR>
-nnoremap ,c :CtrlSFClose<CR>
-nnoremap ,k :CtrlSFStop<CR>
-nnoremap ,t :CtrlSFToggle<CR>
-inoremap ,t <Esc>:CtrlSFToggle<CR>
-
-"let g:ctrlsf_ackprg = 'ag'
-
-let g:ctrlsf_context = '-B 3 -A 3'
-
-let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
-
-let g:ctrlsf_auto_close = {
-            \ "normal" : 0,
-            \ "compact": 0
-            \}
-
-let g:ctrlsf_auto_focus = {
-            \ "at": "done",
-            \ "duration_less_than": 1000
-            \ }
-
-let g:ctrlsf_case_sensitive = 'smart'
-
-"let g:ctrlsf_default_root = 'project+ff'
-let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
-
-"let g:ctrlsf_default_view_mode = 'compact'
-let g:ctrlsf_regex_pattern = 0
-
-let g:ctrlsf_search_mode = 'async'
-
-let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_winsize = '40%'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LeaderF
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
-
-let g:Lf_PreviewInPopup = 1
-let g:Lf_WindowPosition = 'popup'
-
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg', '.vs'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.d','*.so','*.py[co]']
-            \}
-
-let g:Lf_MruFileExclude = ['*.so']
-
-" let g:Lf_Ctags = "/usr/local/universal-ctags/ctags"
-" let g:Lf_CtagsFuncOpts = {
-"            \ 'c': '--c-kinds=fp',
-"            \ 'rust': '--rust-kinds=f',
-"            \ }
-
-" let g:Lf_RgConfig = [
-"     \ "--max-columns=150",
-"     \ "--type-add web:*.{html,css,js}*",
-"     \ "--glob=!git/*",
-"     \ "--hidden"
-" \ ]
-
-" let g:Lf_ShortcutF = "<leader>ff"
-" let g:Lf_ShortcutB = "<leader>bb"
-
-"i k q v x y z
-
-noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
-noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-
-noremap fe :Leaderf rg -e<Space>
-noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
-noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-
-noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap fa :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
-noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-
-noremap fj :Leaderf function<cr>
-
-noremap fu :Leaderf colorscheme<cr>
-noremap fc :Leaderf command<cr>
-
-noremap fhc :Leaderf cmdHistory<cr>
-noremap fhs :Leaderf searchHistory<cr>
-noremap fhh :Leaderf self<cr>
-
-" should use `Leaderf gtags --update` first
-" --gtagslibpath
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap fg :<C-U><C-R>=printf("Leaderf gtags --update %s", "")<CR><CR>
-noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fo :<C-U><C-R>=printf("Leaderf gtags --recall %s", "")<CR><CR>
-noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => airline/airline-themes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -406,28 +276,25 @@ map <leader>nn :NERDTreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => easy motion
+" => indent-guides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map ; <Plug>(easymotion-prefix)
-let g:EasyMotion_smartcase = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+nmap <silent> <leader>ii <Plug>IndentGuidesToggle
 
-" move to {char}
-map  ss <Plug>(easymotion-bd-f)
-nmap ss <Plug>(easymotion-overwin-f)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => signify
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set signcolumn = yes
+"set updatetime = 100
 
-" move to {cahr}{char}
-map  sf <Plug>(easymotion-bd-f2)
-nmap sf <Plug>(easymotion-overwin-f2)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deol / shell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>sh :Deol<cr>
+"nnoremap <leader>sw :Deol -cwd='fnamemodify(expand('%'), ':h')'<cr>
 
-" Move to word
-map  sw <Plug>(easymotion-bd-w)
-nmap sw <Plug>(easymotion-overwin-w)
-
-map  sl <Plug>(easymotion-lineanywhere)
-
-" Move to line
-map  sj <Plug>(easymotion-bd-jk)
-nmap sj <Plug>(easymotion-overwin-line)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
@@ -585,26 +452,6 @@ nnoremap ga :cs find a <C-R>=expand("<cword>")<CR><CR>
 ":messages
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => indent-guides
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-nmap <silent> <leader>ii <Plug>IndentGuidesToggle
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => signify
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set signcolumn = yes
-"set updatetime = 100
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => deol / shell
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>sh :Deol<cr>
-"nnoremap <leader>sw :Deol -cwd='fnamemodify(expand('%'), ':h')'<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_sign_column_always = 1
@@ -684,4 +531,158 @@ nmap <leader>ln :ALENextWrap<CR>
 "            \ }
 "
 "let g:ycm_global_ycm_extra_conf = '~/.vim_runtime/my_plugins/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <silent> ;f :FzfFiles<CR>
+nnoremap <silent> ;gf :FzfGFiles<CR>
+nnoremap <silent> ;gs :FzfGFiles?<CR>
+nnoremap <silent> ;h :FzfHistory<CR>
+nnoremap <silent> ;b :FzfBuffers<CR>
+nnoremap <silent> ;c :FzfColors<CR>
+nnoremap <silent> ;a :FzfAg<CR>
+nnoremap <silent> ;r :FzfRg<CR>
+nnoremap <silent> ;l :FzfBLines<CR>
+nnoremap <silent> ;L :FzfLines<CR>
+nnoremap <silent> ;t :FzfBTags<CR>
+nnoremap <silent> ;T :FzfTags<CR>
+nnoremap <silent> ;mm :FzfMarks<CR>
+nnoremap <silent> ;mp :FzfMap<CR>
+nnoremap <silent> ;w :FzfWindows<CR>
+nnoremap <silent> ;s :FzfSnippets<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ctrlsf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
+nmap     ,f <Plug>CtrlSFPrompt
+vmap     ,f <Plug>CtrlSFVwordExec
+vmap     ,v <Plug>CtrlSFVwordPath
+nmap     ,n <Plug>CtrlSFCwordPath
+nmap     ,p <Plug>CtrlSFPwordPath
+nnoremap ,o :CtrlSFOpen<CR>
+nnoremap ,c :CtrlSFClose<CR>
+nnoremap ,k :CtrlSFStop<CR>
+nnoremap ,t :CtrlSFToggle<CR>
+inoremap ,t <Esc>:CtrlSFToggle<CR>
+
+"let g:ctrlsf_ackprg = 'ag'
+
+let g:ctrlsf_context = '-B 3 -A 3'
+
+let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
+
+let g:ctrlsf_auto_close = {
+            \ "normal" : 0,
+            \ "compact": 0
+            \}
+
+let g:ctrlsf_auto_focus = {
+            \ "at": "done",
+            \ "duration_less_than": 1000
+            \ }
+
+let g:ctrlsf_case_sensitive = 'smart'
+
+"let g:ctrlsf_default_root = 'project+ff'
+let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
+
+"let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_regex_pattern = 0
+
+let g:ctrlsf_search_mode = 'async'
+
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_winsize = '40%'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LeaderF
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
+
+let g:Lf_PreviewInPopup = 1
+let g:Lf_WindowPosition = 'popup'
+
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg', '.vs'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.d','*.so','*.py[co]']
+            \}
+
+let g:Lf_MruFileExclude = ['*.so']
+
+" let g:Lf_Ctags = "/usr/local/universal-ctags/ctags"
+" let g:Lf_CtagsFuncOpts = {
+"            \ 'c': '--c-kinds=fp',
+"            \ 'rust': '--rust-kinds=f',
+"            \ }
+
+" let g:Lf_RgConfig = [
+"     \ "--max-columns=150",
+"     \ "--type-add web:*.{html,css,js}*",
+"     \ "--glob=!git/*",
+"     \ "--hidden"
+" \ ]
+
+" let g:Lf_ShortcutF = "<leader>ff"
+" let g:Lf_ShortcutB = "<leader>bb"
+
+"i k q v x y z
+
+noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
+noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+
+noremap fe :Leaderf rg -e<Space>
+noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+
+noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap fa :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
+noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap fj :Leaderf function<cr>
+
+noremap fu :Leaderf colorscheme<cr>
+noremap fc :Leaderf command<cr>
+
+noremap fhc :Leaderf cmdHistory<cr>
+noremap fhs :Leaderf searchHistory<cr>
+noremap fhh :Leaderf self<cr>
+
+" should use `Leaderf gtags --update` first
+" --gtagslibpath
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap fg :<C-U><C-R>=printf("Leaderf gtags --update %s", "")<CR><CR>
+noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fo :<C-U><C-R>=printf("Leaderf gtags --recall %s", "")<CR><CR>
+noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => easy motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" map ; <Plug>(easymotion-prefix)
+let g:EasyMotion_smartcase = 1
+
+" move to {char}
+map  ss <Plug>(easymotion-bd-f)
+nmap ss <Plug>(easymotion-overwin-f)
+
+" move to {cahr}{char}
+map  sf <Plug>(easymotion-bd-f2)
+nmap sf <Plug>(easymotion-overwin-f2)
+
+" Move to word
+map  sw <Plug>(easymotion-bd-w)
+nmap sw <Plug>(easymotion-overwin-w)
+
+map  sl <Plug>(easymotion-lineanywhere)
+
+" Move to line
+map  sj <Plug>(easymotion-bd-jk)
+nmap sj <Plug>(easymotion-overwin-line)
 
