@@ -93,13 +93,13 @@
 "<leader>f: save file[fs]
 "<leader>g:
 "<leader>h:
-"<leader>i: indent-guides[ii]
+"<leader>i: C-I, indent-guides[ii]
 "<leader>j:
 "<leader>k: ctrlsf[kk, kf, kF, kn, kp, ko, ks, kc, kt]
 "<leader>l: ALE[ll, ld, lp, ln]
 "<leader>m:
 "<leader>n: NERDTree[nn]
-"<leader>o:
+"<leader>o: C-O,
 "<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickly open a buffer[qq]
 "<leader>r: visualreplace[rr]
@@ -171,6 +171,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+map <leader>o <C-O>
+map <leader>i <C-I>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
