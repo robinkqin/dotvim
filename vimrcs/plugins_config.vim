@@ -10,7 +10,7 @@
 "d: {motion} delete
 "e: forward
 "f: {char} find char
-" ===>>>===>>> leaderf[ff, fm, fb, fe, fs, fw, ft, fl, fc, fhc, fhs, fhh, fg, fr, fd, fo, fn, fp]
+" ===>>>===>>> leaderf[ff, fm, fb, fe, fs, fw, ft, fa, fl, fj, fu, fc, fhc/s/h, fg, fr, fd, fo, fn, fp]
 "g: g
 " ===>>>===>>> gtags [gr, gd, gs, gc, gt, ge, gf, gi, ga]
 "h: left
@@ -86,7 +86,7 @@
 "leader><leader>t: tagbar
 
 "<leader>a:
-"<leader>b: buffer[bd, ba, bn, bp], leaderf[bb]
+"<leader>b: buffer[bd, ba, bn, bp], save buffer[bs]
 "<leader>c: quickfix[co, cc, cn, cp], cwd[cd], NERDComm[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
 "<leader>d: surround[ds]
 "<leader>e: [ee]
@@ -123,6 +123,7 @@ nnoremap <leader>qx :qa!<cr>
 nnoremap <leader>qw :wqa<cr>
 
 nnoremap <leader>fs :w!<cr>
+nnoremap <leader>bs :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -323,7 +324,7 @@ let g:Lf_MruFileExclude = ['*.so']
 " let g:Lf_ShortcutF = "<leader>ff"
 " let g:Lf_ShortcutB = "<leader>bb"
 
-"a i k q u v x y z
+"i k q v x y z
 
 noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
 noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
@@ -334,11 +335,13 @@ noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
 noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
 noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap fa :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
 noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 noremap fj :Leaderf function<cr>
 
-noremap fc :Leaderf colorscheme<cr>
+noremap fu :Leaderf colorscheme<cr>
+noremap fc :Leaderf command<cr>
 
 noremap fhc :Leaderf cmdHistory<cr>
 noremap fhs :Leaderf searchHistory<cr>
