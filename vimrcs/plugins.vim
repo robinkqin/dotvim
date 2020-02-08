@@ -80,7 +80,7 @@ Plug 'Shougo/deol.nvim'
 
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
 " Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'jceb/vim-orgmode'
 
