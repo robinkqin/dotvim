@@ -46,13 +46,16 @@
 ".: repeat last change
 "/: search
 "\:
+" ===>>>===>>>
 
 
 "CTRL-a: add number
 "CTRL-b: scroll pages backwards
 "CTRL-c: interrupt current (search) command
 "CTRL-d: scroll
+" ===>>>===>>>
 "CTRL-e: scroll
+" ===>>>===>>>
 "CTRL-f: scroll
 "CTRL-g: prints the current file name
 "CTRL-h: left window
@@ -61,30 +64,40 @@
 "CTRL-k: up window
 "CTRL-l: right window
 "CTRL-m: lines downward
+" ===>>>===>>>
 "CTRL-n: paste
+" ===>>>===>>>
 "CTRL-o: go to older pos
 "CTRL-p:
-"CTRL-q:
+" ===>>>===>>>
+"CTRL-q: CTRL-v
 "CTRL-r: redo changes
 "CTRL-s:
+" ===>>>===>>>
 "CTRL-t: jump to older entry in tag stack
 "CTRL-u: scroll up
+" ===>>>===>>>
 "CTRL-v: start visual mode blockwise
 "CTRL-w: window
 "CTRL-x: subtract number
 "CTRL-y: scroll
+" ===>>>===>>>
 "CTRL-z: suspend vim
 "CTRL-[: ESC
 "CTRL-]: jump to definition
 "CTRL-;:
+" ===>>>===>>>
 "CTRL-':
+" ===>>>===>>>
 "CTRL-,:
+" ===>>>===>>>
 "CTRL-.:
+" ===>>>===>>>
 "CTRL-/:
+" ===>>>===>>>
 "CTRL-\:
+" ===>>>===>>>
 
-"leader><leader>w: write
-"leader><leader>t: tagbar
 
 "<leader>a:
 "<leader>b: buffer[bd, ba, bn, bp], save buffer[bs]
@@ -105,7 +118,7 @@
 "<leader>q: quickly open a buffer[qq]
 "<leader>r: visualreplace[rr]
 "<leader>s: spell[ss, sn, sp, sa, s?], shell[sh, sw]
-"<leader>t: tab[tn, to, tc, tm, tt, tl, te]
+"<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[tg]
 "<leader>u:
 "<leader>v:
 "<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
@@ -456,7 +469,7 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader><leader>t :TagbarToggle<CR>
+nmap <leader>tg :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => signature
