@@ -19,14 +19,15 @@
 "k: up
 "l: right
 "m:
-" ===>>>===>>>mark[mm, mr, mn, mc]
-" ===>>>===>>>signature[]
+" ===>>>===>>> mark[mm, mr, mn, mc]
+" ===>>>===>>> signature[]
 "n: repeat /
 "o: begin a new line
 "p: put text
 "q: record
 "r: {char} replace
 "s: delete char and start insert
+" ===>>>===>>> easymotion[ss, sf, sw, sl, sj]
 "t: {char} till
 " ===>>>===>>>
 "u: undo
@@ -38,10 +39,10 @@
 "[: [
 "]: ]
 ";: repeat f/t/F/T
-" ===>>>===>>>easymotion[;;, ;f, ;w, ;g, ;j]
+" ===>>>===>>> fzf[;f ;h ;o ;c ;l ;L ;t ;T ;a ;r ;m ]
 "': jump to mark
 ",: repeat f/t/F/T in opposite direction
-" ===>>>===>>>
+"===>>>===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
 ".: repeat last change
 "/: search
 "\:
@@ -93,13 +94,13 @@
 "<leader>f: save file[fs]
 "<leader>g:
 "<leader>h:
-"<leader>i: C-I, indent-guides[ii]
+"<leader>i: indent-guides[ii]
 "<leader>j:
-"<leader>k: ctrlsf[kk, kf, kF, kn, kp, ko, ks, kc, kt]
+"<leader>k:
 "<leader>l: ALE[ll, ld, lp, ln]
 "<leader>m:
 "<leader>n: NERDTree[nn]
-"<leader>o: C-O,
+"<leader>o:
 "<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickly open a buffer[qq]
 "<leader>r: visualreplace[rr]
@@ -239,32 +240,37 @@ colorscheme gruvbox
 " => fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent> <leader>zf :FzfFiles<CR>
-nnoremap <silent> <leader>zh :FzfHistory<CR>
-nnoremap <silent> <leader>zo :FzfBuffers<CR>
-nnoremap <silent> <leader>zc :FzfColors<CR>
-nnoremap <silent> <leader>zl :FzfBLines<CR>
-nnoremap <silent> <leader>zL :FzfLines<CR>
-nnoremap <silent> <leader>zt :FzfBTags<CR>
-nnoremap <silent> <leader>zT :FzfTags<CR>
-nnoremap <silent> <leader>za :FzfAg<CR>
-nnoremap <silent> <leader>zr :FzfRg<CR>
-nnoremap <silent> <leader>zm :FzfMarks<CR>
+nnoremap <silent> ;f :FzfFiles<CR>
+nnoremap <silent> ;gf :FzfGFiles<CR>
+nnoremap <silent> ;gs :FzfGFiles?<CR>
+nnoremap <silent> ;h :FzfHistory<CR>
+nnoremap <silent> ;b :FzfBuffers<CR>
+nnoremap <silent> ;c :FzfColors<CR>
+nnoremap <silent> ;a :FzfAg<CR>
+nnoremap <silent> ;r :FzfRg<CR>
+nnoremap <silent> ;l :FzfBLines<CR>
+nnoremap <silent> ;L :FzfLines<CR>
+nnoremap <silent> ;t :FzfBTags<CR>
+nnoremap <silent> ;T :FzfTags<CR>
+nnoremap <silent> ;mm :FzfMarks<CR>
+nnoremap <silent> ;mp :FzfMap<CR>
+nnoremap <silent> ;w :FzfWindows<CR>
+nnoremap <silent> ;s :FzfSnippets<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ctrlsf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>kk :CtrlSF<Space><C-R><C-W><cr>
-nmap     <leader>kf <Plug>CtrlSFPrompt
-vmap     <leader>kf <Plug>CtrlSFVwordExec
-vmap     <leader>kv <Plug>CtrlSFVwordPath
-nmap     <leader>kn <Plug>CtrlSFCwordPath
-nmap     <leader>kp <Plug>CtrlSFPwordPath
-nnoremap <leader>ko :CtrlSFOpen<CR>
-nnoremap <leader>kc :CtrlSFClose<CR>
-nnoremap <leader>ks :CtrlSFStop<CR>
-nnoremap <leader>kt :CtrlSFToggle<CR>
-inoremap <leader>kt <Esc>:CtrlSFToggle<CR>
+nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
+nmap     ,f <Plug>CtrlSFPrompt
+vmap     ,f <Plug>CtrlSFVwordExec
+vmap     ,v <Plug>CtrlSFVwordPath
+nmap     ,n <Plug>CtrlSFCwordPath
+nmap     ,p <Plug>CtrlSFPwordPath
+nnoremap ,o :CtrlSFOpen<CR>
+nnoremap ,c :CtrlSFClose<CR>
+nnoremap ,k :CtrlSFStop<CR>
+nnoremap ,t :CtrlSFToggle<CR>
+inoremap ,t <Esc>:CtrlSFToggle<CR>
 
 "let g:ctrlsf_ackprg = 'ag'
 
@@ -393,22 +399,22 @@ map <leader>nn :NERDTreeToggle<cr>
 let g:EasyMotion_smartcase = 1
 
 " move to {char}
-map  ;; <Plug>(easymotion-bd-f)
-nmap ;; <Plug>(easymotion-overwin-f)
+map  ss <Plug>(easymotion-bd-f)
+nmap ss <Plug>(easymotion-overwin-f)
 
 " move to {cahr}{char}
-map  ;f <Plug>(easymotion-bd-f2)
-nmap ;f <Plug>(easymotion-overwin-f2)
+map  sf <Plug>(easymotion-bd-f2)
+nmap sf <Plug>(easymotion-overwin-f2)
 
 " Move to word
-map  ;w <Plug>(easymotion-bd-w)
-nmap ;w <Plug>(easymotion-overwin-w)
+map  sw <Plug>(easymotion-bd-w)
+nmap sw <Plug>(easymotion-overwin-w)
 
-map  ;g <Plug>(easymotion-lineanywhere)
+map  sl <Plug>(easymotion-lineanywhere)
 
 " Move to line
-map  ;j <Plug>(easymotion-bd-jk)
-nmap ;j <Plug>(easymotion-overwin-line)
+map  sj <Plug>(easymotion-bd-jk)
+nmap sj <Plug>(easymotion-overwin-line)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
