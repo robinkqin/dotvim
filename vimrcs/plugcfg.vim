@@ -12,7 +12,8 @@
 "f: {char} find char
 " ===>>>===>>> leaderf[ff, fm, fb, fe, fs, fw, ft, fa, fl, fj, fu, fc, fhc/s/h, fg, fr, fd, fo, fn, fp]
 "g: g
-" ===>>>===>>> gtags [gr, gd, gs, gc, gt, ge, gf, gi, ga]
+" ===>>>===>>> easymotion[gf, gb, gw, gl, gj]
+" ===>>>===>>> gtags [gs, gd, gr, gc, gt, ge, gf, gi, ga]
 "h: left
 "i: insert
 "j: down
@@ -27,7 +28,7 @@
 "q: record
 "r: {char} replace
 "s: delete char and start insert
-" ===>>>===>>> easymotion[ss, sf, sw, sl, sj]
+" ===>>>===>>> gtags [ss, sd, sr, sc, st, se, sf, si, sa]
 "t: {char} till
 " ===>>>===>>>
 "u: undo
@@ -435,15 +436,25 @@ let g:gutentags_auto_add_gtags_cscope = 1
 "<leader>ca  Find places where current symbol is assigned
 
 " gb, gl, gx, gz
-nnoremap gr :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap gd :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap gs :cs find d <C-R>=expand("<cword>")<CR><CR>
-nnoremap gc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap gt :cs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap ge :cs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap ga :cs find a <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gs :cs find s <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gd :cs find g <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gr :cs find d <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gc :cs find c <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gt :cs find t <C-R>=expand("<cword>")<CR><CR>
+"nnoremap ge :cs find e <C-R>=expand("<cword>")<CR><CR>
+"nnoremap gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+"nnoremap gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"nnoremap ga :cs find a <C-R>=expand("<cword>")<CR><CR>
+
+nnoremap ss :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap sr :cs find d <C-R>=expand("<cword>")<CR><CR>
+nnoremap sc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nnoremap st :cs find t <C-R>=expand("<cword>")<CR><CR>
+nnoremap se :cs find e <C-R>=expand("<cword>")<CR><CR>
+nnoremap sf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nnoremap si :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 " for debug
 "let g:gutentags_define_advanced_commands = 1
@@ -668,21 +679,23 @@ noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 " map ; <Plug>(easymotion-prefix)
 let g:EasyMotion_smartcase = 1
 
+" gb, gc, gl, gx, gz
+
 " move to {char}
-map  ss <Plug>(easymotion-bd-f)
-nmap ss <Plug>(easymotion-overwin-f)
+map  gf <Plug>(easymotion-bd-f)
+nmap gf <Plug>(easymotion-overwin-f)
 
 " move to {cahr}{char}
-map  sf <Plug>(easymotion-bd-f2)
-nmap sf <Plug>(easymotion-overwin-f2)
+map  gb <Plug>(easymotion-bd-f2)
+nmap gb <Plug>(easymotion-overwin-f2)
 
 " Move to word
-map  sw <Plug>(easymotion-bd-w)
-nmap sw <Plug>(easymotion-overwin-w)
+map  gw <Plug>(easymotion-bd-w)
+nmap gw <Plug>(easymotion-overwin-w)
 
-map  sl <Plug>(easymotion-lineanywhere)
+map  gl <Plug>(easymotion-lineanywhere)
 
 " Move to line
-map  sj <Plug>(easymotion-bd-jk)
-nmap sj <Plug>(easymotion-overwin-line)
+map  gj <Plug>(easymotion-bd-jk)
+nmap gj <Plug>(easymotion-overwin-line)
 
