@@ -89,7 +89,7 @@
 "<leader>b: buffer[bd ba bn bp]
 "<leader>c: cwd[cd], quickfix[co cc cn cp], NERDComm[ca cu cb cl cy cs ci cn cm cc], surround[cs]
 "<leader>d: surround[ds]
-"<leader>e: ale[et ee el ed ef ei ep en]
+"<leader>e: ale[ee ed et el ei ef ep en ea ez]
 "<leader>f: save file[fs]
 "<leader>g:
 "<leader>h: edit vim config[hv]
@@ -445,6 +445,9 @@ nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Only run linters named in ale_linters settings.
+"let g:ale_linters_explicit = 1
+
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 
@@ -457,24 +460,25 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-nmap <leader>et :ALEToggle<CR>
-nmap <leader>ee :ALEEnable<CR>
-
-nmap <leader>el :ALELint<CR>
-nmap <leader>ed :ALEDetail<CR>
-nmap <leader>ef :ALEFix<CR>
-nmap <leader>ei :ALEInfo<CR>
-
-nmap <leader>ep :ALEPreviousWrap<CR>
-nmap <leader>en :ALENextWrap<CR>
-
 "let g:ale_completion_delay = 500
 "let g:ale_echo_delay = 20
 "let g:ale_lint_delay = 500
-"let g:airline#extensions#ale#enabled = 1
 
-"let g:ale_lint_on_text_changed = 'normal'
-"let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_save = 0
+
+nmap <leader>ee :ALEEnable<CR>:ALELint<CR>
+nmap <leader>ed :ALEDisable<CR>
+nmap <leader>et :ALEToggle<CR>
+nmap <leader>el :ALEDetail<CR>
+nmap <leader>ei :ALEInfo<CR>
+nmap <leader>ef :ALEFix<CR>
+nmap <leader>ep :ALEPreviousWrap<CR>
+nmap <leader>en :ALENextWrap<CR>
+nmap <leader>ea :ALEFirst<CR>
+nmap <leader>ez :ALELast<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>YCM
