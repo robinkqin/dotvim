@@ -464,9 +464,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "let g:ale_echo_delay = 20
 "let g:ale_lint_delay = 500
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_insert_leave = 0
+"let g:ale_lint_on_enter = 0
 "let g:ale_lint_on_save = 0
 
 nmap <leader>ee :ALEEnable<CR>:ALELint<CR>
