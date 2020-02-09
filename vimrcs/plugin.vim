@@ -1,12 +1,5 @@
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-
-" Plugin outside ~/.vim/plugged with post-update hook
 " Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -58,9 +51,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'https://github.com/inkarkat/vim-mark.git'
 Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
-" checker format gtags/cscope complete shell
-
-" Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
@@ -79,7 +69,6 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deol.nvim'
 
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
-" Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'jceb/vim-orgmode'
@@ -90,6 +79,5 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
 
-" Initialize plugin system
-
 call plug#end()
+
