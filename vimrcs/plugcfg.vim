@@ -87,13 +87,13 @@
 
 "<leader>a:
 "<leader>b: buffer[bd ba bn bp]
-"<leader>c: cwd[cd], quickfix[co cc cn cp], NERDComm[ca cu cb cl cy cs ci cn cm cc], surround[cs]
+"<leader>c: cwd[cd], commenter[ca cu cb cl cy cs ci cn cm cc], surround[cs]
 "<leader>d: surround[ds]
-"<leader>e: ale[ee ed et el ei ef ep en ea ez]
+"<leader>e: plugcfg.vim[ev], ale[ee ed et el ei ef ep en ea ez]
 "<leader>f: save file[fs]
 "<leader>g:
-"<leader>h: edit vim config[hv]
-"<leader>i: indent-guides[ii]
+"<leader>h:
+"<leader>i: IndentGuidesToggle[ii]
 "<leader>j:
 "<leader>k:
 "<leader>l:
@@ -101,7 +101,7 @@
 "<leader>n: NERDTree[nn]
 "<leader>o:
 "<leader>p: Toggle paste mode on and off: [pp]
-"<leader>q: quickly buffer[qq]
+"<leader>q: quickfix[qo qc qn qp], quickly buffer[qq]
 "<leader>r: visualreplace[rr]
 "<leader>s: spell[ss sn sp sa s?], shell[sh]
 "<leader>t: tab[tn to tc tm tt tl te], tagbar[tg]
@@ -132,19 +132,17 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
 " => Fast editing and reloading of vimrc configs
-map <leader>hv :e! ~/.vim/vimrcs/plugcfg.vim<cr>
+map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
 "autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
 
 " When you press <leader>rr you can search and replace the selected text
 vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>co :botright copen<cr>
-map <leader>cc :botright cclose<cr>
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
-" map <leader>ca ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-
+map <leader>qo :botright copen<cr>
+map <leader>qc :botright cclose<cr>
+map <leader>qn :cn<cr>
+map <leader>qp :cp<cr>
 
 " window
 nnoremap <leader>ww <c-w><c-w>
@@ -231,30 +229,33 @@ set background=dark
 colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => airline/airline-themes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-
 let g:NERDTreeWinSize = 35
+let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 1
-let g:nerdtree_tabs_open_on_console_startup = 1
-
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 map <leader>nn :NERDTreeToggle<cr>
-"map <leader>nb :NERDTreeFromBookmark<Space>
-"map <leader>nf :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => indent-guides
@@ -414,17 +415,6 @@ let g:gutentags_auto_add_gtags_cscope = 1
 "<leader>cf  Find file name under cursor
 "<leader>ci  Find files #including the file name under cursor
 "<leader>ca  Find places where current symbol is assigned
-
-" gb, gl, gx, gz
-"nnoremap gs :cs find s <C-R>=expand("<cword>")<CR><CR>
-"nnoremap gd :cs find g <C-R>=expand("<cword>")<CR><CR>
-"nnoremap gr :cs find d <C-R>=expand("<cword>")<CR><CR>
-"nnoremap gc :cs find c <C-R>=expand("<cword>")<CR><CR>
-"nnoremap gt :cs find t <C-R>=expand("<cword>")<CR><CR>
-"nnoremap ge :cs find e <C-R>=expand("<cword>")<CR><CR>
-"nnoremap gf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-"nnoremap gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-"nnoremap ga :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap ss :cs find s <C-R>=expand("<cword>")<CR><CR>
 nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>
