@@ -1,8 +1,8 @@
 "depends:
-"python, gtags, ctags, fzf, rg, ag
+"python, gtags, ctags, fzf, rg
 "pip install pygments
-"gcc, clang, clang-format
-"rust
+"clangd, clang, clang-format
+"rust go
 
 "a: append
 "b: words backward
@@ -10,27 +10,26 @@
 "d: {motion} delete
 "e: forward
 "f: {char} find char
-" ===>>>===>>> leaderf[ff, fm, fb, fe, fs, fw, ft, fa, fl, fj, fu, fc, fhc/s/h, fg, fr, fd, fo, fn, fp]
+" ===>>> leaderf[ff fm fb fe fs fw ft fa fl fj fu fc fhc/s/h fg fr fd fo fn fp]
 "g: g
-" ===>>>===>>> easymotion[gf, gb, gw, gl, gj]
-" ===>>>===>>> gtags [gs, gd, gr, gc, gt, ge, gf, gi, ga]
+" ===>>> easymotion[gf gb gw gl gj]
 "h: left
 "i: insert
 "j: down
 "k: up
 "l: right
-"m:
-" ===>>>===>>> mark[mm, mr, mn, mc]
-" ===>>>===>>> signature[]
+"m: mark
+" ===>>> mark[mm mr mn mc]
+" ===>>> signature[m, ]
 "n: repeat /
 "o: begin a new line
 "p: put text
 "q: record
 "r: {char} replace
 "s: delete char and start insert
-" ===>>>===>>> gtags [ss, sd, sr, sc, st, se, sf, si, sa]
+" ===>>> gtags [ss sd sr sc st se sf si sa]
 "t: {char} till
-" ===>>>===>>>
+" ===>>>
 "u: undo
 "v: visual
 "w: word forward
@@ -40,23 +39,21 @@
 "[: [
 "]: ]
 ";: repeat f/t/F/T
-" ===>>>===>>> fzf[;f ;h ;o ;c ;l ;L ;t ;T ;a ;r ;m ]
+" ===>>> fzf[;f ;h ;o ;c ;l ;L ;t ;T ;a ;r ;m ]
 "': jump to mark
 ",: repeat f/t/F/T in opposite direction
-"===>>>===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
+" ===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
 ".: repeat last change
 "/: search
 "\:
-" ===>>>===>>>
+" ===>>>
 
 
 "CTRL-a: add number
 "CTRL-b: scroll pages backwards
 "CTRL-c: interrupt current (search) command
 "CTRL-d: scroll
-" ===>>>===>>>
 "CTRL-e: scroll
-" ===>>>===>>>
 "CTRL-f: scroll
 "CTRL-g: prints the current file name
 "CTRL-h: left window
@@ -65,67 +62,55 @@
 "CTRL-k: up window
 "CTRL-l: right window
 "CTRL-m: lines downward
-" ===>>>===>>>
 "CTRL-n: paste
-" ===>>>===>>>
 "CTRL-o: go to older pos
 "CTRL-p:
-" ===>>>===>>>
 "CTRL-q: CTRL-v
 "CTRL-r: redo changes
 "CTRL-s:
-" ===>>>===>>>
 "CTRL-t: jump to older entry in tag stack
 "CTRL-u: scroll up
-" ===>>>===>>>
 "CTRL-v: start visual mode blockwise
 "CTRL-w: window
 "CTRL-x: subtract number
 "CTRL-y: scroll
-" ===>>>===>>>
 "CTRL-z: suspend vim
 "CTRL-[: ESC
 "CTRL-]: jump to definition
 "CTRL-;:
-" ===>>>===>>>
 "CTRL-':
-" ===>>>===>>>
 "CTRL-,:
-" ===>>>===>>>
 "CTRL-.:
-" ===>>>===>>>
 "CTRL-/:
-" ===>>>===>>>
 "CTRL-\:
-" ===>>>===>>>
 
 
 "<leader>a:
-"<leader>b: buffer[bd, ba, bn, bp], save buffer[bs]
-"<leader>c: quickfix[co, cc, cn, cp], cwd[cd], NERDComm[ca, cu, cb, cl, cy, cs, ci, cn, cm, cc], surround[cs]
+"<leader>b: buffer[bd ba bn bp]
+"<leader>c: cwd[cd], quickfix[co cc cn cp], NERDComm[ca cu cb cl cy cs ci cn cm cc], surround[cs]
 "<leader>d: surround[ds]
-"<leader>e: [ee]
+"<leader>e: ale[et ee el ed ef ei ep en]
 "<leader>f: save file[fs]
 "<leader>g:
-"<leader>h:
+"<leader>h: edit vim config[hv]
 "<leader>i: indent-guides[ii]
 "<leader>j:
 "<leader>k:
-"<leader>l: ALE[ll, ld, lp, ln]
+"<leader>l:
 "<leader>m:
 "<leader>n: NERDTree[nn]
 "<leader>o:
 "<leader>p: Toggle paste mode on and off: [pp]
-"<leader>q: quickly open a buffer[qq]
+"<leader>q: quickly buffer[qq]
 "<leader>r: visualreplace[rr]
-"<leader>s: spell[ss, sn, sp, sa, s?], shell[sh, sw]
-"<leader>t: tab[tn, to, tc, tm, tt, tl, te], tagbar[tg]
+"<leader>s: spell[ss sn sp sa s?], shell[sh]
+"<leader>t: tab[tn to tc tm tt tl te], tagbar[tg]
 "<leader>u:
 "<leader>v:
-"<leader>w: [ww] [wd], window[wc, wo, ws, wv, wh, wl, wj, wk]
-"<leader>x: quickly open a markdown buffer[xx]
+"<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
+"<leader>x: quickly md buffer[xx]
 "<leader>y:
-"<leader>z: fzf[zf, zh, zo, zc, zl, zt, za, zr]
+"<leader>z:
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
@@ -134,29 +119,24 @@
 let mapleader = "\<Space>"
 
 nnoremap <leader>qa :qa<cr>
-nnoremap <leader>qx :qa!<cr>
-nnoremap <leader>qw :wqa<cr>
+nnoremap <leader>qw :wq<cr>
 
 nnoremap <leader>fs :w!<cr>
-nnoremap <leader>bs :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
-
 " => Fast editing and reloading of vimrc configs
-map <leader>ee :e! ~/.vim/vimrcs/plugins_config.vim<cr>
-"autocmd! bufwritepost ~/.vim/vimrcs/plugins_config.vim source ~/.vim/vimrcs/plugins_config.vim
-
+map <leader>hv :e! ~/.vim/vimrcs/plugcfg.vim<cr>
+"autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
 
 " When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>rr :call VisualSelection('replace', '')<CR>
+vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>co :botright copen<cr>
@@ -321,7 +301,7 @@ let g:multi_cursor_quit_key            = '<Esc>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => surround.vim config
+" => surround config
 " Annotate strings with gettext
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
@@ -477,15 +457,16 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-nmap <leader>lt :ALEToggle<CR>
-nmap <leader>le :ALEEnable<CR>
+nmap <leader>et :ALEToggle<CR>
+nmap <leader>ee :ALEEnable<CR>
 
-nmap <leader>ll :ALELint<CR>
-nmap <leader>ld :ALEDetail<CR>
-nmap <leader>lf :ALEFix<CR>
+nmap <leader>el :ALELint<CR>
+nmap <leader>ed :ALEDetail<CR>
+nmap <leader>ef :ALEFix<CR>
+nmap <leader>ei :ALEInfo<CR>
 
-nmap <leader>lp :ALEPreviousWrap<CR>
-nmap <leader>ln :ALENextWrap<CR>
+nmap <leader>ep :ALEPreviousWrap<CR>
+nmap <leader>en :ALENextWrap<CR>
 
 "let g:ale_completion_delay = 500
 "let g:ale_echo_delay = 20
@@ -494,13 +475,6 @@ nmap <leader>ln :ALENextWrap<CR>
 
 "let g:ale_lint_on_text_changed = 'normal'
 "let g:ale_lint_on_insert_leave = 1
-
-"hi! clear SpellBad
-"hi! clear SpellCap
-"hi! clear SpellRare
-"hi! SpellBad gui=undercurl guisp=red
-"hi! SpellCap gui=undercurl guisp=blue
-"hi! SpellRare gui=undercurl guisp=magenta
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>YCM
@@ -541,7 +515,7 @@ nmap <leader>ln :ALENextWrap<CR>
 "            \ "zimbu":1,
 "            \ }
 "
-"let g:ycm_global_ycm_extra_conf = '~/.vim_runtime/my_plugins/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
