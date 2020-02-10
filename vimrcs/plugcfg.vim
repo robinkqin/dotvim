@@ -103,7 +103,7 @@
 "<leader>p: Toggle paste mode on and off: [pp]
 "<leader>q: quickfix[qo qc qn qp], quickly buffer[qq]
 "<leader>r: visualreplace[rr]
-"<leader>s: spell[ss sn sp sa s?], shell[sh]
+"<leader>s: spell[ss sn sp sa s?], deol shell[sh sd]
 "<leader>t: tab[tn to tc tm tt tl te], tagbar[tg]
 "<leader>u:
 "<leader>v:
@@ -274,8 +274,8 @@ set updatetime=100
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deol / shell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>sh :Deol<cr>
-"nnoremap <leader>sw :Deol -cwd='fnamemodify(expand('%'), ':h')'<cr>
+nnoremap <leader>sd :Deol<cr>
+nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -513,22 +513,31 @@ nmap <leader>ez :ALELast<CR>
 " => fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent> ;f :FzfFiles<CR>
 nnoremap <silent> ;gf :FzfGFiles<CR>
+nnoremap <silent> ;gc :FzfBCommints<CR>
+"nnoremap <silent> ;gc :FzfCommints<CR>
 nnoremap <silent> ;gs :FzfGFiles?<CR>
-nnoremap <silent> ;h :FzfHistory<CR>
+
+nnoremap <silent> ;f :FzfFiles<CR>
+nnoremap <silent> ;m :FzfHistory<CR>
 nnoremap <silent> ;b :FzfBuffers<CR>
-nnoremap <silent> ;c :FzfColors<CR>
+
+nnoremap <silent> ;e :FzfRg<CR>
 nnoremap <silent> ;a :FzfAg<CR>
-nnoremap <silent> ;r :FzfRg<CR>
-nnoremap <silent> ;l :FzfBLines<CR>
-nnoremap <silent> ;L :FzfLines<CR>
+
 nnoremap <silent> ;t :FzfBTags<CR>
 nnoremap <silent> ;T :FzfTags<CR>
-nnoremap <silent> ;mm :FzfMarks<CR>
-nnoremap <silent> ;mp :FzfMap<CR>
+nnoremap <silent> ;l :FzfBLines<CR>
+nnoremap <silent> ;L :FzfLines<CR>
+
+nnoremap <silent> ;u :FzfColors<CR>
+nnoremap <silent> ;c :FzfCommand<CR>
+
 nnoremap <silent> ;w :FzfWindows<CR>
 nnoremap <silent> ;s :FzfSnippets<CR>
+
+nnoremap <silent> ;mm :FzfMarks<CR>
+nnoremap <silent> ;mp :FzfMap<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ctrlsf
@@ -605,7 +614,7 @@ let g:Lf_MruFileExclude = ['*.so']
 " let g:Lf_ShortcutF = "<leader>ff"
 " let g:Lf_ShortcutB = "<leader>bb"
 
-"i k q v x y z
+"a i k q v x y z
 
 noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
 noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
@@ -616,7 +625,7 @@ noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
 noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
 noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap fa :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
+noremap fT :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
 noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 noremap fj :Leaderf function<cr>
@@ -626,7 +635,8 @@ noremap fc :Leaderf command<cr>
 
 noremap fhc :Leaderf cmdHistory<cr>
 noremap fhs :Leaderf searchHistory<cr>
-noremap fhh :Leaderf self<cr>
+noremap fhf :Leaderf self<cr>
+noremap fhh :Leaderf help<cr>
 
 " should use `Leaderf gtags --update` first
 " --gtagslibpath
