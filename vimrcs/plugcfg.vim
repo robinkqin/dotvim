@@ -87,7 +87,7 @@
 
 "<leader>a:
 "<leader>b: buffer[bd ba bn bp]
-"<leader>c: cwd[cd], commenter[ca cu cb cl cy cs ci cn cm cc], surround[cs]
+"<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
 "<leader>d: surround[ds]
 "<leader>e: plugcfg.vim[ev], ale[ee ed et el ei ef ep en ea ez]
 "<leader>f: save file[fs]
@@ -268,8 +268,8 @@ nmap <silent> <leader>ii <Plug>IndentGuidesToggle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => signify
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set signcolumn = yes
-"set updatetime = 100
+set signcolumn=yes
+set updatetime=100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deol / shell
