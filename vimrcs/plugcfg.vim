@@ -85,7 +85,7 @@
 "CTRL-\:
 
 
-"<leader>a:
+"<leader>a: align[a]
 "<leader>b: buffer[bd ba bn bp]
 "<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
 "<leader>d: surround[ds]
@@ -281,6 +281,8 @@ nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>a <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
@@ -288,11 +290,11 @@ nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-let g:multi_cursor_start_word_key      = '<C-s>'
-let g:multi_cursor_select_all_word_key = '<A-s>'
-let g:multi_cursor_start_key           = 'g<C-s>'
-let g:multi_cursor_select_all_key      = 'g<A-s>'
-let g:multi_cursor_next_key            = '<C-s>'
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
