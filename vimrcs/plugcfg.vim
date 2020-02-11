@@ -311,6 +311,8 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gps :Gpush<cr>
+nnoremap <leader>gpl :Gpull<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround config
