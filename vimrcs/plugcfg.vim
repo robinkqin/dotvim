@@ -1,9 +1,4 @@
-
-"depends:
-"python, gtags, ctags, fzf, rg
-"pip install pygments
-"clangd, clang, clang-format
-"rust go
+"depends: gtags ctags fzf rg python/pygments clangd/clang/clang-format rust go
 
 "a: append
 "b: words backward
@@ -47,8 +42,6 @@
 ".: repeat last change
 "/: search
 "\:
-" ===>>>
-
 
 "CTRL-a: add number
 "CTRL-b: scroll pages backwards
@@ -85,7 +78,6 @@
 "CTRL-/:
 "CTRL-\:
 
-
 "<leader>a: align[a]
 "<leader>b: buffer[bd ba bn bp]
 "<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
@@ -116,7 +108,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let mapleader = "\<Space>"
 
 nnoremap <leader>qa :qa<cr>
@@ -222,7 +213,6 @@ map <leader>xx :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,16 +236,9 @@ map <leader>nn :NERDTreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
-
-" Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
-
-" Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -278,27 +261,11 @@ set updatetime=100
 nnoremap <leader>sd :Deol<cr>
 nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fugitive
@@ -311,8 +278,8 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gps :Gpush<cr>
-nnoremap <leader>gpl :Gpull<cr>
+nnoremap <leader>gu :Gpush<cr>
+nnoremap <leader>gp :Gpull<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround config
