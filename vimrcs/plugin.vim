@@ -14,10 +14,10 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'preservim/nerdcommenter'
 
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
@@ -32,6 +32,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'https://github.com/inkarkat/vim-mark.git'
 Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
+Plug 'preservim/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'

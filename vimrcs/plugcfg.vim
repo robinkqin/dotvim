@@ -1,82 +1,21 @@
 "depends: gtags ctags fzf rg python/pygments clangd/clang/clang-format rust go
 
-"a: append
-"b: words backward
-"c: {motion} delete text and insert
-"d: {motion} delete
-"e: forward
-"f: {char} find char
+" f: {char} find char
 " ===>>> leaderf[ff fm fb fe fs fw ft fa fl fj fu fc fhc/s/h fg fr fd fo fn fp]
-"g: g
+" g:
 " ===>>> easymotion[gf gb gw gl gj]
-"h: left
-"i: insert
-"j: down
-"k: up
-"l: right
-"m: mark
+" m: mark
 " ===>>> mark[mm mr mn mc]
 " ===>>> signature[m, ]
-"n: repeat /
-"o: begin a new line
-"p: put text
-"q: record
-"r: {char} replace
-"s: delete char and start insert
+" s: delete char and start insert
 " ===>>> gtags [ss sd sr sc st se sf si sa]
-"t: {char} till
+" t: {char} till
 " ===>>>
-"u: undo
-"v: visual
-"w: word forward
-"x: delete
-"y: {motion} yank
-"z: fold
-"[: [
-"]: ]
-";: repeat f/t/F/T
+" ;: repeat f/t/F/T
 " ===>>> fzf[;f ;h ;o ;c ;l ;L ;t ;T ;a ;r ;m ]
-"': jump to mark
-",: repeat f/t/F/T in opposite direction
+" ,: repeat f/t/F/T in opposite direction
 " ===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
-".: repeat last change
-"/: search
-"\:
-
-"CTRL-a: add number
-"CTRL-b: scroll pages backwards
-"CTRL-c: interrupt current (search) command
-"CTRL-d: scroll
-"CTRL-e: scroll
-"CTRL-f: scroll
-"CTRL-g: prints the current file name
-"CTRL-h: left window
-"CTRL-i: go to newer pos
-"CTRL-j: down window
-"CTRL-k: up window
-"CTRL-l: right window
-"CTRL-m: lines downward
-"CTRL-n: paste
-"CTRL-o: go to older pos
-"CTRL-p:
-"CTRL-q: CTRL-v
-"CTRL-r: redo changes
-"CTRL-s:
-"CTRL-t: jump to older entry in tag stack
-"CTRL-u: scroll up
-"CTRL-v: start visual mode blockwise
-"CTRL-w: window
-"CTRL-x: subtract number
-"CTRL-y: scroll
-"CTRL-z: suspend vim
-"CTRL-[: ESC
-"CTRL-]: jump to definition
-"CTRL-;:
-"CTRL-':
-"CTRL-,:
-"CTRL-.:
-"CTRL-/:
-"CTRL-\:
+" \:
 
 "<leader>a: align[a]
 "<leader>b: buffer[bd ba bn bp]
@@ -110,31 +49,60 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 
-nnoremap <leader>qa :qa<cr>
-nnoremap <leader>qw :wq<cr>
-
 nnoremap <leader>fs :w!<cr>
 
 " :W sudo saves the file
-" (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>qw :wq<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
-" => Fast editing and reloading of vimrc configs
 map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
 "autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
 
-" When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
+map <leader>o <C-O>
+map <leader>i <C-I>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" cope
 map <leader>qo :botright copen<cr>
 map <leader>qc :botright cclose<cr>
 map <leader>qn :cn<cr>
 map <leader>qp :cp<cr>
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<Space>
+map <leader>tt :tabnext<Space>
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
+autocmd TabLeave * let g:lasttab = tabpagenr()
+
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+
+" Spell checking
+map <leader>ss :setlocal spell!<cr>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
 
 " window
 nnoremap <leader>ww <c-w><c-w>
@@ -156,50 +124,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <leader>o <C-O>
-map <leader>i <C-I>
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
-
-map <leader>bn :bnext<cr>
-map <leader>bp :bprevious<cr>
-
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<Space>
-map <leader>tt :tabnext<Space>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
-
-
-" => Spell checking
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
+" When you press <leader>rr you can search and replace the selected text
+vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 "noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -286,7 +212,7 @@ nnoremap <leader>gp :Gpull<cr>
 " Annotate strings with gettext
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+autocmd FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => echodoc
@@ -329,7 +255,7 @@ let g:mwDefaultHighlightingPalette = 'maximum'
 ""let g:python3_host_prog=/path/to/python/executable/
 ""let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
 noremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat
+autocmd BufWrite * :Autoformat
 
 "disable vim's indent file, retabbing and removing trailing whitespace
 "let g:autoformat_autoindent = 0
