@@ -49,6 +49,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 
+noremap <c-z> <NOP>
+
 nnoremap <leader>fs :w!<cr>
 
 " :W sudo saves the file
@@ -117,12 +119,6 @@ nnoremap <leader>wh <c-w>h
 nnoremap <leader>wl <c-w>l
 nnoremap <leader>wk <c-w>k
 nnoremap <leader>wj <c-w>j
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " When you press <leader>rr you can search and replace the selected text
 vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
@@ -226,10 +222,6 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>tg :TagbarToggle<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => signature
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => mark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,11 +235,12 @@ nmap <unique> mc <Plug>MarkAllClear
 
 let g:mwDefaultHighlightingPalette = 'maximum'
 
-"""""""""""""""""""""""""""""""
-"" => snipMate (beside <TAB> support <CTRL-j>)
-"""""""""""""""""""""""""""""""
-"ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
-"snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ultisnips snippets
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => autoformat
@@ -374,46 +367,11 @@ nmap <leader>en :ALENextWrap<CR>
 nmap <leader>ea :ALEFirst<CR>
 nmap <leader>ez :ALELast<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" =>YCM
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" 设置跳转到方法/函数定义的快捷键
-"nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"" 触发补全快捷键
-"let g:ycm_key_list_select_completion = ['<TAB>', '<c-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<c-p>', '<Up>']
-"let g:ycm_auto_trigger = 1
-"" 最小自动触发补全的字符大小设置为 3
-"let g:ycm_min_num_of_chars_for_completion = 2
-"" YCM的previw窗口比较恼人，还是关闭比较好
-"set completeopt-=preview
-"
-"let g:ycm_add_preview_to_completeopt = 0
-"let g:ycm_show_diagnostics_ui = 0
-"let g:ycm_server_log_level = 'info'
-"let g:ycm_min_num_identifier_candidate_chars = 2
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1
-"let g:ycm_complete_in_strings=1
-"let g:ycm_key_invoke_completion = '<c-z>'
-"set completeopt=menu,menuone
-"
-"noremap <c-z> <NOP>
-"
-"let g:ycm_semantic_triggers =  {
-"            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"            \ 'cs,lua,javascript': ['re!\w{2}'],
-"            \ }
-"
-"let g:ycm_filetype_whitelist = {
-"            \ "c":1,
-"            \ "cpp":1,
-"            \ "objc":1,
-"            \ "sh":1,
-"            \ "zsh":1,
-"            \ "zimbu":1,
-"            \ }
-"
-"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YCM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set completeopt-=preview
+nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
