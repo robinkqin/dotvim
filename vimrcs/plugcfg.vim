@@ -1,3 +1,4 @@
+
 "depends:
 "python, gtags, ctags, fzf, rg
 "pip install pygments
@@ -91,7 +92,7 @@
 "<leader>d: surround[ds]
 "<leader>e: plugcfg.vim[ev], ale[ee ed et el ei ef ep en ea ez]
 "<leader>f: save file[fs]
-"<leader>g:
+"<leader>g: fugitive[gs gd gl gc gw gr gm gb]
 "<leader>h:
 "<leader>i: IndentGuidesToggle[ii]
 "<leader>j:
@@ -302,6 +303,14 @@ let g:multi_cursor_quit_key            = '<Esc>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gb :Gblame<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround config
