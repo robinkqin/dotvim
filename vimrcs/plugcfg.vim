@@ -378,8 +378,8 @@ nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <silent> ;gf :FzfGFiles<CR>
-nnoremap <silent> ;gc :FzfBCommints<CR>
-"nnoremap <silent> ;gc :FzfCommints<CR>
+nnoremap <silent> ;gc :FzfBCommits<CR>
+nnoremap <silent> ;gC :FzfCommits<CR>
 nnoremap <silent> ;gs :FzfGFiles?<CR>
 
 nnoremap <silent> ;f :FzfFiles<CR>
