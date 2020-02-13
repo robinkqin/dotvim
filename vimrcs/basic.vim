@@ -193,8 +193,10 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
-if has("autocmd")
-    autocmd BufWritePre *.c *.h *.cpp *.hpp *.cc *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+if has("unix")
+    if has("autocmd")
+        autocmd BufWritePre *.c *.h *.cpp *.hpp *.cc *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -1,4 +1,4 @@
-"depends: gtags ctags fzf rg python/pygments clangd/clang/clang-format rust go
+"depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
 " f: {char} find char
 " ===>>> leaderf[ff fm fb fe fs fw ft fa fl fj fu fc fhc/s/h fg fr fd fo fn fp]
@@ -248,7 +248,9 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 ""let g:python3_host_prog=/path/to/python/executable/
 ""let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
 noremap <F3> :Autoformat<CR>
-autocmd BufWrite * :Autoformat
+if has("unix")
+    autocmd BufWrite * :Autoformat
+endif
 
 "disable vim's indent file, retabbing and removing trailing whitespace
 "let g:autoformat_autoindent = 0
