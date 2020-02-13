@@ -5,8 +5,8 @@
 " g:
 " ===>>> easymotion[gf gb gw gl gj]
 " m: mark
-" ===>>> mark[mm mr mn mc]
-" ===>>> signature[m, ]
+" ===>>> mark[mm mr mx]
+" ===>>> signature[m. m, m[a-z] '[a-z] ]' '] m/ dm[a-z] m- m<Space>]
 " s: delete char and start insert
 " ===>>> gtags [ss sd sr sc st se sf si sa]
 " t: {char} till
@@ -17,6 +17,8 @@
 " ===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
 " \:
 
+"g:UltiSnipsExpandTrigger="<c-j>"
+
 "<leader>a: align[a]
 "<leader>b: buffer[bd ba bn bp]
 "<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
@@ -25,18 +27,18 @@
 "<leader>f: save file[fs]
 "<leader>g: fugitive[gs gd gl gc gw gr gm gb]
 "<leader>h:
-"<leader>i: IndentGuidesToggle[ii]
-"<leader>j:
+"<leader>i: c-i
+"<leader>j: YCM[j]
 "<leader>k:
 "<leader>l:
 "<leader>m:
-"<leader>n: NERDTree[nn]
-"<leader>o:
-"<leader>p: Toggle paste mode on and off: [pp]
-"<leader>q: quickfix[qo qc qn qp], quickly buffer[qq]
+"<leader>n:
+"<leader>o: c-o
+"<leader>p:
+"<leader>q: quickfix[qo qc qn qp], quickly buffer[qq] [qa qw]
 "<leader>r: visualreplace[rr]
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh sd]
-"<leader>t: tab[tn to tc tm tt tl te], tagbar[tg]
+"<leader>t: tab[tn to tc tm tt tl te], tagbar[tb], indent-guides[ti], paste-mode[tp], NERDTree[td]
 "<leader>u:
 "<leader>v:
 "<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
@@ -133,7 +135,7 @@ map <leader>qq :e ~/buffer<cr>
 map <leader>xx :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>tp :setlocal paste!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -153,7 +155,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-map <leader>nn :NERDTreeToggle<cr>
+map <leader>td :NERDTreeToggle<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
@@ -169,7 +171,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-nmap <silent> <leader>ii <Plug>IndentGuidesToggle
+nmap <silent> <leader>ti <Plug>IndentGuidesToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => signify
@@ -207,8 +209,6 @@ nnoremap <leader>gp :Gpull<cr>
 " => surround config
 " Annotate strings with gettext
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-autocmd FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => echodoc
@@ -220,7 +220,7 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>tg :TagbarToggle<CR>
+nmap <leader>tb :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => mark
@@ -230,8 +230,8 @@ nmap <unique> mm <Plug>MarkSet
 xmap <unique> mm <Plug>MarkSet
 nmap <unique> mr <Plug>MarkRegex
 xmap <unique> mr <Plug>MarkRegex
-nmap <unique> mn <Plug>MarkClear
-nmap <unique> mc <Plug>MarkAllClear
+"nmap <unique> mn <Plug>MarkClear
+nmap <unique> mx <Plug>MarkAllClear
 
 let g:mwDefaultHighlightingPalette = 'maximum'
 
