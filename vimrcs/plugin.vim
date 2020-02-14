@@ -2,8 +2,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/peaksea'
 Plug 'morhetz/gruvbox'
+Plug 'vim-scripts/peaksea'
+Plug 'dracula/dracula-theme'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
@@ -51,6 +52,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'

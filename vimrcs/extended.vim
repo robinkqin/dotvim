@@ -80,25 +80,25 @@ inoremap $e ""<esc>i
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
-""""""""""""""""""""""""""""""
-" => Python section
-""""""""""""""""""""""""""""""
-let python_highlight_all = 1
-autocmd FileType python syn keyword pythonDecorator True None False self
-
-autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
-autocmd BufNewFile,BufRead *.mako set ft=mako
-
-autocmd FileType python map <buffer> F :set foldmethod=indent<cr>
-
-autocmd FileType python inoremap <buffer> $r return
-autocmd FileType python inoremap <buffer> $i import
-autocmd FileType python inoremap <buffer> $p print
-autocmd FileType python inoremap <buffer> $f # --- <esc>a
-autocmd FileType python map <buffer> <leader>1 /class
-autocmd FileType python map <buffer> <leader>2 /def
-autocmd FileType python map <buffer> <leader>C ?class
-autocmd FileType python map <buffer> <leader>D ?def
+"""""""""""""""""""""""""""""""
+"" => Python section
+"""""""""""""""""""""""""""""""
+"let python_highlight_all = 1
+"autocmd FileType python syn keyword pythonDecorator True None False self
+"
+"autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
+"autocmd BufNewFile,BufRead *.mako set ft=mako
+"
+"autocmd FileType python map <buffer> F :set foldmethod=indent<cr>
+"
+"autocmd FileType python inoremap <buffer> $r return
+"autocmd FileType python inoremap <buffer> $i import
+"autocmd FileType python inoremap <buffer> $p print
+"autocmd FileType python inoremap <buffer> $f # --- <esc>a
+"autocmd FileType python map <buffer> <leader>1 /class
+"autocmd FileType python map <buffer> <leader>2 /def
+"autocmd FileType python map <buffer> <leader>C ?class
+"autocmd FileType python map <buffer> <leader>D ?def
 
 """"""""""""""""""""""""""""""
 " => Shell section
