@@ -7,6 +7,8 @@
 " m: mark
 " ===>>> mark[mm mr mx]
 " ===>>> signature[m. m, m[a-z] '[a-z] ]' '] m/ dm[a-z] m- m<Space>]
+" q:
+" quickfix[qo qc qn qp]
 " s: delete char and start insert
 " ===>>> gtags [ss sd sr sc st se sf si sa]
 " t: {char} till
@@ -35,7 +37,7 @@
 "<leader>n:
 "<leader>o: c-o
 "<leader>p:
-"<leader>q: quickfix[qo qc qn qp], quickly buffer[qq] [qa qw]
+"<leader>q: quickly buffer[qq] [qa qw]
 "<leader>r: visualreplace[rr]
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh sd]
 "<leader>t: tab[tn to tc tm tt tl te], tagbar[tb], indent-guides[ti], paste-mode[tp], NERDTree[td]
@@ -315,15 +317,16 @@ let g:gutentags_auto_add_gtags_cscope = 1
 "<leader>ci  Find files #including the file name under cursor
 "<leader>ca  Find places where current symbol is assigned
 
-nnoremap ss :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap ss :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+"nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap sr :cs find d <C-R>=expand("<cword>")<CR><CR>
-nnoremap sc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap st :cs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap se :cs find e <C-R>=expand("<cword>")<CR><CR>
+nnoremap sr :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+nnoremap sc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+nnoremap st :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+nnoremap se :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 nnoremap sf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap si :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>
+nnoremap si :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<cr>
+nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 
 " for debug
 "let g:gutentags_define_advanced_commands = 1
@@ -335,7 +338,7 @@ nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
-	set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
+	set cscopequickfix=s-,g-,d-,c-,t-,e-,i-,a-
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
