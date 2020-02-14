@@ -48,7 +48,6 @@
 "<leader>y:
 "<leader>z:
 "<leader>]:
-"<leader>[:
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
@@ -68,8 +67,7 @@ map qp :cp<cr>
 
 map <leader>o <C-O>
 map <leader>i <C-I>
-map <leader>] <C-[>
-"map <leader>] <C-]>
+map <leader>] <C-]>
 
 nnoremap <leader>fs :w!<cr>
 " :W sudo saves the file
