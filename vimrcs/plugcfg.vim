@@ -47,6 +47,8 @@
 "<leader>x: quickly md buffer[xx]
 "<leader>y:
 "<leader>z:
+"<leader>]:
+"<leader>[:
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
@@ -64,6 +66,11 @@ map qq :botright cclose<cr>
 map qn :cn<cr>
 map qp :cp<cr>
 
+map <leader>o <C-O>
+map <leader>i <C-I>
+map <leader>] <C-[>
+"map <leader>] <C-]>
+
 nnoremap <leader>fs :w!<cr>
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
@@ -76,9 +83,6 @@ nnoremap <leader>wd :pwd<cr>
 
 map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
 "autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
-
-map <leader>o <C-O>
-map <leader>i <C-I>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
