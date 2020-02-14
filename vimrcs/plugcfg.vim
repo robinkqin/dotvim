@@ -245,12 +245,10 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""let g:python3_host_prog=/path/to/python/executable/
-""let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
+"let g:python3_host_prog=/path/to/python/executable/
+"let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
 noremap <F3> :Autoformat<CR>
-if has("unix")
-    autocmd BufWrite * :Autoformat
-endif
+"autocmd BufWrite * :Autoformat
 
 "disable vim's indent file, retabbing and removing trailing whitespace
 "let g:autoformat_autoindent = 0
