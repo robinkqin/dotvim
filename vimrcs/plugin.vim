@@ -52,7 +52,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
