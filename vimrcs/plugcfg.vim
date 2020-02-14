@@ -75,10 +75,10 @@ map <leader>i <C-I>
 map <silent> <leader><cr> :noh<cr>
 
 " cope
-map <leader>qo :botright copen<cr>
-map <leader>qc :botright cclose<cr>
-map <leader>qn :cn<cr>
-map <leader>qp :cp<cr>
+map qo :botright copen<cr>
+map qc :botright cclose<cr>
+map qn :cn<cr>
+map qp :cp<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
@@ -330,6 +330,13 @@ nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>
 ":GutentagsToggleTrace
 ":GutentagsUpdate
 ":messages
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ale (syntax checker and linter)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+	set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
