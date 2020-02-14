@@ -8,7 +8,7 @@
 " ===>>> mark[mm mr mx]
 " ===>>> signature[m. m, m[a-z] '[a-z] ]' '] m/ dm[a-z] m- m<Space>]
 " q:
-" quickfix[qo qc qn qp]
+" quickfix[qo qq qn qp]
 " s: delete char and start insert
 " ===>>> gtags [ss sd sr sc st se sf si sa]
 " t: {char} till
@@ -29,17 +29,17 @@
 "<leader>f: save file[fs]
 "<leader>g: fugitive[gs gd gl gc gw gr gm gb]
 "<leader>h:
-"<leader>i: c-i
-"<leader>j: YCM[j]
-"<leader>k:
-"<leader>l:
+"<leader>i: TODO: c-i
+"<leader>j: YCM[j] TODO:pagedown
+"<leader>k: TODO: pageup
+"<leader>l: TODO: YCM?
 "<leader>m:
 "<leader>n:
-"<leader>o: c-o
+"<leader>o: TODO: c-o
 "<leader>p:
-"<leader>q: quickly buffer[qq] [qa qw]
-"<leader>r: visualreplace[rr]
-"<leader>s: spell[ss sn sp sa s?], deol shell[sh sd]
+"<leader>q: quickly buffer[qq] [qa]
+"<leader>r: visualreplace[r]
+"<leader>s: spell[ss sn sp sa s?], deol shell[sh]
 "<leader>t: tab[tn to tc tm tt tl te], tagbar[tb], indent-guides[ti], paste-mode[tp], NERDTree[td]
 "<leader>u:
 "<leader>v:
@@ -55,13 +55,20 @@ let mapleader = "\<Space>"
 
 noremap <c-z> <NOP>
 
-nnoremap <leader>fs :w!<cr>
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
+" cope
+map qo :botright copen<cr>
+map qq :botright cclose<cr>
+map qn :cn<cr>
+map qp :cp<cr>
+
+nnoremap <leader>fs :w!<cr>
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 nnoremap <leader>qa :qa<cr>
-nnoremap <leader>qw :wq<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -73,15 +80,6 @@ map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
 map <leader>o <C-O>
 map <leader>i <C-I>
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-" cope
-map qo :botright copen<cr>
-map qc :botright cclose<cr>
-map qn :cn<cr>
-map qp :cp<cr>
-
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
@@ -89,7 +87,7 @@ map <leader>ba :bufdo bd<cr>
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
 
-" Useful mappings for managing tabs
+" Useful mappings for managing tabs, TODO: remove leader?
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -125,7 +123,7 @@ nnoremap <leader>wk <c-w>k
 nnoremap <leader>wj <c-w>j
 
 " When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>rr :call VrsualSelection('replace', '')<CR>
+vnoremap <silent> <leader>r :call VrsualSelection('replace', '')<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 "noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -184,7 +182,6 @@ set updatetime=100
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deol / shell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>sd :Deol<cr>
 nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -335,7 +332,7 @@ nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 ":messages
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ale (syntax checker and linter)
+" => cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
 	set cscopequickfix=s-,g-,d-,c-,t-,e-,i-,a-
