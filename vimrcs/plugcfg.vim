@@ -373,6 +373,27 @@ nmap <leader>ez :ALELast<CR>
 set completeopt-=preview
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+"let g:ycm_semantic_triggers =  {
+"            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"            \ 'cs,lua,javascript': ['re!\w{2}'],
+"            \ }
+"
+"let g:ycm_filetype_whitelist = {
+"            \ "c":1,
+"            \ "cpp":1,
+"            \ "objc":1,
+"            \ "sh":1,
+"            \ "zsh":1,
+"            \ "zimbu":1,
+"            \ }
+
+"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+
+" Let clangd fully control code completion
+"let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
