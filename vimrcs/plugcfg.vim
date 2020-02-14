@@ -371,7 +371,6 @@ nmap <leader>ez :ALELast<CR>
 " => YCM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set completeopt-=preview
-nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "let g:ycm_semantic_triggers =  {
 "            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
@@ -393,6 +392,12 @@ nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
+
+"let g:ycm_confirm_extra_conf = 0
+
+nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>k :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>l :YcmCompleter GoToDeclaration<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
