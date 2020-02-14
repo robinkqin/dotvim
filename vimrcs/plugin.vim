@@ -4,7 +4,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/peaksea'
-Plug 'dracula/dracula-theme'
+"Plug 'dracula/dracula-theme'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
