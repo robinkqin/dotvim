@@ -1,7 +1,7 @@
 "depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
-" f: {char} find char [i k q v x y z]
-" ===>>> leaderf f[f m b e s w t a l j u c hc/s/h g r d o n p]
+" f: {char} find char [i k q v w x y z]
+" ===>>> leaderf f[f m b e a/A t/T a l j u c hc/s/h g r d o n p]
 "
 " g:
 "
@@ -29,14 +29,15 @@
 " \:
 
 "g:UltiSnipsExpandTrigger="<c-j>"
+"surround[cs ds]
 
 "<leader>a:
-"<leader>b: buffer[bd ba bn bp]
-"<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
-"<leader>d: surround[ds]
-"<leader>e: plugcfg.vim[ev], ale[ee ed et el ei ef ep en ea ez]
-"<leader>f: save file[fs]
-"<leader>g: fugitive[gs gd gl gc gw gr gm gb gu gp]
+"<leader>b: buffer b[d a n p]
+"<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
+"<leader>d: 
+"<leader>e: vimcfg[ev], quickbufer[eq], quickorg[eo], ale e[e d t l i f p n a z]
+"<leader>f: 
+"<leader>g: fugitive g[s d l c w r m b u p]
 "<leader>h:
 "<leader>i: c-i
 "<leader>j: c-f
@@ -46,14 +47,14 @@
 "<leader>n:
 "<leader>o: c-o
 "<leader>p:
-"<leader>q: quickly buffer[qq] [qa]
+"<leader>q: quit[qa]
 "<leader>r: visualreplace[r]
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh]
 "<leader>t:
 "<leader>u:
 "<leader>v:
 "<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
-"<leader>x: quickly md buffer[xx]
+"<leader>x: 
 "<leader>y:
 "<leader>z:
 "<leader>]:
@@ -67,6 +68,10 @@ noremap <c-z> <NOP>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+
+nnoremap fs :w!<cr>
+" :W sudo saves the file
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " cope
 map qo :botright copen<cr>
@@ -93,10 +98,6 @@ map <leader>o <C-O>
 map <leader>i <C-I>
 map <leader>] <C-]>
 
-nnoremap <leader>fs :w!<cr>
-" :W sudo saves the file
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
 nnoremap <leader>qa :qa<cr>
 
 " Switch CWD to the directory of the open buffer
@@ -105,6 +106,12 @@ nnoremap <leader>wd :pwd<cr>
 
 map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
 "autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
+
+" Quickly open a buffer for scribble
+map <leader>eq :e ~/buffer<cr>
+
+" Quickly open a todo.org
+map <leader>eo :e ~/todo.org<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
@@ -122,13 +129,11 @@ map <leader>s? z=
 
 " window
 nnoremap <leader>ww <c-w><c-w>
-
 nnoremap <leader>wc <c-w>c
 nnoremap <leader>ws <c-w>s
 nnoremap <leader>wv <c-w>v
 nnoremap <leader>wo <c-w>o
 nnoremap <leader>wq <c-w>q
-
 nnoremap <leader>wh <c-w>h
 nnoremap <leader>wl <c-w>l
 nnoremap <leader>wk <c-w>k
@@ -137,17 +142,11 @@ nnoremap <leader>wj <c-w>j
 " When you press <leader>rr you can search and replace the selected text
 vnoremap <silent> <leader>r :call VrsualSelection('replace', '')<CR>
 
-" Remove the Windows ^M - when the encodings gets messed up
-"noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>qq :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>xx :e ~/buffer.md<cr>
-
 " Toggle paste mode on and off
 map tp :setlocal paste!<cr>
+
+" Remove the Windows ^M - when the encodings gets messed up
+"noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -420,11 +419,6 @@ nnoremap <leader>l :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " => fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent> ;gf :FzfGFiles<CR>
-nnoremap <silent> ;gc :FzfBCommits<CR>
-nnoremap <silent> ;gC :FzfCommits<CR>
-nnoremap <silent> ;gs :FzfGFiles?<CR>
-
 nnoremap <silent> ;f :FzfFiles<CR>
 nnoremap <silent> ;m :FzfHistory<CR>
 nnoremap <silent> ;b :FzfBuffers<CR>
@@ -445,6 +439,11 @@ nnoremap <silent> ;s :FzfSnippets<CR>
 
 nnoremap <silent> ;mm :FzfMarks<CR>
 nnoremap <silent> ;mp :FzfMap<CR>
+
+nnoremap <silent> ;gf :FzfGFiles<CR>
+nnoremap <silent> ;gc :FzfBCommits<CR>
+nnoremap <silent> ;gC :FzfCommits<CR>
+nnoremap <silent> ;gs :FzfGFiles?<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ctrlsf
@@ -521,24 +520,24 @@ let g:Lf_MruFileExclude = ['*.so']
 " let g:Lf_ShortcutF = "<leader>ff"
 " let g:Lf_ShortcutB = "<leader>bb"
 
-"a i k q v x y z
+"i k q v w x y z
 
 noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
 noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
 noremap fe :Leaderf rg -e<Space>
-noremap fs :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
-noremap fw :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap fa :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap fA :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
 
 noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap fT :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
 noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-noremap fj :Leaderf function<cr>
-
 noremap fu :Leaderf colorscheme<cr>
 noremap fc :Leaderf command<cr>
+
+noremap fj :Leaderf function<cr>
 
 noremap fhc :Leaderf cmdHistory<cr>
 noremap fhs :Leaderf searchHistory<cr>
