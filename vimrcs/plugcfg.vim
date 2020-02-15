@@ -1,46 +1,55 @@
 "depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
-" f: {char} find char
-" ===>>> leaderf[ff fm fb fe fs fw ft fa fl fj fu fc fhc/s/h fg fr fd fo fn fp]
+" f: {char} find char [i k q v x y z]
+" ===>>> leaderf f[f m b e s w t a l j u c hc/s/h g r d o n p]
+"
 " g:
-" ===>>> easymotion[gf gb gw gl gj]
+"
 " m: mark
-" ===>>> mark[mm mr mx]
-" ===>>> signature[m. m, m[a-z] '[a-z] ]' '] m/ dm[a-z] m- m<Space>]
+" ===>>> mark m[m r x]
+" ===>>> signature m[. , [a-z] '[a-z] ]' '] / dm[a-z] - <Space>]
+"
 " q:
-" quickfix[qo qq qn qp]
-" s: delete char and start insert
-" ===>>> gtags [ss sd sr sc st se sf si sa]
-" t: {char} till
-" ===>>>
+" quickfix q[o q n p]
+"
+" s: delete char and start insert [b g m n o p q u v x y z]
+" ===>>> gtags s[s d r c t e f i a]
+" ===>>> easymotion s[h j k l w]
+"
+" t: {char} till [g j k q r s u v w x y z]
+" ===>>>tab t[n o c m t l e h]
+" ===>>>toggle t[a b d f i p]
+"
 " ;: repeat f/t/F/T
-" ===>>> fzf[;f ;h ;o ;c ;l ;L ;t ;T ;a ;r ;m ]
+" ===>>> fzf ;[f h o c l L t T a r m ]
+"
 " ,: repeat f/t/F/T in opposite direction
-" ===>>> ctrlsf[,s ,f ,v ,n ,p ,o ,k ,c ,t]
+" ===>>> ctrlsf ,[s f v n p o k c t]
+"
 " \:
 
 "g:UltiSnipsExpandTrigger="<c-j>"
 
-"<leader>a: align[a]
+"<leader>a:
 "<leader>b: buffer[bd ba bn bp]
 "<leader>c: cwd[cd], commenter[cc cn c<Space> cm ci cs cy c$ cA ca cl cb cu], surround[cs]
 "<leader>d: surround[ds]
 "<leader>e: plugcfg.vim[ev], ale[ee ed et el ei ef ep en ea ez]
 "<leader>f: save file[fs]
-"<leader>g: fugitive[gs gd gl gc gw gr gm gb]
+"<leader>g: fugitive[gs gd gl gc gw gr gm gb gu gp]
 "<leader>h:
-"<leader>i: TODO: c-i
-"<leader>j: YCM[j] TODO:pagedown
-"<leader>k: TODO: pageup
-"<leader>l: TODO: YCM?
+"<leader>i: c-i
+"<leader>j: c-f
+"<leader>k: c-b
+"<leader>l: YCM[l]
 "<leader>m:
 "<leader>n:
-"<leader>o: TODO: c-o
+"<leader>o: c-o
 "<leader>p:
 "<leader>q: quickly buffer[qq] [qa]
 "<leader>r: visualreplace[r]
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh]
-"<leader>t: tab[tn to tc tm tt tl te], tagbar[tb], indent-guides[ti], paste-mode[tp], NERDTree[td]
+"<leader>t:
 "<leader>u:
 "<leader>v:
 "<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
@@ -65,6 +74,21 @@ map qq :botright cclose<cr>
 map qn :cn<cr>
 map qp :cp<cr>
 
+" Useful mappings for managing tabs
+map tn :tabnew<cr>
+map to :tabonly<cr>
+map tc :tabclose<cr>
+map tm :tabmove<Space>
+map th :tabprevious<cr>
+map tt :tabnext<Space>
+map te :tabedit <C-r>=expand("%:p:h")<cr>/
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap tl :exe "tabn ".g:lasttab<CR>
+autocmd TabLeave * let g:lasttab = tabpagenr()
+
+map <leader>j <C-F>
+map <leader>k <C-B>
 map <leader>o <C-O>
 map <leader>i <C-I>
 map <leader>] <C-]>
@@ -88,20 +112,6 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <leader>ba :bufdo bd<cr>
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
-
-" Useful mappings for managing tabs, TODO: remove leader?
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<Space>
-map <leader>tt :tabnext<Space>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <leader>tl :exe "tabn ".g:lasttab<CR>
-autocmd TabLeave * let g:lasttab = tabpagenr()
-
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " Spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -137,7 +147,7 @@ map <leader>qq :e ~/buffer<cr>
 map <leader>xx :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
-map <leader>tp :setlocal paste!<cr>
+map tp :setlocal paste!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -157,7 +167,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-map <leader>td :NERDTreeToggle<cr>
+map td :NERDTreeToggle<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdcommenter
@@ -173,7 +183,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-nmap <silent> <leader>ti <Plug>IndentGuidesToggle
+nmap <silent> ti <Plug>IndentGuidesToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => signify
@@ -189,8 +199,8 @@ nnoremap <leader>sh :Deol -cwd=%:p:h<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>a <Plug>(EasyAlign)
-xmap <leader>a <Plug>(EasyAlign)
+nmap ta <Plug>(EasyAlign)
+xmap ta <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fugitive
@@ -221,7 +231,7 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>tb :TagbarToggle<CR>
+nmap tb :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => mark
@@ -248,7 +258,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:python3_host_prog=/path/to/python/executable/
 "let g:formatterpath = ['/some/path/to/a/folder', '/home/superman/formatters']
-noremap <F3> :Autoformat<CR>
+noremap tf :Autoformat<CR>
 "autocmd BufWrite * :Autoformat
 
 "disable vim's indent file, retabbing and removing trailing whitespace
@@ -337,7 +347,7 @@ nnoremap sa :cs find a <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 " => cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
-	set cscopequickfix=s-,g-,d-,c-,t-,e-,i-,a-
+    set cscopequickfix=s-,g-,d-,c-,t-,e-,i-,a-
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -404,9 +414,7 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 
 "let g:ycm_confirm_extra_conf = 0
 
-nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>k :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>l :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>l :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
@@ -554,23 +562,21 @@ noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 " map ; <Plug>(easymotion-prefix)
 let g:EasyMotion_smartcase = 1
 
-" gb, gc, gl, gx, gz
-
 " move to {char}
-map  gf <Plug>(easymotion-bd-f)
-nmap gf <Plug>(easymotion-overwin-f)
+map  sh <Plug>(easymotion-bd-f)
+nmap sh <Plug>(easymotion-overwin-f)
 
 " move to {cahr}{char}
-map  gb <Plug>(easymotion-bd-f2)
-nmap gb <Plug>(easymotion-overwin-f2)
-
-" Move to word
-map  gw <Plug>(easymotion-bd-w)
-nmap gw <Plug>(easymotion-overwin-w)
-
-map  gl <Plug>(easymotion-lineanywhere)
+map  sj <Plug>(easymotion-bd-f2)
+nmap sj <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map  gj <Plug>(easymotion-bd-jk)
-nmap gj <Plug>(easymotion-overwin-line)
+map  sk <Plug>(easymotion-bd-jk)
+nmap sk <Plug>(easymotion-overwin-line)
+
+map  sl <Plug>(easymotion-lineanywhere)
+
+" Move to word
+map  sw <Plug>(easymotion-bd-w)
+nmap sw <Plug>(easymotion-overwin-w)
 
