@@ -19,6 +19,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
