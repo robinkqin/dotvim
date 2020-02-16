@@ -150,7 +150,7 @@ nnoremap <leader>qa :qa<cr>
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
-map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
+map <leader>ev :e! ~/.vim/cfg/extended.vim<cr>
 
 " Quickly open a buffer for scribble
 map <leader>eq :e ~/buffer<cr>
