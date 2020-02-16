@@ -12,6 +12,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim
+
 let mapleader = "\<Space>"
 
 " Sets how many lines of history VIM has to remember
