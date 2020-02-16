@@ -12,17 +12,35 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
-
 let mapleader = "\<Space>"
 
-" Sets how many lines of history VIM has to remember
-set history=500
+source $VIMRUNTIME/defaults.vim     " Get the defaults that most users want.
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
+set nocompatible
+
+set backspace=indent,eol,start      " Allow backspacing over everything in insert mode.
+
+set history=200         " keep 200 lines of command line history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set wildmenu            " display completion matches in a status line
+
+set ttimeout            " time out for key codes
+set ttimeoutlen=100     " wait up to 100ms after Esc for special key
+
+set display=truncate    " Show @@@ in the last line if it is truncated.
+
+set scrolloff=5
+
+" Do incremental searching when it's possible to timeout.
+if has('reltime')
+    set incsearch
+endif
+
+" Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it confusing.
+set nrformats-=octal
+
+filetype plugin indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -31,17 +49,11 @@ autocmd FocusGained,BufEnter * checktime
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 3 lines to the cursor - when moving vertically using j/k
-set so=3
-
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-
-" Turn on the Wild menu
-set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*.d,*~,*.pyc,tags,GPATH,GTAGS,GRTAGS
@@ -51,47 +63,27 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-"Always show current position
-set ruler
+set hidden          " A buffer becomes hidden when it is abandoned
 
-" Height of the command bar
-set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
 set ignorecase
-
-" When searching try to be smart about cases
 set smartcase
-
-" Highlight search results
 set hlsearch
 
-" Makes search act like search in modern browsers
-set incsearch
+set lazyredraw      " Don't redraw while executing macros (good performance config)
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
+set magic           " For regular expressions turn magic on
 
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
 set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+
+set timeoutlen=500
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
@@ -104,7 +96,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
 syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
@@ -130,15 +121,14 @@ endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac    " Use Unix as the standard file type
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,13 +144,13 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
+" Linebreak on 200 characters
+set linebreak
+set textwidth=200
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set autoindent      "Auto indent
+set smartindent     "Smart indent
+set wrap            "Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => buffers
