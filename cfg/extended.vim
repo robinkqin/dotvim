@@ -22,9 +22,11 @@
 " ===>>>toggle t[a b d f i p]
 "
 " ;: repeat f/t/F/T
-" ===>>> fzf ;[f h o c l L t T a r m ]
+" [d i j k n p q s v w x y z]
+" ===>>> fzf ;[f m b e a t/T hl/L u c mm/mp gf/gc/gs]
 "
 " ,: repeat f/t/F/T in opposite direction
+" [a b d e g h i j l m q r u w x y z]
 " ===>>> ctrlsf ,[s f v n p o k c t]
 "
 " \:
@@ -36,7 +38,7 @@
 "<leader>b: buffer b[d a n p]
 "<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
 "<leader>d: 
-"<leader>e: vimcfg[ev], quickbufer[eq], quickorg[eo], ale e[e d t l i f p n a z]
+"<leader>e: vimcfg[ev], quickbufer[eq], quickorg[eo], ale e[e t l i p n a z]
 "<leader>f: 
 "<leader>g: fugitive g[s d l c w r m b u p]
 "<leader>h:
@@ -49,7 +51,7 @@
 "<leader>o: c-o
 "<leader>p:
 "<leader>q: quit[qa]
-"<leader>r: visualreplace[r]
+"<leader>r: vreplace[r]
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh]
 "<leader>t:
 "<leader>u:
@@ -466,11 +468,9 @@ let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_enter = 0
 
 nmap <leader>ee :ALEEnable<CR>:ALELint<CR>
-nmap <leader>ed :ALEDisable<CR>
 nmap <leader>et :ALEToggle<CR>
 nmap <leader>el :ALEDetail<CR>
 nmap <leader>ei :ALEInfo<CR>
-nmap <leader>ef :ALEFix<CR>
 nmap <leader>ep :ALEPreviousWrap<CR>
 nmap <leader>en :ALENextWrap<CR>
 nmap <leader>ea :ALEFirst<CR>
