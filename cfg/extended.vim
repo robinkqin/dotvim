@@ -1,6 +1,7 @@
 "depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
 " f: {char} find char [i k q v w x y z]
+" ===>>> save file f[s]
 " ===>>> leaderf f[f m b e a/A t/T a l j u c hc/s/h g r d o n p]
 "
 " g:
@@ -52,7 +53,7 @@
 "<leader>s: spell[ss sn sp sa s?], deol shell[sh]
 "<leader>t:
 "<leader>u:
-"<leader>v:
+"<leader>v: c-v
 "<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
 "<leader>x: 
 "<leader>y:
@@ -104,7 +105,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,8 +140,12 @@ autocmd TabLeave * let g:lasttab = tabpagenr()
 
 map <leader>j <C-F>
 map <leader>k <C-B>
+
 map <leader>o <C-O>
 map <leader>i <C-I>
+
+map <leader>v <C-V>
+
 map <leader>] <C-]>
 
 nnoremap <leader>qa :qa<cr>
@@ -187,16 +191,16 @@ nnoremap <leader>wj <c-w>j
 " When you press <leader>rr you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Toggle paste mode on and off
-map tp :setlocal paste!<cr>
-
-" Remove the Windows ^M - when the encodings gets messed up
-"noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Toggle paste mode on and off
+map tp :setlocal paste!<cr>
+
+" Remove the Windows ^M - when the encodings gets messed up
+"noremap <leader>rm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
@@ -306,11 +310,6 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gu :Gpush<cr>
 nnoremap <leader>gp :Gpull<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => surround config
-" Annotate strings with gettext
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => echodoc
