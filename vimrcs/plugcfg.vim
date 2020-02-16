@@ -59,6 +59,52 @@
 "<leader>z:
 "<leader>]:
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => keymap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,7 +151,6 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
 map <leader>ev :e! ~/.vim/vimrcs/plugcfg.vim<cr>
-"autocmd! bufwritepost ~/.vim/vimrcs/plugcfg.vim source ~/.vim/vimrcs/plugcfg.vim
 
 " Quickly open a buffer for scribble
 map <leader>eq :e ~/buffer<cr>
@@ -140,7 +185,7 @@ nnoremap <leader>wk <c-w>k
 nnoremap <leader>wj <c-w>j
 
 " When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>r :call VrsualSelection('replace', '')<CR>
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Toggle paste mode on and off
 map tp :setlocal paste!<cr>
@@ -148,11 +193,58 @@ map tp :setlocal paste!<cr>
 " Remove the Windows ^M - when the encodings gets messed up
 "noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Bash like keys for the command line
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+cnoremap <C-K>      <C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colorscheme
+" => font, gui, Colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set font according to system
+if has("mac") || has("macunix")
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono:h14,Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
+elseif has("win16") || has("win32")
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+elseif has("gui_gtk2")
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono\ 14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
+elseif has("linux")
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono\ 14,:Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
+elseif has("unix")
+    set gfn=JetBrains\ Mono:h14,Monospace\ 11
+endif
+
+" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=m
+
+if exists('$TMUX')
+    if has('nvim')
+        set termguicolors
+    else
+        set term=screen-256color
+    endif
+endif
+
 set background=dark
 colorscheme gruvbox
+
+try
+    set undodir=~/.vim/temp_dirs/undodir
+    set undofile
+catch
+endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
@@ -411,7 +503,7 @@ set completeopt-=preview
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
 
-"let g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf = 0
 
 nnoremap <leader>l :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
