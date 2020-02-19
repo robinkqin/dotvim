@@ -75,6 +75,8 @@ set lazyredraw      " Don't redraw while executing macros (good performance conf
 
 set magic           " For regular expressions turn magic on
 
+set showmode
+
 set showmatch
 set matchtime=2
 
@@ -130,6 +132,9 @@ set fileformats=unix,dos,mac    " Use Unix as the standard file type
 set nobackup
 set nowritebackup
 set noswapfile
+if has('persistent_undo')
+    set undofile
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -150,7 +155,7 @@ set textwidth=200
 
 set autoindent      "Auto indent
 set smartindent     "Smart indent
-set wrap            "Wrap lines
+set nowrap            "Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => buffers

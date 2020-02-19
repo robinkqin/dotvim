@@ -246,12 +246,6 @@ endif
 set background=dark
 colorscheme gruvbox
 
-try
-    set undodir=~/.vim/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
