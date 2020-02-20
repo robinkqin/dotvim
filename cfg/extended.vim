@@ -212,6 +212,12 @@ cnoremap <C-K>      <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
+try
+    set undodir=~/.vim/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => font, gui, Colorscheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

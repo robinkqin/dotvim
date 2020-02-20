@@ -132,9 +132,6 @@ set fileformats=unix,dos,mac    " Use Unix as the standard file type
 set nobackup
 set nowritebackup
 set noswapfile
-if has('persistent_undo')
-    set undofile
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
