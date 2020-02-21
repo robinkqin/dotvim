@@ -252,6 +252,8 @@ endif
 set background=dark
 colorscheme gruvbox
 
+syntax enable
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -585,8 +587,8 @@ let g:ctrlsf_winsize = '40%'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
 
-let g:Lf_PreviewInPopup = 1
-let g:Lf_WindowPosition = 'popup'
+"let g:Lf_PreviewInPopup = 1
+"let g:Lf_WindowPosition = 'popup'
 
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg', '.vs'],

@@ -98,8 +98,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
-
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
@@ -111,6 +109,7 @@ catch
 endtry
 
 set background=dark
+syntax enable
 
 " Set extra options when running in GUI mode
 if has("gui_running")
