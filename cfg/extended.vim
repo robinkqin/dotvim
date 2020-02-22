@@ -1,34 +1,25 @@
 "depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
-" f: {char} find char [i k q v w x y z]
-" ===>>> save file f[s]
-" ===>>> leaderf f[f m b e a/A t/T a l j u c hc/s/h g r d o n p]
-"
+" f: {char} find char [a d i k q w x y z]
+" ===>>> leaderf f[f r b / e/E t/T l v c j hc/s/f/h m u s g o n p]
 " g:
-"
 " m: mark
 " ===>>> mark m[m r x]
 " ===>>> signature m[. , [a-z] '[a-z] ]' '] / dm[a-z] - <Space>]
-"
 " q:
 " quickfix q[o q n p]
-"
-" s: delete char and start insert [b g m n o p q u v x y z]
-" ===>>> gtags s[s d r c t e f i a]
+" s: delete char and start insert [b m n o p q r u v x y z]
+" ===>>> gtags s[s g d c t e f i a]
 " ===>>> easymotion s[h j k l w]
-"
 " t: {char} till [g j k q r s u v w x y z]
 " ===>>>tab t[n o c m t l e h]
 " ===>>>toggle t[a b d f i p]
-"
 " ;: repeat f/t/F/T
-" [d i j k n p q s v w x y z]
-" ===>>> fzf ;[f m b e a t/T hl/L u c mm/mp gf/gc/gs]
-"
+" [a d i j n o p q u x y z]
+" ===>>> fzf ;[f r b / e t/T l/L v c m hc/hs k w s gf/gs/gc/gC]
 " ,: repeat f/t/F/T in opposite direction
 " [a b d e g h i j l m q r u w x y z]
 " ===>>> ctrlsf ,[s f v n p o k c t]
-"
 " \:
 
 "g:UltiSnipsExpandTrigger="<c-j>"
@@ -37,9 +28,9 @@
 "<leader>a:
 "<leader>b: buffer b[d a n p]
 "<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
-"<leader>d: 
+"<leader>d:
 "<leader>e: vimcfg[ev], quickbufer[eq], quickorg[eo], ale e[e t l i p n a z]
-"<leader>f: 
+"<leader>f: save file f[s]
 "<leader>g: fugitive g[s d l c w r m b u p]
 "<leader>h:
 "<leader>i: c-i
@@ -57,7 +48,7 @@
 "<leader>u:
 "<leader>v: c-v
 "<leader>w: cwd[wd], window[ww wc wo ws wv wh wl wj wk]
-"<leader>x: 
+"<leader>x:
 "<leader>y:
 "<leader>z:
 "<leader>]:
@@ -117,7 +108,7 @@ noremap <c-z> <NOP>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-nnoremap fs :w!<cr>
+nnoremap <leader>fs :w!<cr>
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -421,9 +412,9 @@ let g:gutentags_auto_add_gtags_cscope = 1
 "<leader>ca  Find places where current symbol is assigned
 
 nnoremap ss :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
-"nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
-nnoremap sd :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap sr :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+"nnoremap sg :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
+nnoremap sg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap sd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 nnoremap sc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 nnoremap st :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
 nnoremap se :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<cr>
@@ -513,79 +504,84 @@ nnoremap <leader>l :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <silent> ;f :FzfFiles<CR>
-nnoremap <silent> ;m :FzfHistory<CR>
+nnoremap <silent> ;r :FzfHistory<CR>
 nnoremap <silent> ;b :FzfBuffers<CR>
 
-nnoremap <silent> ;e :FzfRg<CR>
-nnoremap <silent> ;a :FzfAg<CR>
+nnoremap <silent> ;/ :FzfRg<CR>
+nnoremap <silent> ;e :FzfRg <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <silent> ;t :FzfBTags<CR>
 nnoremap <silent> ;T :FzfTags<CR>
 nnoremap <silent> ;l :FzfBLines<CR>
 nnoremap <silent> ;L :FzfLines<CR>
 
-nnoremap <silent> ;u :FzfColors<CR>
+nnoremap <silent> ;v :FzfColors<CR>
 nnoremap <silent> ;c :FzfCommand<CR>
 
+nnoremap <silent> ;m :FzfMarks<CR>
+
+nnoremap <silent> ;hc :FzfHistory:<CR>
+nnoremap <silent> ;hs :FzfHistory/<CR>
+
+nnoremap <silent> ;k :FzfMap<CR>
 nnoremap <silent> ;w :FzfWindows<CR>
 nnoremap <silent> ;s :FzfSnippets<CR>
 
-nnoremap <silent> ;mm :FzfMarks<CR>
-nnoremap <silent> ;mp :FzfMap<CR>
-
 nnoremap <silent> ;gf :FzfGFiles<CR>
+nnoremap <silent> ;gs :FzfGFiles?<CR>
 nnoremap <silent> ;gc :FzfBCommits<CR>
 nnoremap <silent> ;gC :FzfCommits<CR>
-nnoremap <silent> ;gs :FzfGFiles?<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ctrlsf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
-nmap     ,f <Plug>CtrlSFPrompt
-vmap     ,f <Plug>CtrlSFVwordExec
-vmap     ,v <Plug>CtrlSFVwordPath
-nmap     ,n <Plug>CtrlSFCwordPath
-nmap     ,p <Plug>CtrlSFPwordPath
-nnoremap ,o :CtrlSFOpen<CR>
-nnoremap ,c :CtrlSFClose<CR>
-nnoremap ,k :CtrlSFStop<CR>
-nnoremap ,t :CtrlSFToggle<CR>
-inoremap ,t <Esc>:CtrlSFToggle<CR>
-
-"let g:ctrlsf_ackprg = 'ag'
-
-let g:ctrlsf_context = '-B 3 -A 3'
-
-let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
-
-let g:ctrlsf_auto_close = {
-            \ "normal" : 0,
-            \ "compact": 0
-            \}
-
-let g:ctrlsf_auto_focus = {
-            \ "at": "done",
-            \ "duration_less_than": 1000
-            \ }
-
-let g:ctrlsf_case_sensitive = 'smart'
-
-"let g:ctrlsf_default_root = 'project+ff'
-let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
-
-"let g:ctrlsf_default_view_mode = 'compact'
-let g:ctrlsf_regex_pattern = 0
-
-let g:ctrlsf_search_mode = 'async'
-
-let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_winsize = '40%'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => ctrlsf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
+"nmap     ,f <Plug>CtrlSFPrompt
+"vmap     ,f <Plug>CtrlSFVwordExec
+"vmap     ,v <Plug>CtrlSFVwordPath
+"nmap     ,n <Plug>CtrlSFCwordPath
+"nmap     ,p <Plug>CtrlSFPwordPath
+"nnoremap ,o :CtrlSFOpen<CR>
+"nnoremap ,c :CtrlSFClose<CR>
+"nnoremap ,k :CtrlSFStop<CR>
+"nnoremap ,t :CtrlSFToggle<CR>
+"inoremap ,t <Esc>:CtrlSFToggle<CR>
+"
+""let g:ctrlsf_ackprg = 'ag'
+"
+"let g:ctrlsf_context = '-B 3 -A 3'
+"
+"let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
+"
+"let g:ctrlsf_auto_close = {
+"            \ "normal" : 0,
+"            \ "compact": 0
+"            \}
+"
+"let g:ctrlsf_auto_focus = {
+"            \ "at": "done",
+"            \ "duration_less_than": 1000
+"            \ }
+"
+"let g:ctrlsf_case_sensitive = 'smart'
+"
+""let g:ctrlsf_default_root = 'project+ff'
+"let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
+"
+""let g:ctrlsf_default_view_mode = 'compact'
+"let g:ctrlsf_regex_pattern = 0
+"
+"let g:ctrlsf_search_mode = 'async'
+"
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '40%'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
+
+let g:Lf_ReverseOrder = 1
 
 "let g:Lf_PreviewInPopup = 1
 "let g:Lf_WindowPosition = 'popup'
@@ -613,37 +609,37 @@ let g:Lf_MruFileExclude = ['*.so']
 " let g:Lf_ShortcutF = "<leader>ff"
 " let g:Lf_ShortcutB = "<leader>bb"
 
-"i k q v w x y z
-
 noremap ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
-noremap fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap fr :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 
-noremap fe :Leaderf rg -e<Space>
-noremap fa :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-noremap fA :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+noremap f/ :Leaderf rg -e<Space>
+noremap fe :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+noremap fE :<C-U><C-R>=printf("Leaderf rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 
 noremap ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap fT :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
 noremap fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-noremap fu :Leaderf colorscheme<cr>
+noremap fv :Leaderf colorscheme<cr>
 noremap fc :Leaderf command<cr>
 
-noremap fj :Leaderf function<cr>
+noremap fm :Leaderf marks<cr>
 
 noremap fhc :Leaderf cmdHistory<cr>
 noremap fhs :Leaderf searchHistory<cr>
 noremap fhf :Leaderf self<cr>
 noremap fhh :Leaderf help<cr>
 
+noremap fj :Leaderf function<cr>
+
 " should use `Leaderf gtags --update` first
 " --gtagslibpath
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_Gtagslabel = 'native-pygments'
-noremap fg :<C-U><C-R>=printf("Leaderf gtags --update %s", "")<CR><CR>
-noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fu :<C-U><C-R>=printf("Leaderf gtags --update %s", "")<CR><CR>
+noremap fs :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap fg :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap fo :<C-U><C-R>=printf("Leaderf gtags --recall %s", "")<CR><CR>
 noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
