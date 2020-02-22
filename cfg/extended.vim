@@ -1,6 +1,7 @@
 "depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
 
-" f: {char} find char [a d i k q w x y z]
+" f: {char} find char [a d i k q x y z]
+" ===>>> write file f[w]
 " ===>>> leaderf f[f r b / e/E t/T l v c j hc/s/f/h m u s g o n p]
 " g:
 " m: mark
@@ -28,7 +29,7 @@
 "<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
 "<leader>d:
 "<leader>e: vimcfg[ev], quickbufer[eq], quickorg[eo], ale e[e t l i p n a z]
-"<leader>f: save file f[s]
+"<leader>f:
 "<leader>g: fugitive g[s d l c w r m b u p]
 "<leader>h:
 "<leader>i: c-i
@@ -106,7 +107,7 @@ noremap <c-z> <NOP>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-nnoremap <leader>fs :w!<cr>
+nnoremap fw :w!<cr>
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
