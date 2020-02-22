@@ -429,10 +429,10 @@ if executable('gtags-cscope') && executable('gtags')
 endif
 
 " 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_ctags_tagfile = 'tags'
 
 " 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let g:gutentags_cache_dir = expand('~/.cache/tags')
+let g:gutentags_cache_dir = '~/.cache/tags'
 
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
