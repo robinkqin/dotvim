@@ -56,7 +56,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'dense-analysis/ale'
 
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 Plug 'easymotion/vim-easymotion'

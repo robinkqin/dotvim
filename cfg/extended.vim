@@ -429,7 +429,7 @@ if executable('gtags-cscope') && executable('gtags')
 endif
 
 " 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = 'tags'
+let g:gutentags_ctags_tagfile = 'ctags_db'
 
 " 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let g:gutentags_cache_dir = '~/.cache/tags'
@@ -580,6 +580,7 @@ nnoremap <silent> ;gC :FzfCommits<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:Lf_CacheDirectory = expand('~/.cache/')
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', '.project', '.root']
 
 let g:Lf_ReverseOrder = 1
