@@ -18,8 +18,6 @@
 " [a d i j n o p q u x y z]
 " ===>>> fzf ;[f r b / e t/T l/L v c m hc/hs k w s gf/gs/gc/gC]
 " ,: repeat f/t/F/T in opposite direction
-" [a b d e g h i j l m q r u w x y z]
-" ===>>> ctrlsf ,[s f v n p o k c t]
 " \:
 
 "g:UltiSnipsExpandTrigger="<c-j>"
@@ -363,6 +361,52 @@ noremap tf :Autoformat<CR>
 ":retab
 ":RemoveTrailingSpaces
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => ctrlsf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" [a b d e g h i j l m q r u w x y z]
+""" ===>>> ctrlsf ,[s f v n p o k c t]
+"nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
+"nmap     ,f <Plug>CtrlSFPrompt
+"vmap     ,f <Plug>CtrlSFVwordExec
+"vmap     ,v <Plug>CtrlSFVwordPath
+"nmap     ,n <Plug>CtrlSFCwordPath
+"nmap     ,p <Plug>CtrlSFPwordPath
+"nnoremap ,o :CtrlSFOpen<CR>
+"nnoremap ,c :CtrlSFClose<CR>
+"nnoremap ,k :CtrlSFStop<CR>
+"nnoremap ,t :CtrlSFToggle<CR>
+"inoremap ,t <Esc>:CtrlSFToggle<CR>
+"
+""let g:ctrlsf_ackprg = 'ag'
+"
+"let g:ctrlsf_context = '-B 3 -A 3'
+"
+"let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
+"
+"let g:ctrlsf_auto_close = {
+"            \ "normal" : 0,
+"            \ "compact": 0
+"            \}
+"
+"let g:ctrlsf_auto_focus = {
+"            \ "at": "done",
+"            \ "duration_less_than": 1000
+"            \ }
+"
+"let g:ctrlsf_case_sensitive = 'smart'
+"
+""let g:ctrlsf_default_root = 'project+ff'
+"let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
+"
+""let g:ctrlsf_default_view_mode = 'compact'
+"let g:ctrlsf_regex_pattern = 0
+"
+"let g:ctrlsf_search_mode = 'async'
+"
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '40%'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => gutentags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -531,50 +575,6 @@ nnoremap <silent> ;gf :FzfGFiles<CR>
 nnoremap <silent> ;gs :FzfGFiles?<CR>
 nnoremap <silent> ;gc :FzfBCommits<CR>
 nnoremap <silent> ;gC :FzfCommits<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => ctrlsf
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap ,s :CtrlSF<Space><C-R><C-W><cr>
-"nmap     ,f <Plug>CtrlSFPrompt
-"vmap     ,f <Plug>CtrlSFVwordExec
-"vmap     ,v <Plug>CtrlSFVwordPath
-"nmap     ,n <Plug>CtrlSFCwordPath
-"nmap     ,p <Plug>CtrlSFPwordPath
-"nnoremap ,o :CtrlSFOpen<CR>
-"nnoremap ,c :CtrlSFClose<CR>
-"nnoremap ,k :CtrlSFStop<CR>
-"nnoremap ,t :CtrlSFToggle<CR>
-"inoremap ,t <Esc>:CtrlSFToggle<CR>
-"
-""let g:ctrlsf_ackprg = 'ag'
-"
-"let g:ctrlsf_context = '-B 3 -A 3'
-"
-"let g:ctrlsf_ignore_dir = ['.root', '.svn', '.git', '.hg', '.project']
-"
-"let g:ctrlsf_auto_close = {
-"            \ "normal" : 0,
-"            \ "compact": 0
-"            \}
-"
-"let g:ctrlsf_auto_focus = {
-"            \ "at": "done",
-"            \ "duration_less_than": 1000
-"            \ }
-"
-"let g:ctrlsf_case_sensitive = 'smart'
-"
-""let g:ctrlsf_default_root = 'project+ff'
-"let g:ctrlsf_extra_root_markers = ['.git', '.hg', '.svn', '.project', '.root']
-"
-""let g:ctrlsf_default_view_mode = 'compact'
-"let g:ctrlsf_regex_pattern = 0
-"
-"let g:ctrlsf_search_mode = 'async'
-"
-"let g:ctrlsf_position = 'bottom'
-"let g:ctrlsf_winsize = '40%'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
