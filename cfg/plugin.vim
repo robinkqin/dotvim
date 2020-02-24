@@ -64,7 +64,7 @@ Plug 'junegunn/vim-easy-align'
 
 "Plug 'dyng/ctrlsf.vim'
 
-" Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 if has("win16") || has("win32")
