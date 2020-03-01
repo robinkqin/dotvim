@@ -1,4 +1,4 @@
-"depends: gtags ctags fzf rg python/pygments clang/clang-format rust go
+"depends: gtags ctags fzf rg python/pygments/pylint clang/clang-format/clang-tidy cppcheck rust go
 
 " f: {char} find char [a d i k q x y z]
 " ===>>> write file f[w]
@@ -315,7 +315,7 @@ let g:echodoc_enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" =>tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap tb :TagbarToggle<CR>
+"nmap tb :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => mark
@@ -504,6 +504,10 @@ let g:ale_lint_delay = 500
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_save = 0
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 nmap <leader>ee :ALEEnable<CR>:ALELint<CR>
 nmap <leader>et :ALEToggle<CR>
@@ -519,19 +523,27 @@ nmap <leader>ez :ALELast<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set completeopt-=preview
 
-"let g:ycm_semantic_triggers =  {
-"            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"            \ 'cs,lua,javascript': ['re!\w{2}'],
-"            \ }
-"
-"let g:ycm_filetype_whitelist = {
-"            \ "c":1,
-"            \ "cpp":1,
-"            \ "objc":1,
-"            \ "sh":1,
-"            \ "zsh":1,
-"            \ "zimbu":1,
-"            \ }
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,go,rust,python': ['re!\w{2}'],
+            \ 'sh,zsh,lua,javascript': ['re!\w{2}'],
+            \ }
+
+let g:ycm_filetype_whitelist = {
+            \ "c":1,
+            \ "cpp":1,
+            \ "objc":1,
+            \ "objcpp":1,
+            \ "go":1,
+            \ "rust":1,
+            \ "python":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ }
+
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_key_invoke_completion = '<c-z>'
 
 "let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
