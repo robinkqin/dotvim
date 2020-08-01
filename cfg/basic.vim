@@ -6,14 +6,13 @@
 "    -> Files and backups
 "    -> Text, tab and indent related
 "    -> buffers
-"
+"    -> keymap
+"    -> Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = "\<Space>"
-
 source $VIMRUNTIME/defaults.vim     " Get the defaults that most users want.
 
 set nocompatible
@@ -30,7 +29,7 @@ set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 
 set display=truncate    " Show @@@ in the last line if it is truncated.
 
-set scrolloff=5
+set scrolloff=4
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -57,7 +56,7 @@ source $VIMRUNTIME/menu.vim
 
 " Ignore compiled files
 set wildignore=*.o,*.d,*~,*.pyc,tags,GPATH,GTAGS,GRTAGS
-if has("win16") || has("win32")
+if has("win32")
     set wildignore+=.git\*,.hg\*,.svn\*,.vs\*
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -71,7 +70,7 @@ set ignorecase
 set smartcase
 set hlsearch
 
-set lazyredraw      " Don't redraw while executing macros (good performance config)
+"set lazyredraw      " Don't redraw while executing macros (good performance config)
 
 set magic           " For regular expressions turn magic on
 
@@ -87,11 +86,6 @@ set t_vb=
 
 set timeoutlen=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
@@ -104,12 +98,10 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    "colorscheme desert
+    colorscheme gruvbox
 catch
 endtry
-
-set background=dark
-syntax enable
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -124,6 +116,33 @@ set encoding=utf8
 
 set fileformats=unix,dos,mac    " Use Unix as the standard file type
 
+" Set font according to system
+if has("mac")
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono:h14,Bitstream\ Vera\ Sans\ Mono:h11
+elseif has("win32")
+    set gfn=JetBrains\ Mono:h12,IBM\ Plex\ Mono:h12,Bitstream\ Vera\ Sans\ Mono:h11
+else
+    set gfn=JetBrains\ Mono:h14,IBM\ Plex\ Mono:h14,Bitstream\ Vera\ Sans\ Mono:h11
+endif
+
+" Disable scrollbars
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=m
+
+if exists('$TMUX')
+    if has('nvim')
+        set termguicolors
+    else
+        set term=screen-256color
+    endif
+endif
+
+set background=dark
+syntax enable
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,6 +150,12 @@ set fileformats=unix,dos,mac    " Use Unix as the standard file type
 set nobackup
 set nowritebackup
 set noswapfile
+
+try
+    set undodir=~/.vim/temp_dirs/undodir
+    set undofile
+catch
+endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -161,4 +186,161 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " Make sure that enter is never overriden in the quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => keymap
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = "\<Space>"
+
+" Bash like keys for the command line
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+cnoremap <C-K>      <C-U>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+noremap <c-z> <NOP>
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+map <leader>j <C-F>
+map <leader>k <C-B>
+map <leader>i <C-I>
+map <leader>o <C-O>
+map <leader>v <C-V>
+
+" quickfix
+map qo :botright copen<cr>
+map qq :botright cclose<cr>
+map qj :cn<cr>
+map qk :cp<cr>
+map qc :cc<cr>
+map ql :cl<cr>
+
+nnoremap ,w :w!<cr>
+" :W sudo saves the file
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+" window
+nnoremap ,, <c-w><c-w>
+nnoremap ,c <c-w>c
+nnoremap ,s <c-w>s
+nnoremap ,v <c-w>v
+nnoremap ,o <c-w>o
+
+" Close the current buffer
+map ,d :Bclose<cr>:tabclose<cr>gT
+" Close all the buffers
+map ,x :bufdo bd<cr>
+map ,j :bnext<cr>
+map ,k :bprevious<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<Space>
+map <leader>tj :tabnext<cr>
+map <leader>tk :tabprevious<cr>
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <leader>tl :exe "tabn ".g:lasttab<cr>
+autocmd TabLeave * let g:lasttab = tabpagenr()
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>wd :pwd<cr>
+
+map <leader>ev :e! ~/.vim/cfg/extended.vim<cr>
+autocmd! bufwritepost ~/.vim/cfg/extended.vim source ~/.vim/cfg/extended.vim
+
+" Quickly open a buffer for scribble
+map <leader>eq :e ~/buffer<cr>
+
+" Spell checking
+map <leader>ss :setlocal spell!<cr>
+map <leader>sj ]s
+map <leader>sk [s
+map <leader>sa zg
+map <leader>s? z=
+
+" When you press <leader>rr you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
+vnoremap <silent> <leader>g :call VisualSelection('gv', '')<cr>
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<cr>/<C-R>=@/<cr><cr>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
+
+" Toggle paste mode on and off
+map <leader>tp :setlocal paste!<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Leaderf rg -e '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
 
