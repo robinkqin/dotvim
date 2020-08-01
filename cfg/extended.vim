@@ -275,7 +275,7 @@ let g:Lf_GtagsSkipUnreadable = 1
 if has("win32")
 else
 let g:Lf_Gtagslabel = 'native-pygments'
-let g:Lf_Gtagsconf = '/home/robin/.dotfiles/bin/share/gtags/gtags.conf'
+let g:Lf_Gtagsconf = '~/.dotvim/tools/gtags.conf'
 endif
 "noremap fu :Leaderf gtags --update --gtagslibpath /usr/include<cr>
 noremap fu :Leaderf gtags --update<cr>
