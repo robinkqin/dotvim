@@ -35,13 +35,13 @@ Plug 'Chiel92/vim-autoformat'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plug 'rust-lang/rust.vim'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
 Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+"Plug 'dense-analysis/ale'
 
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
