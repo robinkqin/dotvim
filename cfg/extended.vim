@@ -26,7 +26,7 @@
 "<leader>a:
 "<leader>b:
 "<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
-"<leader>d:
+"<leader>d: YCM[d]
 "<leader>e: vimcfg[ev], quickbufer[eq], ale e[e t l i p n a z]
 "<leader>f:
 "<leader>g:  rg
@@ -34,7 +34,7 @@
 "<leader>i: c-i
 "<leader>j: c-f
 "<leader>k: c-b
-"<leader>l: YCM[l]
+"<leader>l:
 "<leader>m:
 "<leader>n:
 "<leader>o: c-o
@@ -141,81 +141,81 @@ noremap <leader>tf :Autoformat<cr>
 ":retab
 ":RemoveTrailingSpaces
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Ale (syntax checker and linter)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Only run linters named in ale_linters settings.
-""let g:ale_linters_explicit = 1
-"
-"let g:ale_sign_column_always = 1
-"let g:ale_set_highlights = 0
-"
-"let g:ale_sign_error = '✗'
-"let g:ale_sign_warning = '⚡'
-"
-"let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
-"
-"let g:ale_echo_msg_error_str = 'E'
-"let g:ale_echo_msg_warning_str = 'W'
-"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"
-""let g:ale_completion_delay = 500
-""let g:ale_echo_delay = 20
-"let g:ale_lint_delay = 500
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_insert_leave = 0
-"let g:ale_lint_on_enter = 0
-"let g:ale_lint_on_save = 0
-"
-"let g:ale_set_loclist = 0
-"let g:ale_set_quickfix = 1
-"
-"nmap <leader>ee :ALEEnable<cr>:ALELint<cr>
-"nmap <leader>et :ALEToggle<cr>
-"nmap <leader>el :ALEDetail<cr>
-"nmap <leader>ei :ALEInfo<cr>
-"nmap <leader>ep :ALEPreviousWrap<cr>
-"nmap <leader>en :ALENextWrap<cr>
-"nmap <leader>ea :ALEFirst<cr>
-"nmap <leader>ez :ALELast<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ale (syntax checker and linter)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Only run linters named in ale_linters settings.
+"let g:ale_linters_explicit = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => YCM
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set completeopt-=preview
-"
-"let g:ycm_semantic_triggers =  {
-"            \ 'c,cpp,go,rust,python': ['re!\w{2}'],
-"            \ 'sh,zsh,lua,javascript': ['re!\w{2}'],
-"            \ }
-"
-"let g:ycm_filetype_whitelist = {
-"            \ "c":1,
-"            \ "cpp":1,
-"            \ "objc":1,
-"            \ "objcpp":1,
-"            \ "go":1,
-"            \ "rust":1,
-"            \ "python":1,
-"            \ "sh":1,
-"            \ "zsh":1,
-"            \ }
-"
-""let g:ycm_show_diagnostics_ui = 0
-""let g:ycm_min_num_identifier_candidate_chars = 2
-""let g:ycm_collect_identifiers_from_comments_and_strings = 1
-""let g:ycm_key_invoke_completion = '<c-z>'
-"
-""let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"
-"" Let clangd fully control code completion
-""let g:ycm_clangd_uses_ycmd_caching = 0
-"" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-"let g:ycm_clangd_binary_path = exepath("clangd")
-"
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+"let g:ale_completion_delay = 500
+"let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 0
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+nmap <leader>ee :ALEEnable<cr>:ALELint<cr>
+nmap <leader>et :ALEToggle<cr>
+nmap <leader>el :ALEDetail<cr>
+nmap <leader>ei :ALEInfo<cr>
+nmap <leader>ep :ALEPreviousWrap<cr>
+nmap <leader>en :ALENextWrap<cr>
+nmap <leader>ea :ALEFirst<cr>
+nmap <leader>ez :ALELast<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YCM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set completeopt-=preview
+
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,go,rust,python': ['re!\w{2}'],
+            \ 'sh,zsh,lua,javascript': ['re!\w{2}'],
+            \ }
+
+let g:ycm_filetype_whitelist = {
+            \ "c":1,
+            \ "cpp":1,
+            \ "objc":1,
+            \ "objcpp":1,
+            \ "go":1,
+            \ "rust":1,
+            \ "python":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ }
+
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_key_invoke_completion = '<c-z>'
+
+"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+
+" Let clangd fully control code completion
+"let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+
 "let g:ycm_confirm_extra_conf = 0
-"
-"nnoremap <leader>l :YcmCompleter GoToDefinitionElseDeclaration<cr>
+
+nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF

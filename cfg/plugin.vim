@@ -39,12 +39,14 @@ Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'rust-lang/rust.vim'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
-"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer --go-completer' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has("win32")
     Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
