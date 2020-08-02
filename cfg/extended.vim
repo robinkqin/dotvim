@@ -123,6 +123,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 set textwidth=80
 noremap <leader>tf :Autoformat<cr>
 "autocmd BufWrite * :Autoformat
+"autocmd BufWrite *.c,*.cpp,*.h,*.hpp :Autoformat
 
 "disable vim's indent file, retabbing and removing trailing whitespace
 "let g:autoformat_autoindent = 0
@@ -277,7 +278,7 @@ else
 let g:Lf_Gtagslabel = 'native-pygments'
 let g:Lf_Gtagsconf = '/home/robin/.vim/tools/gtags.conf'
 endif
-"noremap fu :Leaderf gtags --update --gtagslibpath /usr/include<cr>
+noremap fv :Leaderf gtags --update --gtagslibpath 
 noremap fu :Leaderf gtags --update<cr>
 noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<cr><cr>
 noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
