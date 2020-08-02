@@ -38,15 +38,12 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-"Plug 'rust-lang/rust.vim'
-"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'rust-lang/rust.vim'
 
 "Plug 'dense-analysis/ale'
 
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has("win32")
     Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
