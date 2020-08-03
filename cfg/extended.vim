@@ -3,13 +3,12 @@
 " f: {char} find char [c v x y z]
 " ===>>> leaderf f[f m b t q w ' h e a / o n p u d r i s g l j k]
 "
-" ;: repeat f/t/F/T [a e h i g n o q t v x y z]
-" ===>>> easymotion ;[f ; j]
+" ;: repeat f/t/F/T [a b e g h i l m n q r t u y z]
+" ===>>> easymotion ;[; f]
+" ===>>> buffer ;[d x j k]
+" ===>>> window ;[w c s v o]
 "
 " ,: repeat f/t/F/T in opposite direction
-" ===>>> window ,[, c s v o]
-" ===>>> buffer ,[d x j k]
-" ===>>> write file ,[w]
 "
 " m: mark
 " ===>>> mark m[m r x]
@@ -29,7 +28,7 @@
 "<leader>d: YCM[d]
 "<leader>e: vimcfg[ev], quickbufer[eq], ale e[e t l i p n a z]
 "<leader>f:
-"<leader>g:  rg
+"<leader>g: rg
 "<leader>h:
 "<leader>i: c-i
 "<leader>j: c-f
@@ -45,11 +44,22 @@
 "<leader>t: tab t[n o c m j k e l]
 "<leader>u:
 "<leader>v: c-v
-"<leader>w: cwd[wd]
+"<leader>w: cwd[wd] save file[ww]
 "<leader>x:
 "<leader>y:
 "<leader>z:
 "<leader>]:
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => keymap
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = "\<Space>"
+
+map <leader>ev :e! ~/.vim/cfg/extended.vim<cr>
+autocmd! bufwritepost ~/.vim/cfg/extended.vim source ~/.vim/cfg/extended.vim
+
+" Quickly open a buffer for scribble
+map <leader>eq :e ~/buffer<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -295,13 +305,13 @@ noremap fk :Leaderf gtags --previous<cr>
 let g:EasyMotion_smartcase = 1
 " map ; <Plug>(easymotion-prefix)
 
-" move to {char}
-map  ;f <Plug>(easymotion-bd-f)
-nmap ;f <Plug>(easymotion-overwin-f)
-
 " move to {cahr}{char}
 map  ;; <Plug>(easymotion-bd-f2)
 nmap ;; <Plug>(easymotion-overwin-f2)
 
-map  ;j <Plug>(easymotion-lineanywhere)
+" move to {char}
+map  ;f <Plug>(easymotion-bd-f)
+nmap ;f <Plug>(easymotion-overwin-f)
+
+"map  ;f <Plug>(easymotion-lineanywhere)
 

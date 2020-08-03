@@ -214,31 +214,9 @@ map <leader>i <C-I>
 map <leader>o <C-O>
 map <leader>v <C-V>
 
-" quickfix
-map qo :botright copen<cr>
-map qq :botright cclose<cr>
-map qj :cn<cr>
-map qk :cp<cr>
-map qc :cc<cr>
-map ql :cl<cr>
-
-nnoremap ,w :w!<cr>
+nnoremap <leader>ww :w!<cr>
 " :W sudo saves the file
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
-" window
-nnoremap ,, <c-w><c-w>
-nnoremap ,c <c-w>c
-nnoremap ,s <c-w>s
-nnoremap ,v <c-w>v
-nnoremap ,o <c-w>o
-
-" Close the current buffer
-map ,d :Bclose<cr>:tabclose<cr>gT
-" Close all the buffers
-map ,x :bufdo bd<cr>
-map ,j :bnext<cr>
-map ,k :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -256,12 +234,6 @@ autocmd TabLeave * let g:lasttab = tabpagenr()
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
-
-map <leader>ev :e! ~/.vim/cfg/extended.vim<cr>
-autocmd! bufwritepost ~/.vim/cfg/extended.vim source ~/.vim/cfg/extended.vim
-
-" Quickly open a buffer for scribble
-map <leader>eq :e ~/buffer<cr>
 
 " Spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -281,6 +253,28 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 
 " Toggle paste mode on and off
 map <leader>tp :setlocal paste!<cr>
+
+" quickfix
+map qo :botright copen<cr>
+map qq :botright cclose<cr>
+map qj :cn<cr>
+map qk :cp<cr>
+map qc :cc<cr>
+map ql :cl<cr>
+
+" window
+nnoremap ;w <c-w><c-w>
+nnoremap ;c <c-w>c
+nnoremap ;s <c-w>s
+nnoremap ;v <c-w>v
+nnoremap ;o <c-w>o
+
+" Close the current buffer
+map ;d :Bclose<cr>:tabclose<cr>gT
+" Close all the buffers
+map ;x :bufdo bd<cr>
+map ;j :bnext<cr>
+map ;k :bprevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
