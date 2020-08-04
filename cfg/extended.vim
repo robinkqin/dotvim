@@ -286,7 +286,7 @@ let g:Lf_GtagsSkipUnreadable = 1
 if has("win32")
 else
 let g:Lf_Gtagslabel = 'native-pygments'
-let g:Lf_Gtagsconf = '/home/robin/.vim/tools/gtags.conf'
+"let g:Lf_Gtagsconf = '~/.vim/tools/gtags.conf'
 endif
 noremap fv :Leaderf gtags --update --gtagslibpath 
 noremap fu :Leaderf gtags --update<cr>
