@@ -3,9 +3,9 @@
 " f: {char} find char [c v x y z]
 " ===>>> leaderf f[f m b t q w ' h e a / o n p u d r i s g l j k]
 "
-" ;: repeat f/t/F/T [a b e f g h i l m n q r t u w y z]
-" ===>>> buffer ;[d x j k]
-" ===>>> window ;[; c s v o]
+" ;: repeat f/t/F/T [b e f g h i k l m n q r o t u w y z]
+" ===>>> buffer ;[d x j]
+" ===>>> window ;[; c s v a]
 "
 " ,: repeat f/t/F/T in opposite direction
 "

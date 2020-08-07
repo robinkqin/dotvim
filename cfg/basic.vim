@@ -267,14 +267,13 @@ nnoremap ;; <c-w><c-w>
 nnoremap ;c <c-w>c
 nnoremap ;s <c-w>s
 nnoremap ;v <c-w>v
-nnoremap ;o <c-w>o
+nnoremap ;a <c-w>o
 
 " Close the current buffer
 map ;d :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map ;x :bufdo bd<cr>
 map ;j :bnext<cr>
-map ;k :bprevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
