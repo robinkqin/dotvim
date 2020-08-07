@@ -263,7 +263,7 @@ map qc :cc<cr>
 map ql :cl<cr>
 
 " window
-nnoremap ;w <c-w><c-w>
+nnoremap ;; <c-w><c-w>
 nnoremap ;c <c-w>c
 nnoremap ;s <c-w>s
 nnoremap ;v <c-w>v

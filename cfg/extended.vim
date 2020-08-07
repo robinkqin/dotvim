@@ -3,10 +3,9 @@
 " f: {char} find char [c v x y z]
 " ===>>> leaderf f[f m b t q w ' h e a / o n p u d r i s g l j k]
 "
-" ;: repeat f/t/F/T [a b e g h i l m n q r t u y z]
-" ===>>> easymotion ;[; f]
+" ;: repeat f/t/F/T [a b e f g h i l m n q r t u w y z]
 " ===>>> buffer ;[d x j k]
-" ===>>> window ;[w c s v o]
+" ===>>> window ;[; c s v o]
 "
 " ,: repeat f/t/F/T in opposite direction
 "
@@ -17,6 +16,7 @@
 " quickfix q[o q j k c l]
 "
 " s: delete char and start insert
+" ===>>> easymotion s
 "
 " \:
 
@@ -303,15 +303,28 @@ noremap fk :Leaderf gtags --previous<cr>
 " => easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_smartcase = 1
-" map ; <Plug>(easymotion-prefix)
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" move to {cahr}{char}
-map  ;; <Plug>(easymotion-bd-f2)
-nmap ;; <Plug>(easymotion-overwin-f2)
+"map s <Plug>(easymotion-prefix)
 
-" move to {char}
-map  ;f <Plug>(easymotion-bd-f)
-nmap ;f <Plug>(easymotion-overwin-f)
+"nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
 
-"map  ;f <Plug>(easymotion-lineanywhere)
+"" <Leader>f{char} to move to {char}
+"map  sf <Plug>(easymotion-bd-f)
+"nmap sf <Plug>(easymotion-overwin-f)
+"
+"" s{char}{char} to move to {char}{char}
+"map  ss <Plug>(easymotion-bd-f2)
+"nmap ss <Plug>(easymotion-overwin-f2)
+"
+"" Move to line
+"map sj <Plug>(easymotion-bd-jk)
+"nmap sj <Plug>(easymotion-overwin-line)
+"
+"map  sl <Plug>(easymotion-lineanywhere)
+"
+"" Move to word
+"map  sw <Plug>(easymotion-bd-w)
+"nmap sw <Plug>(easymotion-overwin-w)
 
