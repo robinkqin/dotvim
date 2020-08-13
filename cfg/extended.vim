@@ -1,6 +1,6 @@
 "depends: gtags rg python/pygments clang/clang-format/clang-tidy cppcheck rust
 "
-" f: {char} find char [c v x y z]
+" f: {char} find char [c x y z]
 " ===>>> leaderf f[f m b t q w ' h e a / o n p u d r i s g l j k]
 "
 " ;: repeat f/t/F/T [b e f g h i k l m n q r o t u w y z]
@@ -291,10 +291,12 @@ endif
 noremap fv :Leaderf gtags --update --gtagslibpath 
 noremap fu :Leaderf gtags --update<cr>
 noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<cr><cr>
+noremap f, :Leaderf gtags --auto-jump -d 
 noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
 noremap fi :<C-U><C-R>=printf("Leaderf gtags -s %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
 noremap fs :<C-U><C-R>=printf("Leaderf gtags -r %s --nowrap", expand("<cword>"))<cr><cr><esc>:<C-U><C-R>=printf("Leaderf gtags -s %s --nowrap --append", expand("<cword>"))<cr><cr>
 noremap fg :<C-U><C-R>=printf("Leaderf gtags -g %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
+noremap f; :Leaderf gtags --auto-jump --nowrap -g 
 noremap fl :Leaderf gtags --recall<cr>
 noremap fj :Leaderf gtags --next<cr>
 noremap fk :Leaderf gtags --previous<cr>
