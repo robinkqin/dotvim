@@ -23,11 +23,11 @@
 "g:UltiSnipsExpandTrigger="<c-j>"
 
 "<leader>a:
-"<leader>b:
+"<leader>b: c-b
 "<leader>c: cwd[cd], commenter c[c n <Space> m i s y $ A a l b u]
 "<leader>d: YCM[d]
 "<leader>e: vimcfg[ev], quickbufer[eq], ale e[e t l i p n a z]
-"<leader>f:
+"<leader>f: c-f
 "<leader>g: rg
 "<leader>h:
 "<leader>i: c-i

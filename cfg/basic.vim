@@ -208,6 +208,8 @@ noremap <c-z> <NOP>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+map <leader>f <C-F>
+map <leader>b <C-B>
 map <leader>j <C-F>
 map <leader>k <C-B>
 map <leader>i <C-I>
