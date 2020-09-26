@@ -3,11 +3,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-syntax'
-Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp'] }
-Plug 'sgur/vim-textobj-parameter'
+"Plug 'kana/vim-textobj-user'
+"Plug 'kana/vim-textobj-indent'
+"Plug 'kana/vim-textobj-syntax'
+"Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp'] }
+"Plug 'sgur/vim-textobj-parameter'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
@@ -33,7 +33,7 @@ Plug 'https://github.com/inkarkat/vim-ingo-library.git'
 
 Plug 'Chiel92/vim-autoformat'
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
