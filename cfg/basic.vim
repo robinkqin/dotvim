@@ -17,6 +17,8 @@ source $VIMRUNTIME/defaults.vim     " Get the defaults that most users want.
 
 set nocompatible
 
+set number
+
 set backspace=indent,eol,start      " Allow backspacing over everything in insert mode.
 
 set history=200         " keep 200 lines of command line history

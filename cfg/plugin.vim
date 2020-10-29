@@ -18,9 +18,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 
-Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/echodoc.vim'
 
-Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asyncrun.vim'
 
 Plug 'preservim/nerdcommenter'
 
@@ -38,7 +38,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'rust-lang/rust.vim'
+"Plug 'rust-lang/rust.vim'
 
 "Plug 'dense-analysis/ale'
 
