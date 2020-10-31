@@ -240,13 +240,13 @@ let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 "let g:Lf_FollowLinks = 1
 
-let g:Lf_PreviewInPopup = 1
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-if has("win32")
-else
-let g:Lf_PopupWidth = &columns * 3 / 4
-endif
+"let g:Lf_PreviewInPopup = 1
+"let g:Lf_WindowPosition = 'popup'
+"let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+"if has("win32")
+"else
+"let g:Lf_PopupWidth = &columns * 3 / 4
+"endif
 
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg', '.vs'],
