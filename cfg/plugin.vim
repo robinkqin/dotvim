@@ -35,7 +35,7 @@ Plug 'Chiel92/vim-autoformat'
 
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plug 'vim-scripts/a.vim'
+"Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 "Plug 'rust-lang/rust.vim'
