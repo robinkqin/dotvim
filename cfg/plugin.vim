@@ -36,6 +36,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'rust-lang/rust.vim'
 
+Plug 'skywind3000/vim-auto-popmenu'
+
 "Plug 'dense-analysis/ale'
 
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
