@@ -1,4 +1,4 @@
-"depends: ctags gtags rg python/pygments clang/clang-format/clang-tidy cppcheck rust
+"depends: ctags gtags rg python/pygments clang/clang-format/clang-tidy 
 "
 " f: {char} find char [c x y z]
 " ===>>> leaderf f[f m b t q w ' h e a / o n p u d r i s g l j k]
