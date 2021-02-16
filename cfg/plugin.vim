@@ -14,7 +14,7 @@ Plug 'mhinz/vim-signify'
 
 "Plug 'Shougo/echodoc.vim'
 
-Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asyncrun.vim'
 
 Plug 'preservim/nerdcommenter'
 
