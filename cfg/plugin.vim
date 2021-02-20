@@ -43,6 +43,11 @@ Plug 'skywind3000/vim-auto-popmenu'
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --rust-completer' }
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 if has("win32")
     Plug 'Yggdroot/LeaderF', { 'do': './install.bat' }
 else
