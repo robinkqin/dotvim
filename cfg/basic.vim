@@ -13,7 +13,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source $VIMRUNTIME/defaults.vim     " Get the defaults that most users want.
+"ln -s ~/.vim .config/nvim
+if has('nvim')
+else
+    source $VIMRUNTIME/defaults.vim     " Get the defaults that most users want.
+endif
 
 set nocompatible
 
