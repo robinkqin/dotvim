@@ -55,11 +55,11 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 
-map <leader>ev :e! ~/.vim/cfg/extended.vim<cr>
+map <F2> :e! ~/.vim/cfg/extended.vim<cr>
 autocmd! bufwritepost ~/.vim/cfg/extended.vim source ~/.vim/cfg/extended.vim
 
 " Quickly open a buffer for scribble
-map <leader>eq :e ~/buffer<cr>
+"map <leader>eq :e ~/buffer<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorscheme
@@ -109,12 +109,13 @@ xmap <leader>ta <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => mark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nmap <unique> mt <Plug>MarkToggle
-nmap <unique> mm <Plug>MarkSet
-xmap <unique> mm <Plug>MarkSet
-nmap <unique> mr <Plug>MarkRegex
-xmap <unique> mr <Plug>MarkRegex
-nmap <unique> mx <Plug>MarkAllClear
+nmap <unique> mt <Plug>MarkToggle
+nmap <unique> <leader>mm <Plug>MarkSet
+xmap <unique> <leader>mm <Plug>MarkSet
+nmap <unique> <leader>mr <Plug>MarkRegex
+xmap <unique> <leader>mr <Plug>MarkRegex
+nmap <unique> <leader>mn <Plug>MarkClear
+nmap <unique> <leader>mu <Plug>MarkAllClear
 
 let g:mwDefaultHighlightingPalette = 'maximum'
 
@@ -181,14 +182,14 @@ let g:ale_lint_on_save = 0
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
-nmap <leader>ee :ALEEnable<cr>:ALELint<cr>
-nmap <leader>et :ALEToggle<cr>
-nmap <leader>el :ALEDetail<cr>
-nmap <leader>ei :ALEInfo<cr>
-nmap <leader>ep :ALEPreviousWrap<cr>
-nmap <leader>en :ALENextWrap<cr>
-nmap <leader>ea :ALEFirst<cr>
-nmap <leader>ez :ALELast<cr>
+"nmap <leader>ee :ALEEnable<cr>:ALELint<cr>
+"nmap <leader>et :ALEToggle<cr>
+"nmap <leader>el :ALEDetail<cr>
+"nmap <leader>ei :ALEInfo<cr>
+"nmap <leader>ep :ALEPreviousWrap<cr>
+"nmap <leader>en :ALENextWrap<cr>
+"nmap <leader>ea :ALEFirst<cr>
+"nmap <leader>ez :ALELast<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YCM
@@ -226,7 +227,7 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 
 "let g:ycm_confirm_extra_conf = 0
 
-nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
+"nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeaderF
@@ -262,24 +263,21 @@ let g:Lf_MruFileExclude = ['*.so','moc_*.cpp','moc_*.h']
 "     \ "--hidden"
 " \ ]
 
-noremap ff :Leaderf file --nowrap<cr>
-noremap fm :Leaderf mru --nowrap<cr>
-noremap fb :Leaderf buffer --nowrap<cr>
+noremap <leader>e :Leaderf file --nowrap<cr>
+noremap <leader>b :Leaderf buffer --nowrap<cr>
 
-noremap ft :Leaderf function --nowrap<cr>
-noremap fq :Leaderf quickfix --nowrap<cr>
-noremap fw :Leaderf window --nowrap<cr>
+noremap <leader>d :Leaderf function --nowrap<cr>
+noremap <leader>q :Leaderf quickfix --nowrap<cr>
+noremap <leader>w :Leaderf window --nowrap<cr>
 
-noremap f' :Leaderf marks --nowrap<cr>
+noremap <leader>' :Leaderf marks --nowrap<cr>
 
-noremap fh :Leaderf cmdHistory --nowrap<cr>
+noremap <leader>h :Leaderf cmdHistory --nowrap<cr>
 
-noremap fe :Leaderf rg --nowrap -e<Space>
-noremap fa :<C-U><C-R>=printf("Leaderf rg --nowrap -e %s", expand("<cword>"))<cr><cr>
-noremap f/ :<C-U><C-R>=printf("Leaderf rg --nowrap --current-buffer -e %s", expand("<cword>"))<cr><cr>
-noremap fo :Leaderf rg --recall<cr>
-noremap fn :Leaderf rg --next<cr>
-noremap fp :Leaderf rg --previous<cr>
+noremap <leader>a :<C-U><C-R>=printf("Leaderf rg --nowrap -e %s", expand("<cword>"))<cr><cr>
+noremap <leader>s :<C-U><C-R>=printf("Leaderf rg --nowrap --current-buffer -e %s", expand("<cword>"))<cr><cr>
+noremap <leader>r :Leaderf rg --nowrap -e<Space>
+"noremap <leader>o:Leaderf rg --recall<cr>
 
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_GtagsSkipUnreadable = 1
@@ -288,18 +286,18 @@ else
 let g:Lf_Gtagslabel = 'native-pygments'
 "let g:Lf_Gtagsconf = '~/.vim/tools/gtags.conf'
 endif
-noremap fv :Leaderf gtags --update --gtagslibpath 
-noremap fu :Leaderf gtags --update<cr>
-noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<cr><cr>
-noremap f, :Leaderf gtags --auto-jump -d 
-noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
-noremap fi :<C-U><C-R>=printf("Leaderf gtags -s %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
-noremap fs :<C-U><C-R>=printf("Leaderf gtags -r %s --nowrap", expand("<cword>"))<cr><cr><esc>:<C-U><C-R>=printf("Leaderf gtags -s %s --nowrap --append", expand("<cword>"))<cr><cr>
-noremap fg :<C-U><C-R>=printf("Leaderf gtags -g %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
-noremap f; :Leaderf gtags --auto-jump --nowrap -g 
-noremap fl :Leaderf gtags --recall<cr>
-noremap fj :Leaderf gtags --next<cr>
-noremap fk :Leaderf gtags --previous<cr>
+"noremap <leader>v :Leaderf gtags --update --gtagslibpath 
+noremap <leader>u :Leaderf gtags --update<cr>
+noremap <leader>j :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<cr><cr>
+"noremap <leader>, :Leaderf gtags --auto-jump -d 
+"noremap <leader>fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
+"noremap <leader>fi :<C-U><C-R>=printf("Leaderf gtags -s %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
+"noremap <leader>g :<C-U><C-R>=printf("Leaderf gtags -g %s --auto-jump --nowrap", expand("<cword>"))<cr><cr>
+noremap <leader>g :<C-U><C-R>=printf("Leaderf gtags -r %s --nowrap", expand("<cword>"))<cr><cr><esc>:<C-U><C-R>=printf("Leaderf gtags -s %s --nowrap --append", expand("<cword>"))<cr><cr>
+"noremap <leader>f; :Leaderf gtags --auto-jump --nowrap -g 
+noremap <leader>l :Leaderf gtags --recall<cr>
+noremap <leader>n :Leaderf gtags --next<cr>
+noremap <leader>p :Leaderf gtags --previous<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easy motion
@@ -310,7 +308,7 @@ let g:EasyMotion_smartcase = 1
 "map s <Plug>(easymotion-prefix)
 
 "nmap s <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <leader>; <Plug>(easymotion-overwin-f2)
 
 "" <Leader>f{char} to move to {char}
 "map  sf <Plug>(easymotion-bd-f)
@@ -350,16 +348,16 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
+    "nmap <buffer> gd <plug>(lsp-definition)
+    "nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    "nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    "nmap <buffer> gr <plug>(lsp-references)
+    "nmap <buffer> gi <plug>(lsp-implementation)
+    "nmap <buffer> gt <plug>(lsp-type-definition)
+    "nmap <buffer> <leader>rn <plug>(lsp-rename)
+    "nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    "nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    "nmap <buffer> K <plug>(lsp-hover)
 
     let g:lsp_format_sync_timeout = 1000
     "autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')

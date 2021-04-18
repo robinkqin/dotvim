@@ -217,12 +217,9 @@ noremap <c-z> <NOP>
 map <silent> <leader><cr> :noh<cr>
 
 map <leader>f <C-F>
-map <leader>b <C-B>
-map <leader>j <C-F>
-map <leader>k <C-B>
+map <leader>v <C-B>
 map <leader>i <C-I>
 map <leader>o <C-O>
-map <leader>v <C-V>
 
 nnoremap <leader>ww :w!<cr>
 " :W sudo saves the file
@@ -246,15 +243,15 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>wd :pwd<cr>
 
 " Spell checking
-map <leader>ss :setlocal spell!<cr>
-map <leader>sj ]s
-map <leader>sk [s
-map <leader>sa zg
-map <leader>s? z=
+"map <leader>ss :setlocal spell!<cr>
+"map <leader>sj ]s
+"map <leader>sk [s
+"map <leader>sa zg
+"map <leader>s? z=
 
 " When you press <leader>rr you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
-vnoremap <silent> <leader>g :call VisualSelection('gv', '')<cr>
+"vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
+"vnoremap <silent> <leader>g :call VisualSelection('gv', '')<cr>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -265,25 +262,30 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 map <leader>tp :setlocal paste!<cr>
 
 " quickfix
-map qo :botright copen<cr>
-map qq :botright cclose<cr>
-map qj :cn<cr>
-map qk :cp<cr>
-map qc :cc<cr>
-map ql :cl<cr>
+"map qo :botright copen<cr>
+"map qq :botright cclose<cr>
+"map qj :cn<cr>
+"map qk :cp<cr>
+"map qc :cc<cr>
+"map ql :cl<cr>
 
 " window
-nnoremap ;; <c-w><c-w>
-nnoremap ;c <c-w>c
-nnoremap ;s <c-w>s
-nnoremap ;v <c-w>v
-nnoremap ;a <c-w>o
+nnoremap <leader>ww <c-w><c-w>
+nnoremap <leader>wc <c-w>c
+nnoremap <leader>ws <c-w>s
+nnoremap <leader>wv <c-w>v
+nnoremap <leader>wo <c-w>o
+nnoremap <leader>wj <c-w>j
+nnoremap <leader>wk <c-w>k
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>wl <c-w>l
 
 " Close the current buffer
-map ;d :Bclose<cr>:tabclose<cr>gT
+"map <leader>x :Bclose<cr>:tabclose<cr>gT
+map <leader>x :Bclose<cr>
 " Close all the buffers
-map ;x :bufdo bd<cr>
-map ;j :bnext<cr>
+"map ;x :bufdo bd<cr>
+"map ;j :bnext<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
